@@ -73,8 +73,8 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", deckModel.uuid.uuidString)
         fetchRequest.fetchLimit = 1
 
-        let deck = (try? persistentContainer.viewContext.fetch(fetchRequest))?.first
-        persistentContainer.viewContext.delete(deck!)
+        guard let deck = (try? persistentContainer.viewContext.fetch(fetchRequest))?.first else { return }
+        persistentContainer.viewContext.delete(deck)
     }
 
     // MARK: NSFetchedResultsControllerDelegate
