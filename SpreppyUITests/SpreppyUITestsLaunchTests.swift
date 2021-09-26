@@ -8,7 +8,6 @@
 import XCTest
 
 class SpreppyUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
