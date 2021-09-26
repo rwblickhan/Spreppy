@@ -33,6 +33,9 @@ class DeckCoreDateRepository: NSObject, DeckRepository, NSFetchedResultsControll
         
         do {
             try fetchedResultsController.performFetch()
+            if let decks = fetchedResultsController.fetchedObjects {
+                deckListState.send(decks.compactMap { DeckModel(managedObject: $0) })
+            }
         } catch {
             fatalError("###\(#function): Failed to performFetch: \(error)")
         }
