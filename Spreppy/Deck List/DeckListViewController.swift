@@ -15,7 +15,7 @@ class DeckListViewController: UIViewController,
     private lazy var viewModel = DeckListViewModel(
         repository: DeckCoreDateRepository(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer),
         delegate: self)
-    private lazy var dataSource = makeDataSource()
+    private lazy var dataSource = DeckListDiffableDataSource(viewModel: viewModel, tableView: tableView)
     private var state = DeckListState()
 
     private lazy var tableView = makeTableView()
@@ -70,7 +70,13 @@ class DeckListViewController: UIViewController,
         let oldState = self.state
         self.state = state
 
-        dataSource.apply(state.snapshot, animatingDifferences: true)
+        if oldState.decks != state.decks {
+            var snapshot = NSDiffableDataSourceSnapshot<Int, DeckModel>()
+            snapshot.appendSections([0])
+            snapshot.appendItems(state.decks)
+            dataSource.apply(snapshot, animatingDifferences: true)
+        }
+
         if oldState.isEditing != state.isEditing {
             tableView.setEditing(state.isEditing, animated: true)
             navigationItem.setLeftBarButton(state.isEditing ? nil : addBarButton, animated: true)
@@ -100,12 +106,21 @@ class DeckListViewController: UIViewController,
         tableView.delegate = self
         return tableView
     }
+}
 
-    private func makeDataSource() -> UITableViewDiffableDataSource<Int, DeckModel> {
-        UITableViewDiffableDataSource<Int, DeckModel>(tableView: tableView) { _, _, deckModel in
+private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, DeckModel> {
+    private let viewModel: DeckListViewModel
+
+    init(viewModel: DeckListViewModel, tableView: UITableView) {
+        self.viewModel = viewModel
+        super.init(tableView: tableView) { _, _, deckModel in
             let cell = DeckCell()
             cell.configure(with: deckModel)
             return cell
         }
+    }
+
+    override func tableView(_: UITableView, commit _: UITableViewCell.EditingStyle, forRowAt _: IndexPath) {
+        // TODO:
     }
 }
