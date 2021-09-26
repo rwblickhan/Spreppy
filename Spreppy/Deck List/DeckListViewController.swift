@@ -91,9 +91,8 @@ class DeckListViewController: UIViewController,
     
     private func makeDataSource() -> UITableViewDiffableDataSource<Int, DeckModel> {
         UITableViewDiffableDataSource<Int, DeckModel>(tableView: tableView) { tableView, indexPath, deckModel in
-            let cell = UITableViewCell()
-            cell.backgroundColor = indexPath.row % 2 == 0 ? .systemRed : .systemBlue
-            cell.contentView.largeContentTitle = deckModel.title
+            let cell = DeckCell()
+            cell.configure(with: deckModel)
             return cell
         }
     }
