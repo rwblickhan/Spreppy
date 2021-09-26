@@ -69,7 +69,7 @@ class DeckListViewController: UIViewController,
     func update(state: DeckListState) {
         let oldState = self.state
         self.state = state
-        
+
         if oldState.decks != state.decks {
             var snapshot = NSDiffableDataSourceSnapshot<Int, DeckModel>()
             snapshot.appendSections([0])
@@ -110,7 +110,7 @@ class DeckListViewController: UIViewController,
 
 private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, DeckModel> {
     private let viewModel: DeckListViewModel
-    
+
     init(viewModel: DeckListViewModel, tableView: UITableView) {
         self.viewModel = viewModel
         super.init(tableView: tableView) { _, _, deckModel in
@@ -119,8 +119,8 @@ private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, Dec
             return cell
         }
     }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // TODO
+
+    override func tableView(_: UITableView, commit _: UITableViewCell.EditingStyle, forRowAt _: IndexPath) {
+        // TODO:
     }
 }
