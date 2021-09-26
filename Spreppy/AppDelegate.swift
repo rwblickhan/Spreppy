@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import Combine
 import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    static let sharedAppDelegate: AppDelegate = {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Unexpected app delegate type, did it change? \(String(describing: UIApplication.shared.delegate))")
+        }
+        return delegate
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -58,6 +63,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        // I don't know what all this stuff does lol
+        // https://beckyhansmeyer.com/2021/03/30/how-to-set-up-core-data-cloudkit-and-swiftui-when-you-havent-the-faintest-clue-what-youre-doing/?utm_source=pocket_mylist
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("###\(#function): Failed to retrieve a persistent store description.")
+        }
+        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.transactionAuthor = "Spreppy"
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        do {
+            try container.viewContext.setQueryGenerationFrom(.current)
+        } catch {
+            assertionFailure("###\(#function): Failed to pin viewContext to the current generation:\(error)")
+        }
+        // TODO
+//        NotificationCenter.default
+//            .publisher(for: .NSPersistentStoreRemoteChange)
+//            .sink {
+//                self.processRemoteStoreChange($0)
+//            }
+//            .store(in: &subscriptions)
         return container
     }()
 

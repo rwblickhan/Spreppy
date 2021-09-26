@@ -9,14 +9,18 @@
 /* Begin PBXBuildFile section */
 		CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */; };
 		CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */; };
-		CDA44BB626FFE8B500BC5118 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BB526FFE8B500BC5118 /* ViewController.swift */; };
-		CDA44BB926FFE8B500BC5118 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDA44BB726FFE8B500BC5118 /* Main.storyboard */; };
 		CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BBA26FFE8B500BC5118 /* Spreppy.xcdatamodeld */; };
 		CDA44BBE26FFE8B600BC5118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDA44BBD26FFE8B600BC5118 /* Assets.xcassets */; };
 		CDA44BC126FFE8B600BC5118 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDA44BBF26FFE8B600BC5118 /* LaunchScreen.storyboard */; };
-		CDA44BCC26FFE8B700BC5118 /* SpreppyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BCB26FFE8B700BC5118 /* SpreppyTests.swift */; };
 		CDA44BD626FFE8B700BC5118 /* SpreppyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BD526FFE8B700BC5118 /* SpreppyUITests.swift */; };
 		CDA44BD826FFE8B700BC5118 /* SpreppyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BD726FFE8B700BC5118 /* SpreppyUITestsLaunchTests.swift */; };
+		CDA44BE526FFEC6500BC5118 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */; };
+		CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */; };
+		CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */; };
+		CDA44BEC270020C000BC5118 /* DeskListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BEB270020C000BC5118 /* DeskListViewModelTests.swift */; };
+		CDA44BEE2700263100BC5118 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BED2700263100BC5118 /* Model.swift */; };
+		CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF02700268500BC5118 /* DeckModel.swift */; };
+		CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF32700285300BC5118 /* DeckRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,17 +44,21 @@
 		CDA44BAE26FFE8B500BC5118 /* Spreppy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spreppy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CDA44BB526FFE8B500BC5118 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CDA44BB826FFE8B500BC5118 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDA44BBB26FFE8B500BC5118 /* Spreppy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spreppy.xcdatamodel; sourceTree = "<group>"; };
 		CDA44BBD26FFE8B600BC5118 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDA44BC026FFE8B600BC5118 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDA44BC226FFE8B600BC5118 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDA44BC726FFE8B700BC5118 /* SpreppyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpreppyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDA44BCB26FFE8B700BC5118 /* SpreppyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreppyTests.swift; sourceTree = "<group>"; };
 		CDA44BD126FFE8B700BC5118 /* SpreppyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpreppyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA44BD526FFE8B700BC5118 /* SpreppyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreppyUITests.swift; sourceTree = "<group>"; };
 		CDA44BD726FFE8B700BC5118 /* SpreppyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreppyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewController.swift; sourceTree = "<group>"; };
+		CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewModel.swift; sourceTree = "<group>"; };
+		CDA44BEB270020C000BC5118 /* DeskListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskListViewModelTests.swift; sourceTree = "<group>"; };
+		CDA44BED2700263100BC5118 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		CDA44BF02700268500BC5118 /* DeckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckModel.swift; sourceTree = "<group>"; };
+		CDA44BF32700285300BC5118 /* DeckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +109,12 @@
 		CDA44BB026FFE8B500BC5118 /* Spreppy */ = {
 			isa = PBXGroup;
 			children = (
+				CDA44BEF2700267900BC5118 /* Models */,
+				CDA44BF2270027D100BC5118 /* Repositories */,
+				CDA44BE826FFF2DD00BC5118 /* Deck List */,
 				CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */,
+				CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */,
 				CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */,
-				CDA44BB526FFE8B500BC5118 /* ViewController.swift */,
-				CDA44BB726FFE8B500BC5118 /* Main.storyboard */,
 				CDA44BBD26FFE8B600BC5118 /* Assets.xcassets */,
 				CDA44BBF26FFE8B600BC5118 /* LaunchScreen.storyboard */,
 				CDA44BC226FFE8B600BC5118 /* Info.plist */,
@@ -116,7 +126,7 @@
 		CDA44BCA26FFE8B700BC5118 /* SpreppyTests */ = {
 			isa = PBXGroup;
 			children = (
-				CDA44BCB26FFE8B700BC5118 /* SpreppyTests.swift */,
+				CDA44BEB270020C000BC5118 /* DeskListViewModelTests.swift */,
 			);
 			path = SpreppyTests;
 			sourceTree = "<group>";
@@ -128,6 +138,32 @@
 				CDA44BD726FFE8B700BC5118 /* SpreppyUITestsLaunchTests.swift */,
 			);
 			path = SpreppyUITests;
+			sourceTree = "<group>";
+		};
+		CDA44BE826FFF2DD00BC5118 /* Deck List */ = {
+			isa = PBXGroup;
+			children = (
+				CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */,
+				CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */,
+			);
+			path = "Deck List";
+			sourceTree = "<group>";
+		};
+		CDA44BEF2700267900BC5118 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CDA44BED2700263100BC5118 /* Model.swift */,
+				CDA44BF02700268500BC5118 /* DeckModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CDA44BF2270027D100BC5118 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CDA44BF32700285300BC5118 /* DeckRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +272,6 @@
 			files = (
 				CDA44BC126FFE8B600BC5118 /* LaunchScreen.storyboard in Resources */,
 				CDA44BBE26FFE8B600BC5118 /* Assets.xcassets in Resources */,
-				CDA44BB926FFE8B500BC5118 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,10 +296,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDA44BB626FFE8B500BC5118 /* ViewController.swift in Sources */,
+				CDA44BEE2700263100BC5118 /* Model.swift in Sources */,
 				CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */,
+				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
+				CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */,
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
+				CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */,
+				CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */,
 				CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */,
+				CDA44BE526FFEC6500BC5118 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDA44BCC26FFE8B700BC5118 /* SpreppyTests.swift in Sources */,
+				CDA44BEC270020C000BC5118 /* DeskListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +341,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CDA44BB726FFE8B500BC5118 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CDA44BB826FFE8B500BC5118 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CDA44BBF26FFE8B600BC5118 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -448,7 +480,6 @@
 				INFOPLIST_FILE = Spreppy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -476,7 +507,6 @@
 				INFOPLIST_FILE = Spreppy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
