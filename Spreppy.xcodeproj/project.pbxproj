@@ -21,6 +21,7 @@
 		CDA44BEE2700263100BC5118 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BED2700263100BC5118 /* Model.swift */; };
 		CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF02700268500BC5118 /* DeckModel.swift */; };
 		CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF32700285300BC5118 /* DeckRepository.swift */; };
+		CDA44BF62700500800BC5118 /* DeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF52700500800BC5118 /* DeckCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		CDA44BED2700263100BC5118 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CDA44BF02700268500BC5118 /* DeckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckModel.swift; sourceTree = "<group>"; };
 		CDA44BF32700285300BC5118 /* DeckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRepository.swift; sourceTree = "<group>"; };
+		CDA44BF52700500800BC5118 /* DeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */,
 				CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */,
+				CDA44BF52700500800BC5118 /* DeckCell.swift */,
 			);
 			path = "Deck List";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */,
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
 				CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */,
+				CDA44BF62700500800BC5118 /* DeckCell.swift in Sources */,
 				CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */,
 				CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */,
 				CDA44BE526FFEC6500BC5118 /* SettingsViewController.swift in Sources */,
