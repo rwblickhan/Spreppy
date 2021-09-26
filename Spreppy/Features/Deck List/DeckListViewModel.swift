@@ -30,6 +30,7 @@ enum DeckListUIEvent {
     case addTapped
     case doneTapped
     case editTapped
+    case deleteTapped(index: Int)
     case deckSelected(_ row: Int)
     case deckInfoSelected(_ row: Int)
 }
@@ -80,6 +81,9 @@ class DeckListViewModel {
         case .editTapped:
             guard !state.isEditing else { assert(false); return }
             state.isEditing = true
+        case .deleteTapped(let index):
+            let deckModel = state.decks[index]
+            repos.deckRepo.delete(deckModel)
         case let .deckSelected(row):
             guard !state.isEditing else { return }
             let deckID = state.decks[row].uuid

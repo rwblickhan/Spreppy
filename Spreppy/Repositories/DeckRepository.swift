@@ -12,6 +12,7 @@ import Foundation
 protocol DeckRepository {
     func fetchDeckList() -> AnyPublisher<[DeckModel], Never>
     func createOrUpdate(_ deckModel: DeckModel)
+    func delete(_ deckModel: DeckModel)
 }
 
 class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControllerDelegate {
@@ -66,6 +67,15 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
 
         try! persistentContainer.viewContext.save()
     }
+    
+    func delete(_ deckModel: DeckModel) {
+        let fetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
+        fetchRequest.predicate = NSPredicate(format: "uuid == %@", deckModel.uuid.uuidString)
+        fetchRequest.fetchLimit = 1
+
+        let deck = (try? persistentContainer.viewContext.fetch(fetchRequest))?.first
+        persistentContainer.viewContext.delete(deck!)
+    }
 
     // MARK: NSFetchedResultsControllerDelegate
 
@@ -89,3 +99,4 @@ private extension Deck {
         }
     }
 }
+
