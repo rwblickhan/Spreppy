@@ -8,6 +8,7 @@
 import Foundation
 
 struct DeckModel: Model, Hashable {
+    static let entityName: String = "Deck"
     typealias ModelType = Deck
     
     let uuid: UUID
