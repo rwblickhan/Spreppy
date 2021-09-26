@@ -10,5 +10,6 @@ import CoreData
 
 protocol Model {
     associatedtype ModelType: NSManagedObject
+    static var entityName: String { get }
     init?(managedObject: ModelType)
 }

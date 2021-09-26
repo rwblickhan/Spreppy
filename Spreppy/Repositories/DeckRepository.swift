@@ -44,7 +44,7 @@ class DeckCoreDateRepository: NSObject, DeckRepository, NSFetchedResultsControll
     
     func create(_ deckModel: DeckModel) {
         // TODO this should really be done on a background queue
-        let deck = NSEntityDescription.insertNewObject(forEntityName: "Deck", into: persistentContainer.viewContext) as! Deck
+        let deck = NSEntityDescription.insertNewObject(forEntityName: DeckModel.entityName, into: persistentContainer.viewContext) as! Deck
         deck.configure(from: deckModel)
         try! persistentContainer.viewContext.save()
     }
