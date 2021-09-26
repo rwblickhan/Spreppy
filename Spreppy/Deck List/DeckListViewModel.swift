@@ -19,8 +19,7 @@ struct DeckListState {
 
     init(
         snapshot: NSDiffableDataSourceSnapshot<Int, DeckModel> = NSDiffableDataSourceSnapshot(),
-        isEditing: Bool = false
-    ) {
+        isEditing: Bool = false) {
         self.snapshot = snapshot
         self.isEditing = isEditing
     }

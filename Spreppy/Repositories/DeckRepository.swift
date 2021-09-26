@@ -23,10 +23,11 @@ class DeckCoreDateRepository: NSObject, DeckRepository, NSFetchedResultsControll
         self.persistentContainer = persistentContainer
         let fetchRequest = Deck.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                              managedObjectContext: persistentContainer.viewContext,
-                                                              sectionNameKeyPath: nil,
-                                                              cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: persistentContainer.viewContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
         super.init()
 
         fetchedResultsController.delegate = self
@@ -47,7 +48,9 @@ class DeckCoreDateRepository: NSObject, DeckRepository, NSFetchedResultsControll
 
     func create(_ deckModel: DeckModel) {
         // TODO: this should really be done on a background queue
-        let deck = NSEntityDescription.insertNewObject(forEntityName: DeckModel.entityName, into: persistentContainer.viewContext) as! Deck
+        let deck = NSEntityDescription.insertNewObject(
+            forEntityName: DeckModel.entityName,
+            into: persistentContainer.viewContext) as! Deck
         deck.configure(from: deckModel)
         try! persistentContainer.viewContext.save()
     }

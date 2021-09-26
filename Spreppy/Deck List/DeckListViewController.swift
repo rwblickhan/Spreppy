@@ -12,14 +12,25 @@ class DeckListViewController: UIViewController,
     DeckListViewModelDelegate,
     UITableViewDelegate
 {
-    private lazy var viewModel = DeckListViewModel(repository: DeckCoreDateRepository(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer), delegate: self)
+    private lazy var viewModel = DeckListViewModel(
+        repository: DeckCoreDateRepository(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer),
+        delegate: self)
     private lazy var dataSource = makeDataSource()
     private var state = DeckListState()
 
     private lazy var tableView = makeTableView()
-    private lazy var addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
-    private lazy var editBarButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(didTapEdit))
-    private lazy var doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDone))
+    private lazy var addBarButton = UIBarButtonItem(
+        barButtonSystemItem: .add,
+        target: self,
+        action: #selector(didTapAdd))
+    private lazy var editBarButton = UIBarButtonItem(
+        barButtonSystemItem: .edit,
+        target: self,
+        action: #selector(didTapEdit))
+    private lazy var doneBarButton = UIBarButtonItem(
+        barButtonSystemItem: .done,
+        target: self,
+        action: #selector(didTapDone))
 
     init() {
         super.init(nibName: nil, bundle: nil)
