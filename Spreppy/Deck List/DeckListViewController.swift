@@ -69,8 +69,14 @@ class DeckListViewController: UIViewController,
     func update(state: DeckListState) {
         let oldState = self.state
         self.state = state
+        
+        if oldState.decks != state.decks {
+            var snapshot = NSDiffableDataSourceSnapshot<Int, DeckModel>()
+            snapshot.appendSections([0])
+            snapshot.appendItems(state.decks)
+            dataSource.apply(snapshot, animatingDifferences: true)
+        }
 
-        dataSource.apply(state.snapshot, animatingDifferences: true)
         if oldState.isEditing != state.isEditing {
             tableView.setEditing(state.isEditing, animated: true)
             navigationItem.setLeftBarButton(state.isEditing ? nil : addBarButton, animated: true)

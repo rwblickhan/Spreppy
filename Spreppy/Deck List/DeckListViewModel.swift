@@ -14,13 +14,13 @@ protocol DeckListViewModelDelegate: AnyObject {
 }
 
 struct DeckListState {
-    var snapshot: NSDiffableDataSourceSnapshot<Int, DeckModel>
+    var decks: [DeckModel]
     var isEditing: Bool
 
     init(
-        snapshot: NSDiffableDataSourceSnapshot<Int, DeckModel> = NSDiffableDataSourceSnapshot(),
+        decks: [DeckModel] = [],
         isEditing: Bool = false) {
-        self.snapshot = snapshot
+        self.decks = decks
         self.isEditing = isEditing
     }
 }
@@ -58,10 +58,7 @@ class DeckListViewModel {
         switch event {
         case .viewDidLoad:
             subscription = repository.fetchDeckList().sink { [weak self] deckList in
-                var snapshot = NSDiffableDataSourceSnapshot<Int, DeckModel>()
-                snapshot.appendSections([0])
-                snapshot.appendItems(deckList)
-                self?.state.snapshot = snapshot
+                self?.state.decks = deckList
             }
         case .addTapped:
             guard !state.isEditing else { assert(false); return }
