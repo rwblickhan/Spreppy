@@ -30,6 +30,7 @@ enum DeckListUIEvent {
     case addTapped
     case doneTapped
     case editTapped
+    case deckSelected(_ row: Int)
 }
 
 class DeckListViewModel {
@@ -62,13 +63,18 @@ class DeckListViewModel {
             }
         case .addTapped:
             guard !state.isEditing else { assert(false); return }
-            repos.deckRepo.createOrUpdate(DeckModel(uuid: UUID(), title: "Blah blah blah"))
+            repos.deckRepo.createOrUpdate(DeckModel(title: "Blah blah blah"))
         case .doneTapped:
             guard state.isEditing else { assert(false); return }
             state.isEditing = false
         case .editTapped:
             guard !state.isEditing else { assert(false); return }
             state.isEditing = true
+        case let .deckSelected(row):
+            guard !state.isEditing else { return }
+            let deck = state.decks[row]
+            let cardModel = CardModel(deck: deck)
+            repos.cardRepo.createOrUpdate(cardModel)
         }
     }
 }

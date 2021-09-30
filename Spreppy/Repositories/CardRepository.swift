@@ -38,7 +38,7 @@ class CardCoreDataRepository: CardRepository {
         
         if let deckModel = cardModel.deck {
             let deckFetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
-            deckFetchRequest.predicate = NSPredicate(format: "uuid == $@", deckModel.uuid.uuidString)
+            deckFetchRequest.predicate = NSPredicate(format: "uuid == %@", deckModel.uuid.uuidString)
             deckFetchRequest.fetchLimit = 1
             if let deck = try? managedObjectContext.fetch(deckFetchRequest).first{
                 card.deck = deck
