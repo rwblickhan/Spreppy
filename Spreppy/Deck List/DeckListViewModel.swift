@@ -73,8 +73,7 @@ class DeckListViewModel {
         case let .deckSelected(row):
             guard !state.isEditing else { return }
             let deck = state.decks[row]
-            let cardModel = CardModel(deck: deck)
-            repos.cardRepo.createOrUpdate(cardModel)
+            repos.cardRepo.createOrUpdate(CardModel(deckUUID: deck.uuid))
         }
     }
 }

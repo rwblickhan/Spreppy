@@ -88,7 +88,6 @@ class DeckListViewController: UIViewController,
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.handle(.deckSelected(indexPath.row))
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: Helpers

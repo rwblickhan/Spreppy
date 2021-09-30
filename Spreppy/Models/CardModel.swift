@@ -15,7 +15,7 @@ struct CardModel: Model, Hashable {
     let uuid: UUID
     let nextDueTime: Date
     let numCorrectRepetitions: Int32
-    let deck: DeckModel?
+    let deckUUID: UUID?
     
     init?(managedObject: Card) {
         guard
@@ -25,21 +25,13 @@ struct CardModel: Model, Hashable {
         self.uuid = uuid
         self.nextDueTime = nextDuetime
         self.numCorrectRepetitions = managedObject.numCorrectRepetitions
-        self.deck = managedObject.deck.flatMap({ DeckModel(managedObject: $0) })
+        self.deckUUID = managedObject.uuid
     }
     
-    init(uuid: UUID = UUID(), nextDueTime: Date = Date(), numCorrectRepetitions: Int32 = 0, deck: DeckModel? = nil) {
+    init(uuid: UUID = UUID(), nextDueTime: Date = Date(), numCorrectRepetitions: Int32 = 0, deckUUID: UUID? = nil) {
         self.uuid = uuid
         self.nextDueTime = nextDueTime
         self.numCorrectRepetitions = numCorrectRepetitions
-        self.deck = deck
-    }
-}
-
-extension Card {
-    func configureAttributes(from cardModel: CardModel) {
-        uuid = cardModel.uuid
-        nextDueTime = cardModel.nextDueTime
-        numCorrectRepetitions = cardModel.numCorrectRepetitions
+        self.deckUUID = deckUUID
     }
 }

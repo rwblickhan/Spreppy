@@ -36,7 +36,7 @@ class DeckCell: UITableViewCell {
 
     func configure(with deckModel: DeckModel) {
         titleLabel.text = deckModel.title
-        deckCountLabel.text = "\(deckModel.cards.count)"
+        deckCountLabel.text = "\(deckModel.cardUUIDs.count)"
     }
 
     // MARK: View Factories

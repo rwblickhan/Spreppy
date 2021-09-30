@@ -33,18 +33,24 @@ class CardCoreDataRepository: CardRepository {
                 forEntityName: CardModel.entityName,
                 into: persistentContainer.viewContext) as! Card
         }
-    
-        card.configureAttributes(from: cardModel)
-        
-        if let deckModel = cardModel.deck {
-            let deckFetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
-            deckFetchRequest.predicate = NSPredicate(format: "uuid == %@", deckModel.uuid.uuidString)
-            deckFetchRequest.fetchLimit = 1
-            if let deck = try? managedObjectContext.fetch(deckFetchRequest).first{
-                card.deck = deck
-            }
-        }
+        card.configure(from: cardModel, managedObjectContext: managedObjectContext)
         
         try! persistentContainer.viewContext.save()
+    }
+}
+
+fileprivate extension Card {
+    func configure(from cardModel: CardModel, managedObjectContext: NSManagedObjectContext) {
+        uuid = cardModel.uuid
+        nextDueTime = cardModel.nextDueTime
+        numCorrectRepetitions = cardModel.numCorrectRepetitions
+        if let deckUUID = cardModel.deckUUID {
+            let deckFetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
+            deckFetchRequest.predicate = NSPredicate(format: "uuid == %@", deckUUID.uuidString)
+            deckFetchRequest.fetchLimit = 1
+            if let fetchedDeck = try? managedObjectContext.fetch(deckFetchRequest).first {
+                deck = fetchedDeck
+            }
+        }
     }
 }

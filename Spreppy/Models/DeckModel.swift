@@ -14,29 +14,22 @@ struct DeckModel: Model, Hashable {
 
     let uuid: UUID
     let title: String
-    let cards: [CardModel]
+    let cardUUIDs: [UUID]
 
     init?(managedObject: Deck) {
         guard
             let uuid = managedObject.uuid,
             let title = managedObject.title,
-            let cards = (managedObject.cards?.sortedArray(using: []) as? [Card])?.compactMap({ CardModel(managedObject: $0) })
+            let cardUUIDs = (managedObject.cards?.sortedArray(using: []) as? [Card])?.compactMap(\.uuid)
         else { return nil }
         self.uuid = uuid
         self.title = title
-        self.cards = cards
+        self.cardUUIDs = cardUUIDs
     }
 
-    init(uuid: UUID = UUID(), title: String = "", cards: [CardModel] = []) {
+    init(uuid: UUID = UUID(), title: String = "", cardUUIDs: [UUID] = []) {
         self.uuid = uuid
         self.title = title
-        self.cards = cards
-    }
-}
-
-extension Deck {
-    func configureAttributes(from deckModel: DeckModel) {
-        uuid = deckModel.uuid
-        title = deckModel.title
+        self.cardUUIDs = cardUUIDs
     }
 }

@@ -60,14 +60,8 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
                 forEntityName: DeckModel.entityName,
                 into: persistentContainer.viewContext) as! Deck
         }
-    
-        deck.configureAttributes(from: deckModel)
         
-        let cardFetchRequest = NSFetchRequest<Card>(entityName: CardModel.entityName)
-        cardFetchRequest.predicate = NSPredicate(format: "uuid IN $CARD_LIST").withSubstitutionVariables(["CARD_LIST": deckModel.cards.map(\.uuid).map(\.uuidString)])
-        if let cards = try? managedObjectContext.fetch(cardFetchRequest) {
-            deck.cards = NSSet(array: cards)
-        }
+        deck.configure(from: deckModel, managedObjectContext: managedObjectContext)
         
         try! persistentContainer.viewContext.save()
     }
@@ -77,5 +71,18 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard let decks = controller.fetchedObjects as? [Deck] else { return }
         deckListState.send(decks.compactMap { DeckModel(managedObject: $0) })
+    }
+}
+
+fileprivate extension Deck {
+    func configure(from deckModel: DeckModel, managedObjectContext: NSManagedObjectContext) {
+        uuid = deckModel.uuid
+        title = deckModel.title
+        let cardFetchRequest = NSFetchRequest<Card>(entityName: CardModel.entityName)
+        cardFetchRequest.predicate = NSPredicate(format: "uuid IN $CARD_LIST")
+            .withSubstitutionVariables(["CARD_LIST": deckModel.cardUUIDs.map(\.uuidString)])
+        if let fetchedCards = try? managedObjectContext.fetch(cardFetchRequest) {
+            cards = NSSet(array: fetchedCards)
+        }
     }
 }
