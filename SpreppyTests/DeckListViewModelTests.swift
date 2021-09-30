@@ -1,5 +1,5 @@
 //
-//  DeskListViewModelTests.swift
+//  DeckListViewModelTests.swift
 //  SpreppyTests
 //
 //  Created by Russell Blickhan on 9/25/21.
@@ -18,36 +18,19 @@ class DeckListViewModelDelegateSpy: DeckListViewModelDelegate {
     }
 }
 
-class DeckRepositorySpy: DeckRepository {
-    private let deckList = CurrentValueSubject<[DeckModel], Never>([])
-    func fetchDeckList() -> AnyPublisher<[DeckModel], Never> {
-        deckList.eraseToAnyPublisher()
-    }
-
-    func create(_ deckModel: DeckModel) {
-        var decks = deckList.value
-        decks.append(deckModel)
-        deckList.send(decks)
-    }
-
-    func setDeckList(_ decks: [DeckModel]) {
-        deckList.send(decks)
-    }
-}
-
 class DeskListViewModelTests: XCTestCase {
     private var delegate: DeckListViewModelDelegateSpy!
-    private var repository: DeckRepositorySpy!
+    private var repos: RepositorySpies!
     private var subject: DeckListViewModel!
 
     override func setUp() {
         delegate = DeckListViewModelDelegateSpy()
-        repository = DeckRepositorySpy()
+        repos = RepositorySpies()
     }
 
     override func tearDown() {
         delegate = nil
-        repository = nil
+        repos = nil
         subject = nil
     }
 
@@ -57,21 +40,22 @@ class DeskListViewModelTests: XCTestCase {
             DeckModel(uuid: UUID(), title: "Test 2"),
             DeckModel(uuid: UUID(), title: "Test 3"),
         ]
-        repository.setDeckList(decks)
 
-        subject = DeckListViewModel(repository: repository, delegate: delegate)
+        repos.deckRepoSpy.setDeckList(decks)
+
+        subject = DeckListViewModel(repos: repos, delegate: delegate)
         subject.handle(.viewDidLoad)
-        XCTAssertEqual(delegate.state.snapshot.itemIdentifiers(inSection: 0), decks)
+        XCTAssertEqual(delegate.state.decks, decks)
     }
 
     func testHandleDoneTapped() {
-        subject = DeckListViewModel(state: DeckListState(isEditing: true), repository: repository, delegate: delegate)
+        subject = DeckListViewModel(state: DeckListState(isEditing: true), repos: repos, delegate: delegate)
         subject.handle(.doneTapped)
         XCTAssertFalse(delegate.state.isEditing)
     }
 
     func testHandleEditTapped() {
-        subject = DeckListViewModel(state: DeckListState(isEditing: false), repository: repository, delegate: delegate)
+        subject = DeckListViewModel(state: DeckListState(isEditing: false), repos: repos, delegate: delegate)
         subject.handle(.editTapped)
         XCTAssertTrue(delegate.state.isEditing)
     }

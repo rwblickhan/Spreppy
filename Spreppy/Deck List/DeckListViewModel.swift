@@ -30,6 +30,7 @@ enum DeckListUIEvent {
     case addTapped
     case doneTapped
     case editTapped
+    case deckSelected(_ row: Int)
 }
 
 class DeckListViewModel {
@@ -39,14 +40,14 @@ class DeckListViewModel {
         }
     }
 
-    private let repository: DeckRepository
+    private let repos: Repositories
     private weak var delegate: DeckListViewModelDelegate?
 
     private var subscription: AnyCancellable?
 
-    init(state: DeckListState = DeckListState(), repository: DeckRepository, delegate: DeckListViewModelDelegate) {
+    init(state: DeckListState = DeckListState(), repos: Repositories, delegate: DeckListViewModelDelegate) {
         self.state = state
-        self.repository = repository
+        self.repos = repos
         self.delegate = delegate
     }
 
@@ -57,18 +58,22 @@ class DeckListViewModel {
     func handle(_ event: DeckListUIEvent) {
         switch event {
         case .viewDidLoad:
-            subscription = repository.fetchDeckList().sink { [weak self] deckList in
+            subscription = repos.deckRepo.fetchDeckList().sink { [weak self] deckList in
                 self?.state.decks = deckList
             }
         case .addTapped:
             guard !state.isEditing else { assert(false); return }
-            repository.create(DeckModel(uuid: UUID(), title: "Blah blah blah"))
+            repos.deckRepo.createOrUpdate(DeckModel(title: "Blah blah blah"))
         case .doneTapped:
             guard state.isEditing else { assert(false); return }
             state.isEditing = false
         case .editTapped:
             guard !state.isEditing else { assert(false); return }
             state.isEditing = true
+        case let .deckSelected(row):
+            guard !state.isEditing else { return }
+            let deck = state.decks[row]
+            repos.cardRepo.createOrUpdate(CardModel(deckUUID: deck.uuid))
         }
     }
 }

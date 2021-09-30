@@ -5,6 +5,7 @@
 //  Created by Russell Blickhan on 9/25/21.
 //
 
+import CoreData
 import Foundation
 
 struct DeckModel: Model, Hashable {
@@ -13,25 +14,22 @@ struct DeckModel: Model, Hashable {
 
     let uuid: UUID
     let title: String
+    let cardUUIDs: [UUID]
 
     init?(managedObject: Deck) {
         guard
             let uuid = managedObject.uuid,
-            let title = managedObject.title
+            let title = managedObject.title,
+            let cardUUIDs = (managedObject.cards?.sortedArray(using: []) as? [Card])?.compactMap(\.uuid)
         else { return nil }
         self.uuid = uuid
         self.title = title
+        self.cardUUIDs = cardUUIDs
     }
 
-    init(uuid: UUID = UUID(), title: String = "") {
+    init(uuid: UUID = UUID(), title: String = "", cardUUIDs: [UUID] = []) {
         self.uuid = uuid
         self.title = title
-    }
-}
-
-extension Deck {
-    func configure(from deckModel: DeckModel) {
-        uuid = deckModel.uuid
-        title = deckModel.title
+        self.cardUUIDs = cardUUIDs
     }
 }

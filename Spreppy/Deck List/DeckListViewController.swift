@@ -10,10 +10,9 @@ import UIKit
 
 class DeckListViewController: UIViewController,
     DeckListViewModelDelegate,
-    UITableViewDelegate
-{
+    UITableViewDelegate {
     private lazy var viewModel = DeckListViewModel(
-        repository: DeckCoreDateRepository(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer),
+        repos: CoreDataRepositories(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer),
         delegate: self)
     private lazy var dataSource = DeckListDiffableDataSource(viewModel: viewModel, tableView: tableView)
     private var state = DeckListState()
@@ -82,6 +81,12 @@ class DeckListViewController: UIViewController,
             navigationItem.setLeftBarButton(state.isEditing ? nil : addBarButton, animated: true)
             navigationItem.setRightBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
         }
+    }
+
+    // MARK: UITableViewDelegate
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.handle(.deckSelected(indexPath.row))
     }
 
     // MARK: Helpers

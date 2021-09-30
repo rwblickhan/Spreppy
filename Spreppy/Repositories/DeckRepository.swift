@@ -11,10 +11,10 @@ import Foundation
 
 protocol DeckRepository {
     func fetchDeckList() -> AnyPublisher<[DeckModel], Never>
-    func create(_ deckModel: DeckModel)
+    func createOrUpdate(_ deckModel: DeckModel)
 }
 
-class DeckCoreDateRepository: NSObject, DeckRepository, NSFetchedResultsControllerDelegate {
+class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControllerDelegate {
     private let persistentContainer: NSPersistentContainer
     private let deckListState = CurrentValueSubject<[DeckModel], Never>([])
     private let fetchedResultsController: NSFetchedResultsController<Deck>
@@ -46,12 +46,23 @@ class DeckCoreDateRepository: NSObject, DeckRepository, NSFetchedResultsControll
         deckListState.eraseToAnyPublisher()
     }
 
-    func create(_ deckModel: DeckModel) {
+    func createOrUpdate(_ deckModel: DeckModel) {
+        let managedObjectContext = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
+        fetchRequest.predicate = NSPredicate(format: "uuid == %@", deckModel.uuid.uuidString)
+        fetchRequest.fetchLimit = 1
         // TODO: this should really be done on a background queue
-        let deck = NSEntityDescription.insertNewObject(
-            forEntityName: DeckModel.entityName,
-            into: persistentContainer.viewContext) as! Deck
-        deck.configure(from: deckModel)
+        let deck: Deck
+        if let fetchedDeck = try? managedObjectContext.fetch(fetchRequest).first {
+            deck = fetchedDeck
+        } else {
+            deck = NSEntityDescription.insertNewObject(
+                forEntityName: DeckModel.entityName,
+                into: persistentContainer.viewContext) as! Deck
+        }
+
+        deck.configure(from: deckModel, managedObjectContext: managedObjectContext)
+
         try! persistentContainer.viewContext.save()
     }
 
@@ -60,5 +71,18 @@ class DeckCoreDateRepository: NSObject, DeckRepository, NSFetchedResultsControll
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard let decks = controller.fetchedObjects as? [Deck] else { return }
         deckListState.send(decks.compactMap { DeckModel(managedObject: $0) })
+    }
+}
+
+private extension Deck {
+    func configure(from deckModel: DeckModel, managedObjectContext: NSManagedObjectContext) {
+        uuid = deckModel.uuid
+        title = deckModel.title
+        let cardFetchRequest = NSFetchRequest<Card>(entityName: CardModel.entityName)
+        cardFetchRequest.predicate = NSPredicate(format: "uuid IN $CARD_LIST")
+            .withSubstitutionVariables(["CARD_LIST": deckModel.cardUUIDs.map(\.uuidString)])
+        if let fetchedCards = try? managedObjectContext.fetch(cardFetchRequest) {
+            cards = NSSet(array: fetchedCards)
+        }
     }
 }
