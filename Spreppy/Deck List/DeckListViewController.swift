@@ -13,7 +13,7 @@ class DeckListViewController: UIViewController,
     UITableViewDelegate
 {
     private lazy var viewModel = DeckListViewModel(
-        repository: DeckCoreDateRepository(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer),
+        repos: CoreDataRepositories(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer),
         delegate: self)
     private lazy var dataSource = DeckListDiffableDataSource(viewModel: viewModel, tableView: tableView)
     private var state = DeckListState()
@@ -83,7 +83,7 @@ class DeckListViewController: UIViewController,
             navigationItem.setRightBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
         }
     }
-
+    
     // MARK: Helpers
 
     @objc private func didTapAdd() {

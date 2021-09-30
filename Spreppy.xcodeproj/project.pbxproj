@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD15A9A427043DD400333111 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A327043DD400333111 /* Repositories.swift */; };
+		CD15A9A62705689300333111 /* RepositorySpies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A52705689300333111 /* RepositorySpies.swift */; };
 		CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */; };
 		CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */; };
 		CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BBA26FFE8B500BC5118 /* Spreppy.xcdatamodeld */; };
@@ -17,11 +19,13 @@
 		CDA44BE526FFEC6500BC5118 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */; };
 		CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */; };
 		CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */; };
-		CDA44BEC270020C000BC5118 /* DeskListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BEB270020C000BC5118 /* DeskListViewModelTests.swift */; };
+		CDA44BEC270020C000BC5118 /* DeckListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */; };
 		CDA44BEE2700263100BC5118 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BED2700263100BC5118 /* Model.swift */; };
 		CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF02700268500BC5118 /* DeckModel.swift */; };
 		CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF32700285300BC5118 /* DeckRepository.swift */; };
 		CDA44BF62700500800BC5118 /* DeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF52700500800BC5118 /* DeckCell.swift */; };
+		CDA44BF82701444400BC5118 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF72701444400BC5118 /* CardModel.swift */; };
+		CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF927014A7C00BC5118 /* CardRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD15A9A327043DD400333111 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
+		CD15A9A52705689300333111 /* RepositorySpies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySpies.swift; sourceTree = "<group>"; };
 		CDA44BAE26FFE8B500BC5118 /* Spreppy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spreppy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,11 +62,13 @@
 		CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewController.swift; sourceTree = "<group>"; };
 		CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewModel.swift; sourceTree = "<group>"; };
-		CDA44BEB270020C000BC5118 /* DeskListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskListViewModelTests.swift; sourceTree = "<group>"; };
+		CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewModelTests.swift; sourceTree = "<group>"; };
 		CDA44BED2700263100BC5118 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CDA44BF02700268500BC5118 /* DeckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckModel.swift; sourceTree = "<group>"; };
 		CDA44BF32700285300BC5118 /* DeckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRepository.swift; sourceTree = "<group>"; };
 		CDA44BF52700500800BC5118 /* DeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCell.swift; sourceTree = "<group>"; };
+		CDA44BF72701444400BC5118 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		CDA44BF927014A7C00BC5118 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +136,8 @@
 		CDA44BCA26FFE8B700BC5118 /* SpreppyTests */ = {
 			isa = PBXGroup;
 			children = (
-				CDA44BEB270020C000BC5118 /* DeskListViewModelTests.swift */,
+				CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */,
+				CD15A9A52705689300333111 /* RepositorySpies.swift */,
 			);
 			path = SpreppyTests;
 			sourceTree = "<group>";
@@ -156,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				CDA44BED2700263100BC5118 /* Model.swift */,
+				CDA44BF72701444400BC5118 /* CardModel.swift */,
 				CDA44BF02700268500BC5118 /* DeckModel.swift */,
 			);
 			path = Models;
@@ -164,6 +174,8 @@
 		CDA44BF2270027D100BC5118 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				CD15A9A327043DD400333111 /* Repositories.swift */,
+				CDA44BF927014A7C00BC5118 /* CardRepository.swift */,
 				CDA44BF32700285300BC5118 /* DeckRepository.swift */,
 			);
 			path = Repositories;
@@ -300,12 +312,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDA44BEE2700263100BC5118 /* Model.swift in Sources */,
+				CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */,
+				CDA44BF82701444400BC5118 /* CardModel.swift in Sources */,
 				CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */,
 				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
 				CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */,
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
 				CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */,
 				CDA44BF62700500800BC5118 /* DeckCell.swift in Sources */,
+				CD15A9A427043DD400333111 /* Repositories.swift in Sources */,
 				CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */,
 				CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */,
 				CDA44BE526FFEC6500BC5118 /* SettingsViewController.swift in Sources */,
@@ -316,7 +331,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDA44BEC270020C000BC5118 /* DeskListViewModelTests.swift in Sources */,
+				CD15A9A62705689300333111 /* RepositorySpies.swift in Sources */,
+				CDA44BEC270020C000BC5118 /* DeckListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
