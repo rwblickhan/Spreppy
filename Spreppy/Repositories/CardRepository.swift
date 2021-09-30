@@ -5,8 +5,8 @@
 //  Created by Russell Blickhan on 9/26/21.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 protocol CardRepository {
     func createOrUpdate(_ cardModel: CardModel)
@@ -14,11 +14,11 @@ protocol CardRepository {
 
 class CardCoreDataRepository: CardRepository {
     private let persistentContainer: NSPersistentContainer
-    
+
     init(persistentContainer: NSPersistentContainer) {
         self.persistentContainer = persistentContainer
     }
-    
+
     func createOrUpdate(_ cardModel: CardModel) {
         let managedObjectContext = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<Card>(entityName: CardModel.entityName)
@@ -34,12 +34,12 @@ class CardCoreDataRepository: CardRepository {
                 into: persistentContainer.viewContext) as! Card
         }
         card.configure(from: cardModel, managedObjectContext: managedObjectContext)
-        
+
         try! persistentContainer.viewContext.save()
     }
 }
 
-fileprivate extension Card {
+private extension Card {
     func configure(from cardModel: CardModel, managedObjectContext: NSManagedObjectContext) {
         uuid = cardModel.uuid
         nextDueTime = cardModel.nextDueTime

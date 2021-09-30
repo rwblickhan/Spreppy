@@ -23,9 +23,11 @@ class DeckCell: UITableViewCell {
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: deckCountLabel.trailingAnchor),
             titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 1.0),
             contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1.0),
-            
+
             deckCountLabel.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 1.0),
-            contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: deckCountLabel.trailingAnchor, multiplier: 1.0)
+            contentView.trailingAnchor.constraint(
+                equalToSystemSpacingAfter: deckCountLabel.trailingAnchor,
+                multiplier: 1.0),
         ])
     }
 
@@ -46,7 +48,7 @@ class DeckCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
-    
+
     private func makeDeckCountLabel() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

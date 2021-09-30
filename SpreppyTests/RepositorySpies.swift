@@ -5,18 +5,18 @@
 //  Created by Russell Blickhan on 9/29/21.
 //
 
-import Foundation
 import Combine
+import Foundation
 @testable import Spreppy
 
 struct RepositorySpies: Repositories {
     let deckRepoSpy = DeckRepositorySpy()
     let cardRepoSpy = CardRepositorySpy()
-    
+
     var deckRepo: DeckRepository {
         deckRepoSpy
     }
-    
+
     var cardRepo: CardRepository {
         cardRepoSpy
     }

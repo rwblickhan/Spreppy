@@ -18,7 +18,6 @@ class DeckListViewModelDelegateSpy: DeckListViewModelDelegate {
     }
 }
 
-
 class DeskListViewModelTests: XCTestCase {
     private var delegate: DeckListViewModelDelegateSpy!
     private var repos: RepositorySpies!
@@ -41,7 +40,7 @@ class DeskListViewModelTests: XCTestCase {
             DeckModel(uuid: UUID(), title: "Test 2"),
             DeckModel(uuid: UUID(), title: "Test 3"),
         ]
-        
+
         repos.deckRepoSpy.setDeckList(decks)
 
         subject = DeckListViewModel(repos: repos, delegate: delegate)

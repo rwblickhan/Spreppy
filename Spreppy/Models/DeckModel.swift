@@ -5,8 +5,8 @@
 //  Created by Russell Blickhan on 9/25/21.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 struct DeckModel: Model, Hashable {
     static let entityName: String = "Deck"

@@ -60,9 +60,9 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
                 forEntityName: DeckModel.entityName,
                 into: persistentContainer.viewContext) as! Deck
         }
-        
+
         deck.configure(from: deckModel, managedObjectContext: managedObjectContext)
-        
+
         try! persistentContainer.viewContext.save()
     }
 
@@ -74,7 +74,7 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
     }
 }
 
-fileprivate extension Deck {
+private extension Deck {
     func configure(from deckModel: DeckModel, managedObjectContext: NSManagedObjectContext) {
         uuid = deckModel.uuid
         title = deckModel.title

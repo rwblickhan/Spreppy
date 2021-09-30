@@ -83,13 +83,13 @@ class DeckListViewController: UIViewController,
             navigationItem.setRightBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
         }
     }
-    
+
     // MARK: UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.handle(.deckSelected(indexPath.row))
     }
-    
+
     // MARK: Helpers
 
     @objc private func didTapAdd() {
