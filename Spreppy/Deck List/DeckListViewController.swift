@@ -10,8 +10,7 @@ import UIKit
 
 class DeckListViewController: UIViewController,
     DeckListViewModelDelegate,
-    UITableViewDelegate
-{
+    UITableViewDelegate {
     private lazy var viewModel = DeckListViewModel(
         repos: CoreDataRepositories(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer),
         delegate: self)
