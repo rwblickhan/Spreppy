@@ -11,6 +11,11 @@ import UIKit
 class DeckStudyViewController: UIViewController, DeckStudyViewModelDelegate {
     private var viewModel: DeckStudyViewModel!
     
+    private lazy var addBarButton = UIBarButtonItem(
+        barButtonSystemItem: .add,
+        target: self,
+        action: #selector(didTapAdd))
+    
     init(deckID: UUID, coordinator: Coordinator, repos: Repositories) {
         super.init(nibName: nil, bundle: nil)
         viewModel = DeckStudyViewModel(
@@ -30,6 +35,9 @@ class DeckStudyViewController: UIViewController, DeckStudyViewModelDelegate {
     override func loadView() {
         view = UIView()
         view.backgroundColor = .systemBackground
+        
+        // MARK: Navigation Bar
+        navigationItem.setRightBarButton(addBarButton, animated: false)
     }
     
     override func viewDidLoad() {
@@ -40,5 +48,11 @@ class DeckStudyViewController: UIViewController, DeckStudyViewModelDelegate {
     
     func update(state: DeckStudyState) {
         title = state.title
+    }
+    
+    // MARK: Helpers
+
+    @objc private func didTapAdd() {
+        viewModel.handle(.addTapped)
     }
 }

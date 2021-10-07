@@ -21,6 +21,7 @@ struct DeckStudyState {
 
 enum DeckStudyUIEvent {
     case viewDidLoad
+    case addTapped
 }
 
 class DeckStudyViewModel {
@@ -49,6 +50,9 @@ class DeckStudyViewModel {
         case .viewDidLoad:
             // TODO update this to the name of the deck
             state.title = deckID.uuidString
+        case .addTapped:
+            // TODO add a UI for this
+            repos.cardRepo.createOrUpdate(CardModel(deckUUID: deckID))
         }
     }
 }
