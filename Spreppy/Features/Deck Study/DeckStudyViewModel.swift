@@ -53,10 +53,12 @@ class DeckStudyViewModel {
     func handle(_ event: DeckStudyUIEvent) {
         switch event {
         case .viewDidLoad:
-            // TODO: update this to the name of the deck
+            // TODO: https://github.com/rwblickhan/Spreppy/issues/17
+            // Update this to the name of the deck
             state.title = deckID.uuidString
         case .addTapped:
-            // TODO: add a UI for this
+            // TODO: https://github.com/rwblickhan/Spreppy/issues/18
+            // Stub out a UI for this
             repos.cardRepo.createOrUpdate(CardModel(deckUUID: deckID))
         }
     }
