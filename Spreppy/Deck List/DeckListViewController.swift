@@ -73,7 +73,7 @@ class DeckListViewController: UIViewController,
             var snapshot = NSDiffableDataSourceSnapshot<Int, DeckModel>()
             snapshot.appendSections([0])
             snapshot.appendItems(state.decks)
-            dataSource.apply(snapshot, animatingDifferences: true)
+            dataSource.apply(snapshot, animatingDifferences: false)
         }
 
         if oldState.isEditing != state.isEditing {
