@@ -52,21 +52,33 @@ class DeskListViewModelTests: XCTestCase {
     }
 
     func testHandleDoneTapped() {
-        subject = DeckListViewModel(state: DeckListState(isEditing: true), coordinator: coordinator, repos: repos, delegate: delegate)
+        subject = DeckListViewModel(
+            state: DeckListState(isEditing: true),
+            coordinator: coordinator,
+            repos: repos,
+            delegate: delegate)
         subject.handle(.doneTapped)
         XCTAssertFalse(delegate.state.isEditing)
     }
 
     func testHandleEditTapped() {
-        subject = DeckListViewModel(state: DeckListState(isEditing: false), coordinator: coordinator, repos: repos, delegate: delegate)
+        subject = DeckListViewModel(
+            state: DeckListState(isEditing: false),
+            coordinator: coordinator,
+            repos: repos,
+            delegate: delegate)
         subject.handle(.editTapped)
         XCTAssertTrue(delegate.state.isEditing)
     }
-    
+
     func testHandleDeckSelected() {
         let testUUID = UUID()
         let decks = [DeckModel(uuid: testUUID)]
-        subject = DeckListViewModel(state: DeckListState(decks: decks, isEditing: false), coordinator: coordinator, repos: repos, delegate: delegate)
+        subject = DeckListViewModel(
+            state: DeckListState(decks: decks, isEditing: false),
+            coordinator: coordinator,
+            repos: repos,
+            delegate: delegate)
         subject.handle(.deckSelected(0))
         XCTAssertEqual(coordinator.targets.last, .deckStudy(deckID: testUUID))
     }

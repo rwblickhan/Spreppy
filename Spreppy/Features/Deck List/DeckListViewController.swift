@@ -31,7 +31,7 @@ class DeckListViewController: UIViewController,
 
     init(coordinator: Coordinator, repos: Repositories) {
         super.init(nibName: nil, bundle: nil)
-        
+
         viewModel = DeckListViewModel(
             coordinator: coordinator,
             repos: repos,
@@ -48,17 +48,17 @@ class DeckListViewController: UIViewController,
     override func loadView() {
         view = UIView()
         view.backgroundColor = .systemBackground
-        
+
         // MARK: Navigation Bar
-        
+
         title = NSLocalizedString("Decks", comment: "Title of decks view")
         navigationItem.setLeftBarButton(addBarButton, animated: false)
         navigationItem.setRightBarButton(editBarButton, animated: false)
-        
+
         // MARK: View Hierarchy
 
         view.addSubview(tableView)
-        
+
         // MARK: Layout
 
         NSLayoutConstraint.activate([

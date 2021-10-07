@@ -13,7 +13,7 @@ protocol DeckStudyViewModelDelegate: AnyObject {
 
 struct DeckStudyState {
     var title: String
-    
+
     init(title: String = "") {
         self.title = title
     }
@@ -30,28 +30,33 @@ class DeckStudyViewModel {
             delegate?.update(state: state)
         }
     }
-    
+
     private let coordinator: Coordinator
     private let repos: Repositories
     private weak var delegate: DeckStudyViewModelDelegate?
-    
+
     private var deckID: UUID
-    
-    init(deckID: UUID, state: DeckStudyState = DeckStudyState(), coordinator: Coordinator, repos: Repositories, delegate: DeckStudyViewModelDelegate) {
+
+    init(
+        deckID: UUID,
+        state: DeckStudyState = DeckStudyState(),
+        coordinator: Coordinator,
+        repos: Repositories,
+        delegate: DeckStudyViewModelDelegate) {
         self.deckID = deckID
         self.state = state
         self.coordinator = coordinator
         self.repos = repos
         self.delegate = delegate
     }
-    
+
     func handle(_ event: DeckStudyUIEvent) {
         switch event {
         case .viewDidLoad:
-            // TODO update this to the name of the deck
+            // TODO: update this to the name of the deck
             state.title = deckID.uuidString
         case .addTapped:
-            // TODO add a UI for this
+            // TODO: add a UI for this
             repos.cardRepo.createOrUpdate(CardModel(deckUUID: deckID))
         }
     }

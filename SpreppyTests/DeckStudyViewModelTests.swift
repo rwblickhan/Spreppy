@@ -23,7 +23,7 @@ class DeskStudyViewModelTests: XCTestCase {
     private var coordinator: CoordinatorSpy!
     private var repos: RepositorySpies!
     private var subject: DeckStudyViewModel!
-    
+
     private let testUUID = UUID()
 
     override func setUp() {
@@ -44,7 +44,7 @@ class DeskStudyViewModelTests: XCTestCase {
         subject.handle(.viewDidLoad)
         XCTAssertEqual(delegate.state.title, testUUID.uuidString)
     }
-    
+
     func testHandleAddTapped() {
         subject = DeckStudyViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.addTapped)

@@ -10,11 +10,11 @@ import Foundation
 
 class CoordinatorSpy: Coordinator {
     private(set) var targets = [NavigationTarget]()
-    
+
     func navigate(to target: NavigationTarget) {
         targets.append(target)
     }
-    
+
     func reset() {
         targets.removeAll()
     }

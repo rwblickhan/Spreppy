@@ -46,7 +46,11 @@ class DeckListViewModel {
 
     private var subscription: AnyCancellable?
 
-    init(state: DeckListState = DeckListState(), coordinator: Coordinator, repos: Repositories, delegate: DeckListViewModelDelegate) {
+    init(
+        state: DeckListState = DeckListState(),
+        coordinator: Coordinator,
+        repos: Repositories,
+        delegate: DeckListViewModelDelegate) {
         self.state = state
         self.coordinator = coordinator
         self.repos = repos
