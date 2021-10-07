@@ -20,16 +20,19 @@ class DeckListViewModelDelegateSpy: DeckListViewModelDelegate {
 
 class DeskListViewModelTests: XCTestCase {
     private var delegate: DeckListViewModelDelegateSpy!
+    private var coordinator: CoordinatorSpy!
     private var repos: RepositorySpies!
     private var subject: DeckListViewModel!
 
     override func setUp() {
         delegate = DeckListViewModelDelegateSpy()
+        coordinator = CoordinatorSpy()
         repos = RepositorySpies()
     }
 
     override func tearDown() {
         delegate = nil
+        coordinator = nil
         repos = nil
         subject = nil
     }
@@ -43,20 +46,28 @@ class DeskListViewModelTests: XCTestCase {
 
         repos.deckRepoSpy.setDeckList(decks)
 
-        subject = DeckListViewModel(repos: repos, delegate: delegate)
+        subject = DeckListViewModel(coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.viewDidLoad)
         XCTAssertEqual(delegate.state.decks, decks)
     }
 
     func testHandleDoneTapped() {
-        subject = DeckListViewModel(state: DeckListState(isEditing: true), repos: repos, delegate: delegate)
+        subject = DeckListViewModel(state: DeckListState(isEditing: true), coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.doneTapped)
         XCTAssertFalse(delegate.state.isEditing)
     }
 
     func testHandleEditTapped() {
-        subject = DeckListViewModel(state: DeckListState(isEditing: false), repos: repos, delegate: delegate)
+        subject = DeckListViewModel(state: DeckListState(isEditing: false), coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.editTapped)
         XCTAssertTrue(delegate.state.isEditing)
+    }
+    
+    func testHandleDeckSelected() {
+        let testUUID = UUID()
+        let decks = [DeckModel(uuid: testUUID)]
+        subject = DeckListViewModel(state: DeckListState(decks: decks, isEditing: false), coordinator: coordinator, repos: repos, delegate: delegate)
+        subject.handle(.deckSelected(0))
+        XCTAssertEqual(coordinator.targets.last, .deckStudy(deckID: testUUID))
     }
 }

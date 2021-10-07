@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		CD15A9A427043DD400333111 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A327043DD400333111 /* Repositories.swift */; };
 		CD15A9A62705689300333111 /* RepositorySpies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A52705689300333111 /* RepositorySpies.swift */; };
+		CD9C282D270EA880001D43D3 /* DeckStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C282C270EA880001D43D3 /* DeckStudyViewController.swift */; };
+		CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C282E270EA889001D43D3 /* DeckStudyViewModel.swift */; };
+		CD9C2833270EA996001D43D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C2832270EA996001D43D3 /* Coordinator.swift */; };
+		CD9C2835270EAFF1001D43D3 /* CoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C2834270EAFF1001D43D3 /* CoordinatorSpy.swift */; };
 		CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */; };
 		CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */; };
 		CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BBA26FFE8B500BC5118 /* Spreppy.xcdatamodeld */; };
@@ -48,6 +52,10 @@
 /* Begin PBXFileReference section */
 		CD15A9A327043DD400333111 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		CD15A9A52705689300333111 /* RepositorySpies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySpies.swift; sourceTree = "<group>"; };
+		CD9C282C270EA880001D43D3 /* DeckStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStudyViewController.swift; sourceTree = "<group>"; };
+		CD9C282E270EA889001D43D3 /* DeckStudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStudyViewModel.swift; sourceTree = "<group>"; };
+		CD9C2832270EA996001D43D3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CD9C2834270EAFF1001D43D3 /* CoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorSpy.swift; sourceTree = "<group>"; };
 		CDA44BAE26FFE8B500BC5118 /* Spreppy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spreppy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +104,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD9C282B270EA83C001D43D3 /* Deck Study */ = {
+			isa = PBXGroup;
+			children = (
+				CD9C282C270EA880001D43D3 /* DeckStudyViewController.swift */,
+				CD9C282E270EA889001D43D3 /* DeckStudyViewModel.swift */,
+			);
+			path = "Deck Study";
+			sourceTree = "<group>";
+		};
+		CD9C2830270EA976001D43D3 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				CD9C2832270EA996001D43D3 /* Coordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		CD9C2831270EA980001D43D3 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				CDA44BE826FFF2DD00BC5118 /* Deck List */,
+				CD9C282B270EA83C001D43D3 /* Deck Study */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
 		CDA44BA526FFE8B500BC5118 = {
 			isa = PBXGroup;
 			children = (
@@ -119,9 +153,10 @@
 		CDA44BB026FFE8B500BC5118 /* Spreppy */ = {
 			isa = PBXGroup;
 			children = (
+				CD9C2830270EA976001D43D3 /* Coordinators */,
 				CDA44BEF2700267900BC5118 /* Models */,
 				CDA44BF2270027D100BC5118 /* Repositories */,
-				CDA44BE826FFF2DD00BC5118 /* Deck List */,
+				CD9C2831270EA980001D43D3 /* Features */,
 				CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */,
 				CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */,
 				CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */,
@@ -138,6 +173,7 @@
 			children = (
 				CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */,
 				CD15A9A52705689300333111 /* RepositorySpies.swift */,
+				CD9C2834270EAFF1001D43D3 /* CoordinatorSpy.swift */,
 			);
 			path = SpreppyTests;
 			sourceTree = "<group>";
@@ -311,17 +347,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD9C2833270EA996001D43D3 /* Coordinator.swift in Sources */,
 				CDA44BEE2700263100BC5118 /* Model.swift in Sources */,
 				CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */,
 				CDA44BF82701444400BC5118 /* CardModel.swift in Sources */,
 				CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */,
 				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
+				CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */,
 				CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */,
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
 				CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */,
 				CDA44BF62700500800BC5118 /* DeckCell.swift in Sources */,
 				CD15A9A427043DD400333111 /* Repositories.swift in Sources */,
 				CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */,
+				CD9C282D270EA880001D43D3 /* DeckStudyViewController.swift in Sources */,
 				CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */,
 				CDA44BE526FFEC6500BC5118 /* SettingsViewController.swift in Sources */,
 			);
@@ -332,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD15A9A62705689300333111 /* RepositorySpies.swift in Sources */,
+				CD9C2835270EAFF1001D43D3 /* CoordinatorSpy.swift in Sources */,
 				CDA44BEC270020C000BC5118 /* DeckListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

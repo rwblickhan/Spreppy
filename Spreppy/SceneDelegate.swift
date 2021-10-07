@@ -9,12 +9,16 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    private var navigationController: UINavigationController?
+    private var mainCoordinator: MainCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { assert(false); return }
         window = UIWindow(windowScene: scene)
-        navigationController = UINavigationController(rootViewController: DeckListViewController())
+        
+        let navigationController = UINavigationController()
+        mainCoordinator = MainCoordinator(navigationController: navigationController)
+        mainCoordinator?.navigate(to: .deckList)
+        
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

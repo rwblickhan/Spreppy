@@ -40,13 +40,15 @@ class DeckListViewModel {
         }
     }
 
+    private let coordinator: Coordinator
     private let repos: Repositories
     private weak var delegate: DeckListViewModelDelegate?
 
     private var subscription: AnyCancellable?
 
-    init(state: DeckListState = DeckListState(), repos: Repositories, delegate: DeckListViewModelDelegate) {
+    init(state: DeckListState = DeckListState(), coordinator: Coordinator, repos: Repositories, delegate: DeckListViewModelDelegate) {
         self.state = state
+        self.coordinator = coordinator
         self.repos = repos
         self.delegate = delegate
     }
@@ -72,8 +74,8 @@ class DeckListViewModel {
             state.isEditing = true
         case let .deckSelected(row):
             guard !state.isEditing else { return }
-            let deck = state.decks[row]
-            repos.cardRepo.createOrUpdate(CardModel(deckUUID: deck.uuid))
+            let deckID = state.decks[row].uuid
+            coordinator.navigate(to: .deckStudy(deckID: deckID))
         }
     }
 }
