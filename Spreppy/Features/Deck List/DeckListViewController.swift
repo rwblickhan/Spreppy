@@ -11,9 +11,7 @@ import UIKit
 class DeckListViewController: UIViewController,
     DeckListViewModelDelegate,
     UITableViewDelegate {
-    private lazy var viewModel = DeckListViewModel(
-        repos: CoreDataRepositories(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer),
-        delegate: self)
+    private var viewModel: DeckListViewModel!
     private lazy var dataSource = DeckListDiffableDataSource(viewModel: viewModel, tableView: tableView)
     private var state = DeckListState()
 
@@ -31,11 +29,13 @@ class DeckListViewController: UIViewController,
         target: self,
         action: #selector(didTapDone))
 
-    init() {
+    init(coordinator: Coordinator, repos: Repositories) {
         super.init(nibName: nil, bundle: nil)
-        title = NSLocalizedString("Decks", comment: "Title of decks view")
-        navigationItem.setLeftBarButton(addBarButton, animated: false)
-        navigationItem.setRightBarButton(editBarButton, animated: false)
+
+        viewModel = DeckListViewModel(
+            coordinator: coordinator,
+            repos: repos,
+            delegate: self)
     }
 
     // MARK: UIViewController
@@ -49,7 +49,17 @@ class DeckListViewController: UIViewController,
         view = UIView()
         view.backgroundColor = .systemBackground
 
+        // MARK: Navigation Bar
+
+        title = NSLocalizedString("Decks", comment: "Title of decks view")
+        navigationItem.setLeftBarButton(addBarButton, animated: false)
+        navigationItem.setRightBarButton(editBarButton, animated: false)
+
+        // MARK: View Hierarchy
+
         view.addSubview(tableView)
+
+        // MARK: Layout
 
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

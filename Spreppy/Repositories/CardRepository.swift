@@ -24,7 +24,8 @@ class CardCoreDataRepository: CardRepository {
         let fetchRequest = NSFetchRequest<Card>(entityName: CardModel.entityName)
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", cardModel.uuid.uuidString)
         fetchRequest.fetchLimit = 1
-        // TODO: this should really be done on a background queue
+        // TODO: https://github.com/rwblickhan/Spreppy/issues/19
+        // This should really be done on a background queue
         let card: Card
         if let fetchedCard = try? managedObjectContext.fetch(fetchRequest).first {
             card = fetchedCard

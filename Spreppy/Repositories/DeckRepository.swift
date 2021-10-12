@@ -51,7 +51,8 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
         let fetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", deckModel.uuid.uuidString)
         fetchRequest.fetchLimit = 1
-        // TODO: this should really be done on a background queue
+        // TODO: https://github.com/rwblickhan/Spreppy/issues/19
+        // This should really be done on a background queue
         let deck: Deck
         if let fetchedDeck = try? managedObjectContext.fetch(fetchRequest).first {
             deck = fetchedDeck
