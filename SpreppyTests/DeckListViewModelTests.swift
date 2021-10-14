@@ -82,7 +82,7 @@ class DeskListViewModelTests: XCTestCase {
         subject.handle(.deckSelected(0))
         XCTAssertEqual(coordinator.targets.last, .deckStudy(deckID: testUUID))
     }
-    
+
     func testHandleDeckInfoSelected() {
         let testUUID = UUID()
         let decks = [DeckModel(uuid: testUUID)]

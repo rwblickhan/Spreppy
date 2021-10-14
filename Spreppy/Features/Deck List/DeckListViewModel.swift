@@ -82,7 +82,7 @@ class DeckListViewModel {
             let deckID = state.decks[row].uuid
             coordinator.navigate(to: .deckStudy(deckID: deckID))
         case let .deckInfoSelected(row):
-            guard !state.isEditing else  { assert(false); return }
+            guard !state.isEditing else { assert(false); return }
             let deckID = state.decks[row].uuid
             coordinator.navigate(to: .deckInfo(deckID: deckID))
         }
