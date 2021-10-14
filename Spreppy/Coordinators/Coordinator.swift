@@ -37,7 +37,10 @@ struct MainCoordinator: Coordinator {
                 coordinator: self,
                 repos: repos)
         case let .deckInfo(deckID):
-            viewController = UIViewController()
+            viewController = DeckInfoViewController(
+                deckID: deckID,
+                coordinator: self,
+                repos: repos)
         }
         navigationController.pushViewController(viewController, animated: true)
     }
