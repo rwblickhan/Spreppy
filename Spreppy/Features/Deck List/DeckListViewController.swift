@@ -97,6 +97,7 @@ class DeckListViewController: UIViewController,
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.handle(.deckSelected(indexPath.row))
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
     // MARK: Helpers
