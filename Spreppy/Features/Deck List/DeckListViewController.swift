@@ -99,6 +99,10 @@ class DeckListViewController: UIViewController,
         viewModel.handle(.deckSelected(indexPath.row))
         tableView.deselectRow(at: indexPath, animated: false)
     }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        viewModel.handle(.deckInfoSelected(indexPath.row))
+    }
 
     // MARK: Helpers
 
