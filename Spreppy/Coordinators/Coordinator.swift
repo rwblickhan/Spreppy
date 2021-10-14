@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum NavigationTarget: Equatable {
+    case deckInfo(deckID: UUID)
     case deckList
     case deckStudy(deckID: UUID)
 }
@@ -28,8 +29,15 @@ struct MainCoordinator: Coordinator {
     func navigate(to target: NavigationTarget) {
         let viewController: UIViewController
         switch target {
-        case .deckList: viewController = DeckListViewController(coordinator: self, repos: repos)
-        case let .deckStudy(deckID): viewController = DeckStudyViewController(
+        case .deckList:
+            viewController = DeckListViewController(coordinator: self, repos: repos)
+        case let .deckStudy(deckID):
+            viewController = DeckStudyViewController(
+                deckID: deckID,
+                coordinator: self,
+                repos: repos)
+        case let .deckInfo(deckID):
+            viewController = DeckInfoViewController(
                 deckID: deckID,
                 coordinator: self,
                 repos: repos)

@@ -31,6 +31,7 @@ enum DeckListUIEvent {
     case doneTapped
     case editTapped
     case deckSelected(_ row: Int)
+    case deckInfoSelected(_ row: Int)
 }
 
 class DeckListViewModel {
@@ -80,6 +81,10 @@ class DeckListViewModel {
             guard !state.isEditing else { return }
             let deckID = state.decks[row].uuid
             coordinator.navigate(to: .deckStudy(deckID: deckID))
+        case let .deckInfoSelected(row):
+            guard !state.isEditing else { assert(false); return }
+            let deckID = state.decks[row].uuid
+            coordinator.navigate(to: .deckInfo(deckID: deckID))
         }
     }
 }

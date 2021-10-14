@@ -65,7 +65,7 @@ class DeckListViewController: UIViewController,
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
 
@@ -98,6 +98,10 @@ class DeckListViewController: UIViewController,
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.handle(.deckSelected(indexPath.row))
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+
+    func tableView(_: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        viewModel.handle(.deckInfoSelected(indexPath.row))
     }
 
     // MARK: Helpers

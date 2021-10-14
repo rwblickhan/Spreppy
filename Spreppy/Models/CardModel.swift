@@ -35,3 +35,10 @@ struct CardModel: Model, Hashable {
         self.deckUUID = deckUUID
     }
 }
+
+extension CardModel {
+    /// Whether the card is currently due
+    var isDue: Bool {
+        nextDueTime > Date()
+    }
+}
