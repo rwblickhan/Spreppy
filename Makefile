@@ -10,3 +10,6 @@ mint:
 
 git:
 	cp Scripts/pre-push .git/hooks/pre-push
+
+open: default
+	open Spreppy.xcodeproj
