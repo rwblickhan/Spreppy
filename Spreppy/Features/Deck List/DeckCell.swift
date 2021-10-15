@@ -17,7 +17,7 @@ class DeckCell: UITableViewCell {
         contentView.addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 1.0),
+            titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2.0),
             contentView.trailingAnchor.constraint(
                 equalToSystemSpacingAfter: titleLabel.trailingAnchor,
                 multiplier: 1.0),
