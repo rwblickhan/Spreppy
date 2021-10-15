@@ -1,0 +1,25 @@
+name: iOS starter workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Lint with Swiftformat
+    runs-on: macos-11
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Mint
+        run: |
+          brew install mint
+      - name: Bootstrap Mint
+        run: |
+          mint bootstrap
+      - name: Run Swiftformat
+        run: |
+          mint run swiftformat --lint .
