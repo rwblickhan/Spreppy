@@ -51,9 +51,12 @@ class DeckListViewController: UIViewController,
 
         // MARK: Navigation Bar
 
-        title = NSLocalizedString("Decks", comment: "Title of decks view")
+        title = String(localized: "Decks")
         navigationItem.setLeftBarButton(addBarButton, animated: false)
         navigationItem.setRightBarButton(editBarButton, animated: false)
+        if traitCollection.userInterfaceIdiom == .phone {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
 
         // MARK: View Hierarchy
 
@@ -134,8 +137,14 @@ private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, Dec
     init(viewModel: DeckListViewModel, tableView: UITableView) {
         self.viewModel = viewModel
         super.init(tableView: tableView) { _, _, deckModel in
-            let cell = DeckCell()
-            cell.configure(with: deckModel)
+            let cell = UITableViewCell()
+            var content = cell.defaultContentConfiguration()
+            content.text = deckModel.title
+            if deckModel.cardUUIDs.count > 0 {
+                content.secondaryText = String(localized: "\(deckModel.cardUUIDs.count) cards ready for review")
+            }
+            cell.contentConfiguration = content
+            cell.accessoryType = .detailDisclosureButton
             return cell
         }
     }

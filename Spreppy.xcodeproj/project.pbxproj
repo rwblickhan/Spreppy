@@ -31,7 +31,6 @@
 		CDA44BEE2700263100BC5118 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BED2700263100BC5118 /* Model.swift */; };
 		CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF02700268500BC5118 /* DeckModel.swift */; };
 		CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF32700285300BC5118 /* DeckRepository.swift */; };
-		CDA44BF62700500800BC5118 /* DeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF52700500800BC5118 /* DeckCell.swift */; };
 		CDA44BF82701444400BC5118 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF72701444400BC5118 /* CardModel.swift */; };
 		CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF927014A7C00BC5118 /* CardRepository.swift */; };
 /* End PBXBuildFile section */
@@ -82,7 +81,6 @@
 		CDA44BED2700263100BC5118 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CDA44BF02700268500BC5118 /* DeckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckModel.swift; sourceTree = "<group>"; };
 		CDA44BF32700285300BC5118 /* DeckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRepository.swift; sourceTree = "<group>"; };
-		CDA44BF52700500800BC5118 /* DeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCell.swift; sourceTree = "<group>"; };
 		CDA44BF72701444400BC5118 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		CDA44BF927014A7C00BC5118 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,7 +210,6 @@
 			children = (
 				CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */,
 				CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */,
-				CDA44BF52700500800BC5118 /* DeckCell.swift */,
 			);
 			path = "Deck List";
 			sourceTree = "<group>";
@@ -378,7 +375,6 @@
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
 				CD53C2C92717F3A90052F9C6 /* DeckInfoViewController.swift in Sources */,
 				CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */,
-				CDA44BF62700500800BC5118 /* DeckCell.swift in Sources */,
 				CD15A9A427043DD400333111 /* Repositories.swift in Sources */,
 				CD53C2CB2717F3B20052F9C6 /* DeckInfoViewModel.swift in Sources */,
 				CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */,
