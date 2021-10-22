@@ -7,12 +7,14 @@
         <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="cards" inverseEntity="Deck"/>
     </entity>
     <entity name="Deck" representedClassName="Deck" syncable="YES" codeGenerationType="class">
+        <attribute name="rank" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Card" inverseName="deck" inverseEntity="Card"/>
     </entity>
     <elements>
-        <element name="Deck" positionX="-63" positionY="-18" width="128" height="74"/>
         <element name="Card" positionX="-45" positionY="18" width="128" height="89"/>
+        <element name="Deck" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

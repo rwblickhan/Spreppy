@@ -22,7 +22,7 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
     init(persistentContainer: NSPersistentContainer) {
         self.persistentContainer = persistentContainer
         let fetchRequest = Deck.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "rank", ascending: true)]
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: persistentContainer.viewContext,
@@ -79,6 +79,8 @@ private extension Deck {
     func configure(from deckModel: DeckModel, managedObjectContext: NSManagedObjectContext) {
         uuid = deckModel.uuid
         title = deckModel.title
+        summary = deckModel.summary
+        rank = deckModel.rank
         let cardFetchRequest = NSFetchRequest<Card>(entityName: CardModel.entityName)
         cardFetchRequest.predicate = NSPredicate(format: "uuid IN $CARD_LIST")
             .withSubstitutionVariables(["CARD_LIST": deckModel.cardUUIDs.map(\.uuidString)])

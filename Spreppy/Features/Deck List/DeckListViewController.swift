@@ -52,11 +52,8 @@ class DeckListViewController: UIViewController,
         // MARK: Navigation Bar
 
         title = String(localized: "Decks")
-        navigationItem.setLeftBarButton(addBarButton, animated: false)
-        navigationItem.setRightBarButton(editBarButton, animated: false)
-        if traitCollection.userInterfaceIdiom == .phone {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
+        navigationItem.setLeftBarButton(editBarButton, animated: false)
+        navigationItem.setRightBarButton(addBarButton, animated: false)
 
         // MARK: View Hierarchy
 
@@ -91,8 +88,8 @@ class DeckListViewController: UIViewController,
 
         if oldState.isEditing != state.isEditing {
             tableView.setEditing(state.isEditing, animated: true)
-            navigationItem.setLeftBarButton(state.isEditing ? nil : addBarButton, animated: true)
-            navigationItem.setRightBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
+            navigationItem.setLeftBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
+            navigationItem.setRightBarButton(state.isEditing ? nil : addBarButton, animated: true)
         }
     }
 
