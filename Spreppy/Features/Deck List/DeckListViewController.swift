@@ -136,7 +136,7 @@ private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, Dec
         super.init(tableView: tableView) { _, _, deckModel in
             let cell = UITableViewCell()
             var content = cell.defaultContentConfiguration()
-            content.text = "\(deckModel.title) rank: \(deckModel.rank)"
+            content.text = deckModel.title
             if deckModel.cardUUIDs.count > 0 {
                 content.secondaryText = String(localized: "\(deckModel.cardUUIDs.count) cards ready for review")
             }
