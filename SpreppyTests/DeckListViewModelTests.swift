@@ -50,14 +50,14 @@ class DeskListViewModelTests: XCTestCase {
         subject.handle(.viewDidLoad)
         XCTAssertEqual(delegate.state.decks, decks)
     }
-    
+
     func testHandleAddTapped() {
         subject = DeckListViewModel(coordinator: coordinator, repos: repos, delegate: delegate)
         // Handle `.viewDidLoad` to set up state subscription
         subject.handle(.viewDidLoad)
         subject.handle(.addTapped)
         subject.handle(.addTapped)
-        
+
         let decks = repos.deckRepoSpy.deckList.value
         XCTAssertEqual("Blah blah blah", decks.first?.title)
         XCTAssertEqual(0, decks.first?.rank)

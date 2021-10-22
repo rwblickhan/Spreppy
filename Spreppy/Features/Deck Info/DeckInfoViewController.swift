@@ -35,7 +35,7 @@ class DeckInfoViewController: UIViewController, DeckInfoViewModelDelegate {
     override func viewDidLoad() {
         viewModel.handle(.viewDidLoad)
     }
-    
+
     // MARK: DeckStudyViewModelDelegate
 
     func update(state: DeckInfoState) {
