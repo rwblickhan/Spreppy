@@ -52,11 +52,8 @@ class DeckListViewController: UIViewController,
         // MARK: Navigation Bar
 
         title = String(localized: "Decks")
-        navigationItem.setLeftBarButton(addBarButton, animated: false)
-        navigationItem.setRightBarButton(editBarButton, animated: false)
-        if traitCollection.userInterfaceIdiom == .phone {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
+        navigationItem.setLeftBarButton(editBarButton, animated: false)
+        navigationItem.setRightBarButton(addBarButton, animated: false)
 
         // MARK: View Hierarchy
 
@@ -91,8 +88,8 @@ class DeckListViewController: UIViewController,
 
         if oldState.isEditing != state.isEditing {
             tableView.setEditing(state.isEditing, animated: true)
-            navigationItem.setLeftBarButton(state.isEditing ? nil : addBarButton, animated: true)
-            navigationItem.setRightBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
+            navigationItem.setLeftBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
+            navigationItem.setRightBarButton(state.isEditing ? nil : addBarButton, animated: true)
         }
     }
 
@@ -139,7 +136,7 @@ private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, Dec
         super.init(tableView: tableView) { _, _, deckModel in
             let cell = UITableViewCell()
             var content = cell.defaultContentConfiguration()
-            content.text = deckModel.title
+            content.text = "\(deckModel.title) rank: \(deckModel.rank)"
             if deckModel.cardUUIDs.count > 0 {
                 content.secondaryText = String(localized: "\(deckModel.cardUUIDs.count) cards ready for review")
             }

@@ -39,6 +39,7 @@ class DeckStudyViewController: UIViewController, DeckStudyViewModelDelegate {
         // MARK: Navigation Bar
 
         navigationItem.setRightBarButton(addBarButton, animated: false)
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     override func viewDidLoad() {

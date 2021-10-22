@@ -24,6 +24,7 @@ struct MainCoordinator: Coordinator {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        navigationController.navigationBar.prefersLargeTitles = true
     }
 
     func navigate(to target: NavigationTarget) {
