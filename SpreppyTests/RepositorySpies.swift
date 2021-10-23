@@ -37,7 +37,7 @@ struct DeckRepositorySpy: DeckRepository {
         }
         deckList.send(decks)
     }
-    
+
     func delete(_ deckModel: DeckModel) {
         var decks = deckList.value
         decks.removeAll(where: { $0 == deckModel })

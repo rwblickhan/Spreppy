@@ -81,7 +81,7 @@ class DeckListViewModel {
         case .editTapped:
             guard !state.isEditing else { assert(false); return }
             state.isEditing = true
-        case .deleteTapped(let index):
+        case let .deleteTapped(index):
             let deckModel = state.decks[index]
             repos.deckRepo.delete(deckModel)
         case let .deckSelected(row):

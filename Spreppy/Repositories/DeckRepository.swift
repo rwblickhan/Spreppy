@@ -67,7 +67,7 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
 
         try! persistentContainer.viewContext.save()
     }
-    
+
     func delete(_ deckModel: DeckModel) {
         let fetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", deckModel.uuid.uuidString)
@@ -100,4 +100,3 @@ private extension Deck {
         }
     }
 }
-
