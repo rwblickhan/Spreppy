@@ -30,7 +30,7 @@ enum DeckListUIEvent {
     case addTapped
     case doneTapped
     case editTapped
-    case deleteTapped(index: Int)
+    case deleteTapped(_ row: Int)
     case deckSelected(_ row: Int)
     case deckInfoSelected(_ row: Int)
 }

@@ -85,6 +85,18 @@ class DeskListViewModelTests: XCTestCase {
         XCTAssertTrue(delegate.state.isEditing)
     }
 
+    func testHandleDeleteTapped() {
+        let testUUID = UUID()
+        let decks = [DeckModel(uuid: testUUID)]
+        subject = DeckListViewModel(
+            state: DeckListState(decks: decks, isEditing: true),
+            coordinator: coordinator,
+            repos: repos,
+            delegate: delegate)
+        subject.handle(.deleteTapped(0))
+        XCTAssertTrue(repos.deckRepoSpy.deckList.value.isEmpty)
+    }
+
     func testHandleDeckSelected() {
         let testUUID = UUID()
         let decks = [DeckModel(uuid: testUUID)]
