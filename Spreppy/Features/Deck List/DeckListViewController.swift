@@ -146,7 +146,12 @@ private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, Dec
         }
     }
 
-    override func tableView(_: UITableView, commit _: UITableViewCell.EditingStyle, forRowAt _: IndexPath) {
-        // TODO:
+    override func tableView(
+        _: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath) {
+        guard editingStyle != UITableViewCell.EditingStyle.delete else { viewModel.handle(.deleteTapped(indexPath.row))
+            return
+        }
     }
 }
