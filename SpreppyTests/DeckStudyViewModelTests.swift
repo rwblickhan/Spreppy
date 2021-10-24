@@ -50,7 +50,7 @@ class DeskStudyViewModelTests: XCTestCase {
     func testHandleAddTapped() {
         subject = DeckStudyViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.addTapped)
-        let cards = repos.cardRepoSpy.cardList.value
+        let cards = repos.cardRepoSpy.modelList.value
         XCTAssertEqual(cards.count, 1)
         XCTAssertEqual(cards.first?.deckUUID, testUUID)
     }

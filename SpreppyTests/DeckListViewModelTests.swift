@@ -58,7 +58,7 @@ class DeskListViewModelTests: XCTestCase {
         subject.handle(.addTapped)
         subject.handle(.addTapped)
 
-        let decks = repos.deckRepoSpy.deckList.value
+        let decks = repos.deckRepoSpy.modelList.value
         XCTAssertEqual("Blah blah blah", decks.first?.title)
         XCTAssertEqual(0, decks.first?.rank)
         XCTAssertEqual("Blah blah blah", decks.last?.title)
@@ -94,7 +94,7 @@ class DeskListViewModelTests: XCTestCase {
             repos: repos,
             delegate: delegate)
         subject.handle(.deleteTapped(0))
-        XCTAssertTrue(repos.deckRepoSpy.deckList.value.isEmpty)
+        XCTAssertTrue(repos.deckRepoSpy.modelList.value.isEmpty)
     }
 
     func testHandleDeckSelected() {

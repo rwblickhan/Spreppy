@@ -22,55 +22,49 @@ struct RepositorySpies: Repositories {
     }
 }
 
-struct DeckRepositorySpy: DeckRepository {
-    let deckList = CurrentValueSubject<[DeckModel], Never>([])
-    func fetchDeckList() -> AnyPublisher<[DeckModel], Never> {
-        deckList.eraseToAnyPublisher()
-    }
+protocol RepositorySpy {
+    associatedtype ModelType: Model
+    var modelList: CurrentValueSubject<[ModelType], Never> { get }
+}
 
-    func fetch(_ deckID: UUID) -> (DeckModel?, AnyPublisher<DeckModel, Never>) {
-        let deck = deckList.value.first(where: { $0.uuid == deckID })
-        let publisher = deckList.compactMap { $0.first(where: { $0.uuid == deckID }) }.eraseToAnyPublisher()
-        return (deck, publisher)
+extension RepositorySpy {
+    func fetch(_ modelID: UUID) -> (ModelType?, AnyPublisher<ModelType, Never>) {
+        let model = modelList.value.first(where: { $0.uuid == modelID })
+        let publisher = modelList.compactMap { $0.first(where: { $0.uuid == modelID }) }.eraseToAnyPublisher()
+        return (model, publisher)
     }
-
-    func createOrUpdate(_ deckModel: DeckModel) {
-        var decks = deckList.value
-        if let (i, _) = deckList.value.enumerated().first(where: { $0.element.uuid == deckModel.uuid }) {
-            decks[i] = deckModel
+    
+    func createOrUpdate(_ model: ModelType) {
+        var models = modelList.value
+        if let (i, _) = modelList.value.enumerated().first(where: { $0.element.uuid == model.uuid }) {
+            models[i] = model
         } else {
-            decks.append(deckModel)
+            models.append(model)
         }
-        deckList.send(decks)
+        modelList.send(models)
     }
-
-    func delete(_ deckModel: DeckModel) {
-        var decks = deckList.value
-        decks.removeAll(where: { $0 == deckModel })
-        deckList.send(decks)
-    }
-
-    func setDeckList(_ decks: [DeckModel]) {
-        deckList.send(decks)
+    
+    func delete(_ model: ModelType) {
+        var models = modelList.value
+        models.removeAll(where: { $0.uuid == model.uuid })
+        modelList.send(models)
     }
 }
 
-struct CardRepositorySpy: CardRepository {
-    let cardList = CurrentValueSubject<[CardModel], Never>([])
-
-    func fetch(_ cardID: UUID) -> (CardModel?, AnyPublisher<CardModel, Never>) {
-        let card = cardList.value.first(where: { $0.uuid == cardID })
-        let publisher = cardList.compactMap { $0.first(where: { $0.uuid == cardID }) }.eraseToAnyPublisher()
-        return (card, publisher)
+struct DeckRepositorySpy: RepositorySpy, DeckRepository {
+    typealias ModelType = DeckModel
+    private(set) var modelList = CurrentValueSubject<[DeckModel], Never>([])
+    
+    func fetchDeckList() -> AnyPublisher<[DeckModel], Never> {
+        modelList.eraseToAnyPublisher()
     }
 
-    func createOrUpdate(_ cardModel: CardModel) {
-        var cards = cardList.value
-        if let (i, _) = cardList.value.enumerated().first(where: { $0.element.uuid == cardModel.uuid }) {
-            cards[i] = cardModel
-        } else {
-            cards.append(cardModel)
-        }
-        cardList.send(cards)
+    func setDeckList(_ decks: [DeckModel]) {
+        modelList.send(decks)
     }
+}
+
+struct CardRepositorySpy: RepositorySpy, CardRepository {
+    typealias ModelType = CardModel
+    private(set) var modelList = CurrentValueSubject<[CardModel], Never>([])
 }

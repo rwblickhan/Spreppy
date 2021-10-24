@@ -12,6 +12,7 @@ import Foundation
 protocol CardRepository {
     func fetch(_ cardID: UUID) -> (CardModel?, AnyPublisher<CardModel, Never>)
     func createOrUpdate(_ cardModel: CardModel)
+    func delete(_ cardModel: CardModel)
 }
 
 class CardCoreDataRepository: CoreDataRepository<CardModel>, CardRepository {}
