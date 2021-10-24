@@ -9,6 +9,22 @@ import Combine
 import CoreData
 import Foundation
 
+struct CoreDataRepositories: Repositories {
+    let cardRepo: CardRepository
+    let deckRepo: DeckRepository
+
+    private let viewContext: NSManagedObjectContext
+    private let backgroundContext: NSManagedObjectContext
+
+    init(persistentContainer: NSPersistentContainer) {
+        viewContext = persistentContainer.viewContext
+        backgroundContext = persistentContainer.newBackgroundContext()
+
+        cardRepo = CardCoreDataRepository(viewContext: viewContext, backgroundContext: backgroundContext)
+        deckRepo = DeckCoreDataRepository(viewContext: viewContext, backgroundContext: backgroundContext)
+    }
+}
+
 class CoreDataRepository<ModelType: Model>: NSObject {
     private enum UpdateType {
         case insert, update, delete

@@ -9,8 +9,8 @@ import CoreData
 import Foundation
 
 struct DeckModel: Model, Hashable {
-    static let entityName: String = "Deck"
     typealias AssociatedObjectType = Deck
+    static let entityName: String = "Deck"
 
     let uuid: UUID
     let title: String
