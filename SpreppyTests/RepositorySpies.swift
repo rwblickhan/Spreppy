@@ -33,7 +33,7 @@ extension RepositorySpy {
         let publisher = modelList.compactMap { $0.first(where: { $0.uuid == modelID }) }.eraseToAnyPublisher()
         return (model, publisher)
     }
-    
+
     func createOrUpdate(_ model: ModelType) {
         var models = modelList.value
         if let (i, _) = modelList.value.enumerated().first(where: { $0.element.uuid == model.uuid }) {
@@ -43,7 +43,7 @@ extension RepositorySpy {
         }
         modelList.send(models)
     }
-    
+
     func delete(_ model: ModelType) {
         var models = modelList.value
         models.removeAll(where: { $0.uuid == model.uuid })
@@ -54,7 +54,7 @@ extension RepositorySpy {
 struct DeckRepositorySpy: RepositorySpy, DeckRepository {
     typealias ModelType = DeckModel
     private(set) var modelList = CurrentValueSubject<[DeckModel], Never>([])
-    
+
     func fetchDeckList() -> AnyPublisher<[DeckModel], Never> {
         modelList.eraseToAnyPublisher()
     }
