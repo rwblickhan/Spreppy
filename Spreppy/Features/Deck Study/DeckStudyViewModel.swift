@@ -5,6 +5,7 @@
 //  Created by Russell Blickhan on 10/6/21.
 //
 
+import Combine
 import Foundation
 
 protocol DeckStudyViewModelDelegate: AnyObject {
@@ -12,10 +13,10 @@ protocol DeckStudyViewModelDelegate: AnyObject {
 }
 
 struct DeckStudyState {
-    var title: String
+    var deck: DeckModel?
 
-    init(title: String = "") {
-        self.title = title
+    init(deck: DeckModel? = nil) {
+        self.deck = deck
     }
 }
 
@@ -37,6 +38,8 @@ class DeckStudyViewModel {
 
     private var deckID: UUID
 
+    private var deckSubscription: AnyCancellable?
+
     init(
         deckID: UUID,
         state: DeckStudyState = DeckStudyState(),
@@ -53,9 +56,11 @@ class DeckStudyViewModel {
     func handle(_ event: DeckStudyUIEvent) {
         switch event {
         case .viewDidLoad:
-            // TODO: https://github.com/rwblickhan/Spreppy/issues/17
-            // Update this to the name of the deck
-            state.title = deckID.uuidString
+            let (deck, deckUpdates) = repos.deckRepo.fetchDeck(deckID)
+            state.deck = deck
+            deckSubscription = deckUpdates.sink(receiveValue: { [weak self] deck in
+                self?.state.deck = deck
+            })
         case .addTapped:
             // TODO: https://github.com/rwblickhan/Spreppy/issues/18
             // Stub out a UI for this

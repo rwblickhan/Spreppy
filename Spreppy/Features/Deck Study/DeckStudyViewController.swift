@@ -49,7 +49,7 @@ class DeckStudyViewController: UIViewController, DeckStudyViewModelDelegate {
     // MARK: DeckStudyViewModelDelegate
 
     func update(state: DeckStudyState) {
-        title = state.title
+        title = state.deck?.title
     }
 
     // MARK: Helpers

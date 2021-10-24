@@ -28,6 +28,12 @@ struct DeckRepositorySpy: DeckRepository {
         deckList.eraseToAnyPublisher()
     }
 
+    func fetchDeck(_ deckID: UUID) -> (DeckModel?, AnyPublisher<DeckModel, Never>) {
+        let deck = deckList.value.first(where: { $0.uuid == deckID })
+        let publisher = deckList.compactMap { $0.first(where: { $0.uuid == deckID }) }.eraseToAnyPublisher()
+        return (deck, publisher)
+    }
+
     func createOrUpdate(_ deckModel: DeckModel) {
         var decks = deckList.value
         if let (i, _) = deckList.value.enumerated().first(where: { $0.element.uuid == deckModel.uuid }) {
@@ -51,6 +57,13 @@ struct DeckRepositorySpy: DeckRepository {
 
 struct CardRepositorySpy: CardRepository {
     let cardList = CurrentValueSubject<[CardModel], Never>([])
+
+    func fetchCard(_ cardID: UUID) -> (CardModel?, AnyPublisher<CardModel, Never>) {
+        let card = cardList.value.first(where: { $0.uuid == cardID })
+        let publisher = cardList.compactMap { $0.first(where: { $0.uuid == cardID }) }.eraseToAnyPublisher()
+        return (card, publisher)
+    }
+
     func createOrUpdate(_ cardModel: CardModel) {
         var cards = cardList.value
         if let (i, _) = cardList.value.enumerated().first(where: { $0.element.uuid == cardModel.uuid }) {
