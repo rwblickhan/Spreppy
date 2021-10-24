@@ -37,7 +37,7 @@ class DeckStudyViewModel {
     private weak var delegate: DeckStudyViewModelDelegate?
 
     private var deckID: UUID
-    
+
     private var deckSubscription: AnyCancellable?
 
     init(

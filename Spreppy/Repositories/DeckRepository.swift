@@ -18,21 +18,21 @@ protocol DeckRepository {
 class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControllerDelegate {
     private let deckListState = CurrentValueSubject<[DeckModel], Never>([])
     private let fetchedResultsController: NSFetchedResultsController<Deck>
-    
+
     private let viewContext: NSManagedObjectContext
     private let backgroundContext: NSManagedObjectContext
-    
+
     private typealias Update = (object: Deck, type: UpdateType)
     private enum UpdateType {
         case insert, update, delete
     }
-    
+
     private let state = CurrentValueSubject<[Update], Never>([])
 
     init(viewContext: NSManagedObjectContext, backgroundContext: NSManagedObjectContext) {
         self.viewContext = viewContext
         self.backgroundContext = backgroundContext
-        
+
         let fetchRequest = Deck.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "rank", ascending: true)]
         fetchedResultsController = NSFetchedResultsController(
@@ -52,7 +52,7 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
         } catch {
             fatalError("###\(#function): Failed to performFetch: \(error)")
         }
-        
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(viewContextDidSave),
@@ -68,12 +68,12 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
     func fetchDeckList() -> AnyPublisher<[DeckModel], Never> {
         deckListState.eraseToAnyPublisher()
     }
-    
+
     func fetchDeck(_ deckID: UUID) -> (DeckModel?, AnyPublisher<DeckModel, Never>) {
         let fetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", deckID.uuidString)
         fetchRequest.fetchLimit = 1
-        
+
         let deck = (try? viewContext.fetch(fetchRequest))?.first.flatMap { DeckModel(managedObject: $0) }
         let updatesPublisher: AnyPublisher<DeckModel, Never> = state
             .compactMap { updates -> Update? in
@@ -109,41 +109,41 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
 
         try! backgroundContext.save()
     }
-    
+
     @objc private func viewContextDidSave(_ notification: Notification) {
         guard
             let context = notification.object as? NSManagedObjectContext,
             context === viewContext
         else { return }
-        
+
         processUpdatesInViewContext(notification)
         backgroundContext.perform {
             self.backgroundContext.mergeChanges(fromContextDidSave: notification)
         }
     }
-    
+
     @objc private func backgroundContextDidSave(_ notification: Notification) {
         guard
             let context = notification.object as? NSManagedObjectContext,
             context === backgroundContext
         else { return }
-        
+
         viewContext.perform {
             self.viewContext.mergeChanges(fromContextDidSave: notification)
             self.processUpdatesInViewContext(notification)
         }
     }
-    
+
     private func processUpdatesInViewContext(_ notification: Notification) {
         let insertedObjects = notification.userInfo?[NSInsertedObjectsKey] as? Set<NSManagedObject> ?? []
         let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? Set<NSManagedObject> ?? []
         let deletedObjects = notification.userInfo?[NSDeletedObjectsKey] as? Set<NSManagedObject> ?? []
-        
+
         let updates: [(Deck, UpdateType)] =
             insertedObjects.compactMap { $0 as? Deck }.map { ($0, .insert) } +
             updatedObjects.compactMap { $0 as? Deck }.map { ($0, .update) } +
             deletedObjects.compactMap { $0 as? Deck }.map { ($0, .delete) }
-        
+
         state.send(updates)
     }
 

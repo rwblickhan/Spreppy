@@ -16,14 +16,14 @@ protocol Repositories {
 class CoreDataRepositories: Repositories {
     let cardRepo: CardRepository
     let deckRepo: DeckRepository
-    
+
     private let viewContext: NSManagedObjectContext
     private let backgroundContext: NSManagedObjectContext
 
     init(persistentContainer: NSPersistentContainer) {
-        self.viewContext = persistentContainer.viewContext
-        self.backgroundContext = persistentContainer.newBackgroundContext()
-        
+        viewContext = persistentContainer.viewContext
+        backgroundContext = persistentContainer.newBackgroundContext()
+
         cardRepo = CardCoreDataRepository(viewContext: viewContext, backgroundContext: backgroundContext)
         deckRepo = DeckCoreDataRepository(viewContext: viewContext, backgroundContext: backgroundContext)
     }
