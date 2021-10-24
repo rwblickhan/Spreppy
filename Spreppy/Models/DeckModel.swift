@@ -10,7 +10,7 @@ import Foundation
 
 struct DeckModel: Model, Hashable {
     static let entityName: String = "Deck"
-    typealias ModelType = Deck
+    typealias AssociatedObjectType = Deck
 
     let uuid: UUID
     let title: String
