@@ -6,8 +6,8 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 @objc(Deck)
 public class Deck: NSManagedObject, ModelObject {

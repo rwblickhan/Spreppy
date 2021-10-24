@@ -6,13 +6,13 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 @objc(Card)
 public class Card: NSManagedObject, ModelObject {
     typealias AssociatedModel = CardModel
-    
+
     func configure(from model: CardModel, managedObjectContext: NSManagedObjectContext) {
         uuid = model.uuid
         nextDueTime = model.nextDueTime

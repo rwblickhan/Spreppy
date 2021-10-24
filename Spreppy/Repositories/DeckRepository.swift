@@ -19,7 +19,7 @@ protocol DeckRepository {
 class DeckCoreDataRepository: CoreDataRepository<DeckModel>, DeckRepository, NSFetchedResultsControllerDelegate {
     private let fetchedResultsController: NSFetchedResultsController<Deck>
     private let deckListState = CurrentValueSubject<[DeckModel], Never>([])
-    
+
     override init(viewContext: NSManagedObjectContext, backgroundContext: NSManagedObjectContext) {
         let fetchRequest = Deck.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "rank", ascending: true)]
@@ -28,9 +28,9 @@ class DeckCoreDataRepository: CoreDataRepository<DeckModel>, DeckRepository, NSF
             managedObjectContext: viewContext,
             sectionNameKeyPath: nil,
             cacheName: nil)
-        
+
         super.init(viewContext: viewContext, backgroundContext: backgroundContext)
-        
+
         fetchedResultsController.delegate = self
 
         do {

@@ -34,6 +34,7 @@ class CoreDataRepository<ModelType: Model>: NSObject {
     private enum UpdateType {
         case insert, update, delete
     }
+
     private typealias Update = (object: ModelType.AssociatedObjectType, type: UpdateType)
 
     private let viewContext: NSManagedObjectContext
@@ -101,7 +102,7 @@ class CoreDataRepository<ModelType: Model>: NSObject {
 
         try! backgroundContext.save()
     }
-    
+
     func delete(_ model: ModelType) {
         let fetchRequest = NSFetchRequest<Deck>(entityName: ModelType.entityName)
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", model.uuid.uuidString)
@@ -140,9 +141,12 @@ class CoreDataRepository<ModelType: Model>: NSObject {
         let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? Set<NSManagedObject> ?? []
         let deletedObjects = notification.userInfo?[NSDeletedObjectsKey] as? Set<NSManagedObject> ?? []
 
-        let insertedObjectsWithType: [(ModelType.AssociatedObjectType, UpdateType)] = insertedObjects.compactMap { $0 as? ModelType.AssociatedObjectType }.map { ($0, .insert) }
-        let updatedObjectsWithType: [(ModelType.AssociatedObjectType, UpdateType)] = updatedObjects.compactMap { $0 as? ModelType.AssociatedObjectType }.map { ($0, .update) }
-        let deletedObjectsWithType: [(ModelType.AssociatedObjectType, UpdateType)] = deletedObjects.compactMap { $0 as? ModelType.AssociatedObjectType }.map { ($0, .delete) }
+        let insertedObjectsWithType: [(ModelType.AssociatedObjectType, UpdateType)] = insertedObjects
+            .compactMap { $0 as? ModelType.AssociatedObjectType }.map { ($0, .insert) }
+        let updatedObjectsWithType: [(ModelType.AssociatedObjectType, UpdateType)] = updatedObjects
+            .compactMap { $0 as? ModelType.AssociatedObjectType }.map { ($0, .update) }
+        let deletedObjectsWithType: [(ModelType.AssociatedObjectType, UpdateType)] = deletedObjects
+            .compactMap { $0 as? ModelType.AssociatedObjectType }.map { ($0, .delete) }
         let updates = insertedObjectsWithType + updatedObjectsWithType + deletedObjectsWithType
 
         state.send(updates)
