@@ -35,6 +35,7 @@
 		CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF32700285300BC5118 /* DeckRepository.swift */; };
 		CDA44BF82701444400BC5118 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF72701444400BC5118 /* CardModel.swift */; };
 		CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF927014A7C00BC5118 /* CardRepository.swift */; };
+		CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		CDA44BF32700285300BC5118 /* DeckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRepository.swift; sourceTree = "<group>"; };
 		CDA44BF72701444400BC5118 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		CDA44BF927014A7C00BC5118 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
+		CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				CD15A9A327043DD400333111 /* Repositories.swift */,
+				CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */,
 				CDA44BF927014A7C00BC5118 /* CardRepository.swift */,
 				CDA44BF32700285300BC5118 /* DeckRepository.swift */,
 			);
@@ -380,6 +383,7 @@
 				CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */,
 				CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */,
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
+				CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */,
 				CD53C2C92717F3A90052F9C6 /* DeckInfoViewController.swift in Sources */,
 				CD938C252725DCDB00F3AF9C /* Deck+CoreDataClass.swift in Sources */,
 				CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */,
