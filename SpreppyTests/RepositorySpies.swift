@@ -28,7 +28,7 @@ struct DeckRepositorySpy: DeckRepository {
         deckList.eraseToAnyPublisher()
     }
 
-    func fetchDeck(_ deckID: UUID) -> (DeckModel?, AnyPublisher<DeckModel, Never>) {
+    func fetch(_ deckID: UUID) -> (DeckModel?, AnyPublisher<DeckModel, Never>) {
         let deck = deckList.value.first(where: { $0.uuid == deckID })
         let publisher = deckList.compactMap { $0.first(where: { $0.uuid == deckID }) }.eraseToAnyPublisher()
         return (deck, publisher)
@@ -58,7 +58,7 @@ struct DeckRepositorySpy: DeckRepository {
 struct CardRepositorySpy: CardRepository {
     let cardList = CurrentValueSubject<[CardModel], Never>([])
 
-    func fetchCard(_ cardID: UUID) -> (CardModel?, AnyPublisher<CardModel, Never>) {
+    func fetch(_ cardID: UUID) -> (CardModel?, AnyPublisher<CardModel, Never>) {
         let card = cardList.value.first(where: { $0.uuid == cardID })
         let publisher = cardList.compactMap { $0.first(where: { $0.uuid == cardID }) }.eraseToAnyPublisher()
         return (card, publisher)

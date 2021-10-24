@@ -56,7 +56,7 @@ class DeckStudyViewModel {
     func handle(_ event: DeckStudyUIEvent) {
         switch event {
         case .viewDidLoad:
-            let (deck, deckUpdates) = repos.deckRepo.fetchDeck(deckID)
+            let (deck, deckUpdates) = repos.deckRepo.fetch(deckID)
             state.deck = deck
             deckSubscription = deckUpdates.sink(receiveValue: { [weak self] deck in
                 self?.state.deck = deck

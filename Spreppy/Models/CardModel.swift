@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 
 struct CardModel: Model, Hashable {
-    typealias ModelType = Card
+    typealias AssociatedObjectType = Card
     static var entityName = "Card"
 
     let uuid: UUID
