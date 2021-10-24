@@ -13,6 +13,7 @@ protocol DeckRepository {
     func fetchDeckList() -> AnyPublisher<[DeckModel], Never>
     func fetchDeck(_ deckID: UUID) -> (DeckModel?, AnyPublisher<DeckModel, Never>)
     func createOrUpdate(_ deckModel: DeckModel)
+    func delete(_ deckModel: DeckModel)
 }
 
 class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControllerDelegate {
@@ -145,6 +146,16 @@ class DeckCoreDataRepository: NSObject, DeckRepository, NSFetchedResultsControll
             deletedObjects.compactMap { $0 as? Deck }.map { ($0, .delete) }
 
         state.send(updates)
+    }
+
+    func delete(_ deckModel: DeckModel) {
+        let fetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
+        fetchRequest.predicate = NSPredicate(format: "uuid == %@", deckModel.uuid.uuidString)
+        fetchRequest.fetchLimit = 1
+
+        guard let deck = (try? persistentContainer.viewContext.fetch(fetchRequest))?.first else { assert(false)
+        }
+        persistentContainer.viewContext.delete(deck)
     }
 
     // MARK: NSFetchedResultsControllerDelegate
