@@ -43,8 +43,8 @@ struct CardModel: Model, Hashable {
         self.nextDueTime = nextDueTime
         self.numCorrectRepetitions = numCorrectRepetitions
         self.deckUUID = deckUUID
-            self.frontText = frontText
-            self.backText = backText
+        self.frontText = frontText
+        self.backText = backText
     }
 }
 

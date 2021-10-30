@@ -64,7 +64,10 @@ class DeckStudyViewModel {
         case .addTapped:
             // TODO: https://github.com/rwblickhan/Spreppy/issues/18
             // Stub out a UI for this
-            repos.cardRepo.createOrUpdate(CardModel(deckUUID: deckID, frontText: "What is the Answer to the Question of Life, the Universe, and Everything?", backText: "42"))
+            repos.cardRepo.createOrUpdate(CardModel(
+                deckUUID: deckID,
+                frontText: "What is the Answer to the Question of Life, the Universe, and Everything?",
+                backText: "42"))
         }
     }
 }
