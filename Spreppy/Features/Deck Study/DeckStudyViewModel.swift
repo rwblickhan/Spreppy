@@ -26,7 +26,7 @@ enum DeckStudyUIEvent {
 }
 
 class DeckStudyViewModel {
-    private var state: DeckStudyState {
+    private(set) var state: DeckStudyState {
         didSet {
             delegate?.update(state: state)
         }
@@ -64,7 +64,7 @@ class DeckStudyViewModel {
         case .addTapped:
             // TODO: https://github.com/rwblickhan/Spreppy/issues/18
             // Stub out a UI for this
-            repos.cardRepo.createOrUpdate(CardModel(deckUUID: deckID))
+            repos.cardRepo.createOrUpdate(CardModel(deckUUID: deckID, frontText: "What is the Answer to the Question of Life, the Universe, and Everything?", backText: "42"))
         }
     }
 }

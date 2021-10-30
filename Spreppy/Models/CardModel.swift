@@ -16,6 +16,8 @@ struct CardModel: Model, Hashable {
     let nextDueTime: Date
     let numCorrectRepetitions: Int32
     let deckUUID: UUID?
+    let frontText: String?
+    let backText: String?
 
     init?(managedObject: Card) {
         guard
@@ -26,13 +28,23 @@ struct CardModel: Model, Hashable {
         nextDueTime = nextDuetime
         numCorrectRepetitions = managedObject.numCorrectRepetitions
         deckUUID = managedObject.uuid
+        frontText = managedObject.frontText
+        backText = managedObject.backText
     }
 
-    init(uuid: UUID = UUID(), nextDueTime: Date = Date(), numCorrectRepetitions: Int32 = 0, deckUUID: UUID? = nil) {
+    init(
+        uuid: UUID = UUID(),
+        nextDueTime: Date = Date(),
+        numCorrectRepetitions: Int32 = 0,
+        deckUUID: UUID? = nil,
+        frontText: String? = nil,
+        backText: String? = nil) {
         self.uuid = uuid
         self.nextDueTime = nextDueTime
         self.numCorrectRepetitions = numCorrectRepetitions
         self.deckUUID = deckUUID
+            self.frontText = frontText
+            self.backText = backText
     }
 }
 
