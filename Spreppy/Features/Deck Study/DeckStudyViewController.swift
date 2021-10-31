@@ -90,12 +90,12 @@ class DeckStudyViewController: UIViewController,
     func cardStack(_: SwipeCardStack, cardForIndexAt index: Int) -> SwipeCard {
         let swipeCard = SwipeCard()
         swipeCard.swipeDirections = [.left, .right]
-        
+
         guard
             let cardUUID = viewModel.state.deck?.cardUUIDs[index],
             let card = viewModel.state.cards[cardUUID]
         else { return swipeCard }
-        
+
         let singleCardView = SingleCardView()
         singleCardView.configure(with: card)
         swipeCard.content = singleCardView

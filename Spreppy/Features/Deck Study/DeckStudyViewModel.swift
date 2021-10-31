@@ -20,7 +20,7 @@ struct DeckStudyState {
         self.deck = deck
         self.cards = cards
     }
-    
+
     var numberOfCards: Int {
         deck?.cardUUIDs.count ?? 0
     }
@@ -73,7 +73,7 @@ class DeckStudyViewModel {
                     })
                 }
             }
-            
+
             let (deck, deckUpdates) = repos.deckRepo.fetch(deckID)
             state.deck = deck
             fetchCards(deck?.cardUUIDs ?? [])
