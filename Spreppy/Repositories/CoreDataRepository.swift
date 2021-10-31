@@ -8,6 +8,7 @@
 import Combine
 import CoreData
 import Foundation
+import UIKit
 
 struct CoreDataRepositories: Repositories {
     let cardRepo: CardRepository

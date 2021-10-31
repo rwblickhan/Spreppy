@@ -17,6 +17,8 @@ public class Card: NSManagedObject, ModelObject {
         uuid = model.uuid
         nextDueTime = model.nextDueTime
         numCorrectRepetitions = model.numCorrectRepetitions
+        frontText = model.frontText
+        backText = model.backText
         if let deckUUID = model.deckUUID {
             let deckFetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
             deckFetchRequest.predicate = NSPredicate(format: "uuid == %@", deckUUID.uuidString)

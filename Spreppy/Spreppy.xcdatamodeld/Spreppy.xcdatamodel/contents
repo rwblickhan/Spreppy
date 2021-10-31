@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Card" representedClassName="Card" syncable="YES" codeGenerationType="category">
+        <attribute name="backText" optional="YES" attributeType="String"/>
+        <attribute name="frontText" optional="YES" attributeType="String"/>
         <attribute name="nextDueTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="numCorrectRepetitions" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -14,7 +16,7 @@
         <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Card" inverseName="deck" inverseEntity="Card"/>
     </entity>
     <elements>
-        <element name="Card" positionX="-45" positionY="18" width="128" height="89"/>
+        <element name="Card" positionX="-45" positionY="18" width="128" height="119"/>
         <element name="Deck" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

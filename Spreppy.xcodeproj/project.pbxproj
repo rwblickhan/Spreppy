@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CD15A9A427043DD400333111 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A327043DD400333111 /* Repositories.swift */; };
 		CD15A9A62705689300333111 /* RepositorySpies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A52705689300333111 /* RepositorySpies.swift */; };
+		CD43E192272BB56000079EB4 /* SingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43E191272BB56000079EB4 /* SingleCardView.swift */; };
+		CD43E197272BBE2300079EB4 /* Shuffle in Frameworks */ = {isa = PBXBuildFile; productRef = CD43E196272BBE2300079EB4 /* Shuffle */; };
 		CD53C2C92717F3A90052F9C6 /* DeckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD53C2C82717F3A90052F9C6 /* DeckInfoViewController.swift */; };
 		CD53C2CB2717F3B20052F9C6 /* DeckInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD53C2CA2717F3B20052F9C6 /* DeckInfoViewModel.swift */; };
 		CD53C2CE2717F4540052F9C6 /* DeckInfoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD53C2CC2717F4510052F9C6 /* DeckInfoViewModelTests.swift */; };
@@ -58,6 +60,7 @@
 /* Begin PBXFileReference section */
 		CD15A9A327043DD400333111 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		CD15A9A52705689300333111 /* RepositorySpies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySpies.swift; sourceTree = "<group>"; };
+		CD43E191272BB56000079EB4 /* SingleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCardView.swift; sourceTree = "<group>"; };
 		CD53C2C82717F3A90052F9C6 /* DeckInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewController.swift; sourceTree = "<group>"; };
 		CD53C2CA2717F3B20052F9C6 /* DeckInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewModel.swift; sourceTree = "<group>"; };
 		CD53C2CC2717F4510052F9C6 /* DeckInfoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewModelTests.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD43E197272BBE2300079EB4 /* Shuffle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,7 @@
 			children = (
 				CD9C282C270EA880001D43D3 /* DeckStudyViewController.swift */,
 				CD9C282E270EA889001D43D3 /* DeckStudyViewModel.swift */,
+				CD43E191272BB56000079EB4 /* SingleCardView.swift */,
 			);
 			path = "Deck Study";
 			sourceTree = "<group>";
@@ -259,6 +264,9 @@
 			dependencies = (
 			);
 			name = Spreppy;
+			packageProductDependencies = (
+				CD43E196272BBE2300079EB4 /* Shuffle */,
+			);
 			productName = Spreppy;
 			productReference = CDA44BAE26FFE8B500BC5118 /* Spreppy.app */;
 			productType = "com.apple.product-type.application";
@@ -331,6 +339,9 @@
 				Base,
 			);
 			mainGroup = CDA44BA526FFE8B500BC5118;
+			packageReferences = (
+				CD43E195272BBE2300079EB4 /* XCRemoteSwiftPackageReference "Shuffle" */,
+			);
 			productRefGroup = CDA44BAF26FFE8B500BC5118 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -381,6 +392,7 @@
 				CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */,
 				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
 				CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */,
+				CD43E192272BB56000079EB4 /* SingleCardView.swift in Sources */,
 				CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */,
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
 				CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */,
@@ -750,6 +762,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD43E195272BBE2300079EB4 /* XCRemoteSwiftPackageReference "Shuffle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-gallagher/Shuffle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD43E196272BBE2300079EB4 /* Shuffle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD43E195272BBE2300079EB4 /* XCRemoteSwiftPackageReference "Shuffle" */;
+			productName = Shuffle;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CDA44BBA26FFE8B500BC5118 /* Spreppy.xcdatamodeld */ = {
