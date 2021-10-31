@@ -21,7 +21,27 @@ class SingleCardView: UIView {
         layer.borderColor = UIColor.systemGray.cgColor
         layer.borderWidth = 1
 
-        translatesAutoresizingMaskIntoConstraints = false
+        frontLabel.translatesAutoresizingMaskIntoConstraints = false
+        backLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        frontLabel.numberOfLines = 0
+        backLabel.numberOfLines = 0
+        
+        // MARK: View Hierarchy
+        
+        addSubview(frontLabel)
+        addSubview(backLabel)
+        
+        // MARK: Layout
+        
+        frontLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 1).isActive = true
+        self.trailingAnchor.constraint(equalToSystemSpacingAfter: frontLabel.trailingAnchor, multiplier: 1).isActive = true
+        frontLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 2).isActive = true
+
+        backLabel.leadingAnchor.constraint(lessThanOrEqualToSystemSpacingAfter: self.leadingAnchor, multiplier: 1).isActive = true
+        self.trailingAnchor.constraint(lessThanOrEqualToSystemSpacingAfter: backLabel.trailingAnchor, multiplier: 1).isActive = true
+        backLabel.topAnchor.constraint(equalToSystemSpacingBelow: frontLabel.bottomAnchor, multiplier: 2).isActive = true
+        
     }
 
     @available(*, unavailable)

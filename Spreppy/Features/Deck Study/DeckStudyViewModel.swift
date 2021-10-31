@@ -14,9 +14,15 @@ protocol DeckStudyViewModelDelegate: AnyObject {
 
 struct DeckStudyState {
     var deck: DeckModel?
+    var cards: [UUID: CardModel]
 
-    init(deck: DeckModel? = nil) {
+    init(deck: DeckModel? = nil, cards: [UUID: CardModel] = [:]) {
         self.deck = deck
+        self.cards = cards
+    }
+    
+    var numberOfCards: Int {
+        deck?.cardUUIDs.count ?? 0
     }
 }
 
@@ -39,6 +45,7 @@ class DeckStudyViewModel {
     private var deckID: UUID
 
     private var deckSubscription: AnyCancellable?
+    private var cardSubscriptions = [UUID: AnyCancellable?]()
 
     init(
         deckID: UUID,
@@ -56,10 +63,23 @@ class DeckStudyViewModel {
     func handle(_ event: DeckStudyUIEvent) {
         switch event {
         case .viewDidLoad:
+            let fetchCards: ([UUID]) -> Void = { [weak self] cardUUIDs in
+                guard let self = self else { return }
+                for cardUUID in cardUUIDs {
+                    let (card, cardUpdates) = self.repos.cardRepo.fetch(cardUUID)
+                    self.state.cards[cardUUID] = card
+                    self.cardSubscriptions[cardUUID] = cardUpdates.sink(receiveValue: { [weak self] card in
+                        self?.state.cards[cardUUID] = card
+                    })
+                }
+            }
+            
             let (deck, deckUpdates) = repos.deckRepo.fetch(deckID)
             state.deck = deck
+            fetchCards(deck?.cardUUIDs ?? [])
             deckSubscription = deckUpdates.sink(receiveValue: { [weak self] deck in
                 self?.state.deck = deck
+                fetchCards(deck.cardUUIDs)
             })
         case .addTapped:
             // TODO: https://github.com/rwblickhan/Spreppy/issues/18

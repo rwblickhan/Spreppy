@@ -15,12 +15,6 @@ class DeckStudyViewController: UIViewController,
     SwipeCardStackDelegate {
     private var viewModel: DeckStudyViewModel!
 
-    private let cardImages = [
-        UIImage(named: "cardImage1"),
-        UIImage(named: "cardImage2"),
-        UIImage(named: "cardImage3"),
-    ]
-
     private let cardStack = SwipeCardStack()
     private lazy var addBarButton = UIBarButtonItem(
         barButtonSystemItem: .add,
@@ -94,24 +88,33 @@ class DeckStudyViewController: UIViewController,
     // MARK: SwipeCardStackDataSource
 
     func cardStack(_: SwipeCardStack, cardForIndexAt index: Int) -> SwipeCard {
-        let card = SwipeCard()
-        card.swipeDirections = [.left, .right]
-        let label = UILabel()
-        label.text = viewModel.state.deck?.cardUUIDs[index].uuidString ?? ""
-        card.content = label
-        card.content?.backgroundColor = .white
+        let swipeCard = SwipeCard()
+        swipeCard.swipeDirections = [.left, .right]
+        
+        guard
+            let cardUUID = viewModel.state.deck?.cardUUIDs[index],
+            let card = viewModel.state.cards[cardUUID]
+        else { return swipeCard }
+        
+        let singleCardView = SingleCardView()
+        singleCardView.configure(with: card)
+        swipeCard.content = singleCardView
 
         let leftOverlay = UIView()
         leftOverlay.backgroundColor = .red
+        leftOverlay.layer.cornerRadius = 15
+        leftOverlay.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         let rightOverlay = UIView()
         rightOverlay.backgroundColor = .green
-        card.setOverlays([.left: leftOverlay, .right: rightOverlay])
+        rightOverlay.layer.cornerRadius = 15
+        rightOverlay.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        swipeCard.setOverlays([.left: leftOverlay, .right: rightOverlay])
 
-        return card
+        return swipeCard
     }
 
     func numberOfCards(in _: SwipeCardStack) -> Int {
-        viewModel.state.deck?.cardUUIDs.count ?? 0
+        viewModel.state.numberOfCards
     }
 
     // MARK: Helpers
