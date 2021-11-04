@@ -75,7 +75,7 @@ class DeckStudyViewController: UIViewController,
         let oldState = self.state
         self.state = state
         title = state.deck?.title
-        
+
         if oldState != state {
             cardStack.reloadData()
         }
@@ -103,20 +103,20 @@ class DeckStudyViewController: UIViewController,
     @objc private func didTapAdd() {
         viewModel.handle(.addTapped)
     }
-    
+
     // MARK: View Factories
-    
+
     private func makeSwipeCard(for cardModel: CardModel) -> SwipeCard {
         let singleCardView = SingleCardView()
         singleCardView.configure(with: cardModel)
-        
+
         let swipeCard = SwipeCard()
         swipeCard.swipeDirections = [.left, .right]
         swipeCard.content = singleCardView
         swipeCard.setOverlays([.left: makeOverlay(of: .red), .right: makeOverlay(of: .green)])
         return swipeCard
     }
-    
+
     private func makeOverlay(of color: UIColor) -> UIView {
         let overlay = UIView()
         overlay.backgroundColor = color

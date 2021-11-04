@@ -25,7 +25,7 @@ struct DeckStudyState: Equatable {
     var numberOfCards: Int {
         deck?.cardUUIDs.count ?? 0
     }
-    
+
     func card(at index: Int) -> CardModel? {
         guard let uuid = deck?.cardUUIDs[index] else { return nil }
         return cards[uuid]
@@ -99,10 +99,10 @@ class DeckStudyViewModel {
             guard let card = state.card(at: index) else { assert(false); return }
             switch direction {
             case .left:
-                // TODO
+                // TODO:
                 break
             case .right:
-                // TODO
+                // TODO:
                 break
             case .up, .down: assert(false); return
             }
