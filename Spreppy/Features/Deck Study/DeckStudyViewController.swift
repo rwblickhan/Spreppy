@@ -14,6 +14,7 @@ class DeckStudyViewController: UIViewController,
     SwipeCardStackDataSource,
     SwipeCardStackDelegate {
     private var viewModel: DeckStudyViewModel!
+    private var state = DeckStudyState()
 
     private let cardStack = SwipeCardStack()
     private lazy var addBarButton = UIBarButtonItem(
@@ -71,46 +72,26 @@ class DeckStudyViewController: UIViewController,
     // MARK: DeckStudyViewModelDelegate
 
     func update(state: DeckStudyState) {
+        let oldState = self.state
+        self.state = state
         title = state.deck?.title
-        cardStack.reloadData()
+
+        if oldState != state {
+            cardStack.reloadData()
+        }
     }
 
     // MARK: SwipeCardStackDelegate
 
-    func cardStack(_: SwipeCardStack, didSelectCardAt _: Int) {
-        // TODO:
-    }
-
-    func cardStack(_: SwipeCardStack, didSwipeCardAt _: Int, with _: SwipeDirection) {
-        // TODO:
+    func cardStack(_: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
+        viewModel.handle(.didSwipeCard(index: index, direction: direction))
     }
 
     // MARK: SwipeCardStackDataSource
 
     func cardStack(_: SwipeCardStack, cardForIndexAt index: Int) -> SwipeCard {
-        let swipeCard = SwipeCard()
-        swipeCard.swipeDirections = [.left, .right]
-
-        guard
-            let cardUUID = viewModel.state.deck?.cardUUIDs[index],
-            let card = viewModel.state.cards[cardUUID]
-        else { return swipeCard }
-
-        let singleCardView = SingleCardView()
-        singleCardView.configure(with: card)
-        swipeCard.content = singleCardView
-
-        let leftOverlay = UIView()
-        leftOverlay.backgroundColor = .red
-        leftOverlay.layer.cornerRadius = 15
-        leftOverlay.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        let rightOverlay = UIView()
-        rightOverlay.backgroundColor = .green
-        rightOverlay.layer.cornerRadius = 15
-        rightOverlay.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        swipeCard.setOverlays([.left: leftOverlay, .right: rightOverlay])
-
-        return swipeCard
+        guard let cardModel = viewModel.state.card(at: index) else { return SwipeCard() }
+        return makeSwipeCard(for: cardModel)
     }
 
     func numberOfCards(in _: SwipeCardStack) -> Int {
@@ -121,5 +102,26 @@ class DeckStudyViewController: UIViewController,
 
     @objc private func didTapAdd() {
         viewModel.handle(.addTapped)
+    }
+
+    // MARK: View Factories
+
+    private func makeSwipeCard(for cardModel: CardModel) -> SwipeCard {
+        let singleCardView = SingleCardView()
+        singleCardView.configure(with: cardModel)
+
+        let swipeCard = SwipeCard()
+        swipeCard.swipeDirections = [.left, .right]
+        swipeCard.content = singleCardView
+        swipeCard.setOverlays([.left: makeOverlay(of: .red), .right: makeOverlay(of: .green)])
+        return swipeCard
+    }
+
+    private func makeOverlay(of color: UIColor) -> UIView {
+        let overlay = UIView()
+        overlay.backgroundColor = color
+        overlay.layer.cornerRadius = 15
+        overlay.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        return overlay
     }
 }
