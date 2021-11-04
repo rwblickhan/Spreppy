@@ -7,12 +7,13 @@
 
 import Combine
 import Foundation
+import Shuffle
 
 protocol DeckStudyViewModelDelegate: AnyObject {
     func update(state: DeckStudyState)
 }
 
-struct DeckStudyState {
+struct DeckStudyState: Equatable {
     var deck: DeckModel?
     var cards: [UUID: CardModel]
 
@@ -24,11 +25,17 @@ struct DeckStudyState {
     var numberOfCards: Int {
         deck?.cardUUIDs.count ?? 0
     }
+    
+    func card(at index: Int) -> CardModel? {
+        guard let uuid = deck?.cardUUIDs[index] else { return nil }
+        return cards[uuid]
+    }
 }
 
 enum DeckStudyUIEvent {
     case viewDidLoad
     case addTapped
+    case didSwipeCard(index: Int, direction: SwipeDirection)
 }
 
 class DeckStudyViewModel {
@@ -88,6 +95,17 @@ class DeckStudyViewModel {
                 deckUUID: deckID,
                 frontText: "What is the Answer to the Question of Life, the Universe, and Everything?",
                 backText: "42"))
+        case let .didSwipeCard(index, direction):
+            guard let card = state.card(at: index) else { assert(false); return }
+            switch direction {
+            case .left:
+                // TODO
+                break
+            case .right:
+                // TODO
+                break
+            case .up, .down: assert(false); return
+            }
         }
     }
 }
