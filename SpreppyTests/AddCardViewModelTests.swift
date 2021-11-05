@@ -44,7 +44,7 @@ class AddCardViewModelTests: XCTestCase {
         subject.handle(.cancelTapped)
         XCTAssertTrue(coordinator.didDismiss)
     }
-    
+
     func testHandleSaveTapped() {
         subject = AddCardViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.saveTapped(frontText: "Front Text", backText: "Back Text"))

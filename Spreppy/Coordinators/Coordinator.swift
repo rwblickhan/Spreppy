@@ -18,7 +18,7 @@ enum NavigationTarget: Equatable {
     case deckInfo(deckID: UUID)
     case deckList
     case deckStudy(deckID: UUID)
-    
+
     var type: NavigationTargetType {
         switch self {
         case .addCard:
@@ -50,7 +50,7 @@ class MainCoordinator: Coordinator {
         case .modal: coordinator = MainCoordinator(navigationController: UINavigationController())
         case .navigationStack: coordinator = self
         }
-        
+
         let viewController: UIViewController
         switch target {
         case let .addCard(deckID):
@@ -68,7 +68,7 @@ class MainCoordinator: Coordinator {
                 coordinator: coordinator,
                 repos: repos)
         }
-        
+
         switch target.type {
         case .modal:
             coordinator.navigationController.viewControllers = [viewController]
@@ -77,7 +77,7 @@ class MainCoordinator: Coordinator {
             navigationController.pushViewController(viewController, animated: true)
         }
     }
-    
+
     func dismiss() {
         if navigationController.viewControllers.count > 1 {
             navigationController.popViewController(animated: true)

@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import UIKit
 @testable import Spreppy
+import UIKit
 
 class CoordinatorSpy: Coordinator {
     let navigationController = UINavigationController()
@@ -17,7 +17,7 @@ class CoordinatorSpy: Coordinator {
     func navigate(to target: NavigationTarget) {
         targets.append(target)
     }
-    
+
     func dismiss() {
         didDismiss = true
     }

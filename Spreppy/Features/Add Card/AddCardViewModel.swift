@@ -11,7 +11,7 @@ protocol AddCardViewModelDelegate: AnyObject {
     func update(state: AddCardState)
 }
 
-struct AddCardState { }
+struct AddCardState {}
 
 enum AddCardUIEvent {
     case cancelTapped
@@ -51,8 +51,15 @@ class AddCardViewModel {
             coordinator.dismiss()
         case let .saveTapped(frontText, backText):
             // TODO: https://github.com/rwblickhan/Spreppy/issues/42
-            guard let frontText = frontText, let  backText = backText else { return }
-            repos.cardRepo.createOrUpdate(CardModel(uuid: UUID(), numCorrectRepetitions: 0, deckUUID: deckID, frontText: frontText, backText: backText))
+            guard let frontText = frontText, let backText = backText else { return }
+            repos.cardRepo
+                .createOrUpdate(
+                    CardModel(
+                        uuid: UUID(),
+                        numCorrectRepetitions: 0,
+                        deckUUID: deckID,
+                        frontText: frontText,
+                        backText: backText))
             coordinator.dismiss()
         }
     }
