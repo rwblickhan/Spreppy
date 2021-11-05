@@ -14,6 +14,9 @@
 		CD53C2C92717F3A90052F9C6 /* DeckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD53C2C82717F3A90052F9C6 /* DeckInfoViewController.swift */; };
 		CD53C2CB2717F3B20052F9C6 /* DeckInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD53C2CA2717F3B20052F9C6 /* DeckInfoViewModel.swift */; };
 		CD53C2CE2717F4540052F9C6 /* DeckInfoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD53C2CC2717F4510052F9C6 /* DeckInfoViewModelTests.swift */; };
+		CD705EBF2734E3DA00931333 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD705EBE2734E3DA00931333 /* AddCardViewController.swift */; };
+		CD705EC12734E3E300931333 /* AddCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD705EC02734E3E300931333 /* AddCardViewModel.swift */; };
+		CD705EC32734F31800931333 /* AddCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD705EC22734F31800931333 /* AddCardViewModelTests.swift */; };
 		CD938C252725DCDB00F3AF9C /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938C212725DCDB00F3AF9C /* Deck+CoreDataClass.swift */; };
 		CD938C272725DCDB00F3AF9C /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938C232725DCDB00F3AF9C /* Card+CoreDataClass.swift */; };
 		CD9C282D270EA880001D43D3 /* DeckStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C282C270EA880001D43D3 /* DeckStudyViewController.swift */; };
@@ -64,6 +67,9 @@
 		CD53C2C82717F3A90052F9C6 /* DeckInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewController.swift; sourceTree = "<group>"; };
 		CD53C2CA2717F3B20052F9C6 /* DeckInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewModel.swift; sourceTree = "<group>"; };
 		CD53C2CC2717F4510052F9C6 /* DeckInfoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewModelTests.swift; sourceTree = "<group>"; };
+		CD705EBE2734E3DA00931333 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		CD705EC02734E3E300931333 /* AddCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModel.swift; sourceTree = "<group>"; };
+		CD705EC22734F31800931333 /* AddCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModelTests.swift; sourceTree = "<group>"; };
 		CD938C212725DCDB00F3AF9C /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CD938C232725DCDB00F3AF9C /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CD9C282C270EA880001D43D3 /* DeckStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStudyViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +135,15 @@
 			path = "Deck Info";
 			sourceTree = "<group>";
 		};
+		CD705EBD2734E3C300931333 /* Add Card */ = {
+			isa = PBXGroup;
+			children = (
+				CD705EBE2734E3DA00931333 /* AddCardViewController.swift */,
+				CD705EC02734E3E300931333 /* AddCardViewModel.swift */,
+			);
+			path = "Add Card";
+			sourceTree = "<group>";
+		};
 		CD9C282B270EA83C001D43D3 /* Deck Study */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +165,7 @@
 		CD9C2831270EA980001D43D3 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CD705EBD2734E3C300931333 /* Add Card */,
 				CD53C2C52717F3730052F9C6 /* Deck Info */,
 				CDA44BE826FFF2DD00BC5118 /* Deck List */,
 				CD9C282B270EA83C001D43D3 /* Deck Study */,
@@ -198,6 +214,7 @@
 		CDA44BCA26FFE8B700BC5118 /* SpreppyTests */ = {
 			isa = PBXGroup;
 			children = (
+				CD705EC22734F31800931333 /* AddCardViewModelTests.swift */,
 				CD53C2CC2717F4510052F9C6 /* DeckInfoViewModelTests.swift */,
 				CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */,
 				CD9C2836270EB188001D43D3 /* DeckStudyViewModelTests.swift */,
@@ -388,8 +405,10 @@
 				CD938C272725DCDB00F3AF9C /* Card+CoreDataClass.swift in Sources */,
 				CDA44BEE2700263100BC5118 /* Model.swift in Sources */,
 				CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */,
+				CD705EC12734E3E300931333 /* AddCardViewModel.swift in Sources */,
 				CDA44BF82701444400BC5118 /* CardModel.swift in Sources */,
 				CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */,
+				CD705EBF2734E3DA00931333 /* AddCardViewController.swift in Sources */,
 				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
 				CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */,
 				CD43E192272BB56000079EB4 /* SingleCardView.swift in Sources */,
@@ -414,6 +433,7 @@
 			files = (
 				CD15A9A62705689300333111 /* RepositorySpies.swift in Sources */,
 				CD9C2835270EAFF1001D43D3 /* CoordinatorSpy.swift in Sources */,
+				CD705EC32734F31800931333 /* AddCardViewModelTests.swift in Sources */,
 				CDA44BEC270020C000BC5118 /* DeckListViewModelTests.swift in Sources */,
 				CD9C2837270EB188001D43D3 /* DeckStudyViewModelTests.swift in Sources */,
 				CD53C2CE2717F4540052F9C6 /* DeckInfoViewModelTests.swift in Sources */,
