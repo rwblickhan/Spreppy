@@ -18,7 +18,7 @@ class DeckInfoViewModelDelegateSpy: DeckInfoViewModelDelegate {
     }
 }
 
-class DeskInfoViewModelTests: XCTestCase {
+class DeckInfoViewModelTests: XCTestCase {
     private var delegate: DeckInfoViewModelDelegateSpy!
     private var coordinator: CoordinatorSpy!
     private var repos: RepositorySpies!
