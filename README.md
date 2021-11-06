@@ -4,7 +4,14 @@ Spreppy ("spaced repetition") is an in-development iOS app for spaced repetition
 
 ![A short video demoing the app's use](demo.gif)
 
-Okay, it isn't much to look at... *yet*. But that's why we have plenty of [open issues](https://github.com/rwblickhan/Spreppy/issues) for you to take a look at 😉.
+
+Okay, it isn't much to look at... *yet*. But that's why we have plenty of [open issues](https://github.com/rwblickhan/Spreppy/issues) 😉.
+
+## Contributing
+
+For the time being, I won't be accepting external contributions.
+I expect to do so once the design is firmed up and I start releasing to TestFlight.
+In the meantime, I encourage you to fork this repository and play around!
 
 ## Developer Setup
 
