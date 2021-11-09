@@ -41,6 +41,7 @@
 		CDA44BF82701444400BC5118 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF72701444400BC5118 /* CardModel.swift */; };
 		CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF927014A7C00BC5118 /* CardRepository.swift */; };
 		CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */; };
+		CDFF1F25273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		CDA44BF72701444400BC5118 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		CDA44BF927014A7C00BC5118 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+SpreppyExtensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				CDA44BEF2700267900BC5118 /* Models */,
 				CDA44BF2270027D100BC5118 /* Repositories */,
 				CD9C2831270EA980001D43D3 /* Features */,
+				CDFF1F23273A33BD0035B4EC /* Utilities */,
 				CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */,
 				CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */,
 				CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */,
@@ -263,6 +266,14 @@
 				CDA44BF32700285300BC5118 /* DeckRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CDFF1F23273A33BD0035B4EC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +415,7 @@
 				CD9C2833270EA996001D43D3 /* Coordinator.swift in Sources */,
 				CD938C272725DCDB00F3AF9C /* Card+CoreDataClass.swift in Sources */,
 				CDA44BEE2700263100BC5118 /* Model.swift in Sources */,
+				CDFF1F25273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift in Sources */,
 				CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */,
 				CD705EC12734E3E300931333 /* AddCardViewModel.swift in Sources */,
 				CDA44BF82701444400BC5118 /* CardModel.swift in Sources */,

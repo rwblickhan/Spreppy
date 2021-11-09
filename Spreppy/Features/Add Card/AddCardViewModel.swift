@@ -11,10 +11,20 @@ protocol AddCardViewModelDelegate: AnyObject {
     func update(state: AddCardState)
 }
 
-struct AddCardState {}
+struct AddCardState {
+    var frontText: String?
+    var backText: String?
+    
+    init(frontText: String? = nil, backText: String? = nil) {
+        self.frontText = frontText
+        self.backText = backText
+    }
+}
 
 enum AddCardUIEvent {
+    case backTextChanged(String?)
     case cancelTapped
+    case frontTextChanged(String?)
     case saveTapped(frontText: String?, backText: String?)
 }
 
@@ -46,9 +56,13 @@ class AddCardViewModel {
 
     func handle(_ event: AddCardUIEvent) {
         switch event {
+        case let .backTextChanged(backText):
+            state.backText = backText
         case .cancelTapped:
             // TODO: https://github.com/rwblickhan/Spreppy/issues/43
             coordinator.dismiss()
+        case let .frontTextChanged(frontText):
+            state.frontText = frontText
         case let .saveTapped(frontText, backText):
             // TODO: https://github.com/rwblickhan/Spreppy/issues/42
             guard let frontText = frontText, let backText = backText else { return }
