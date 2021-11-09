@@ -9,7 +9,7 @@ import Combine
 import Foundation
 import UIKit
 
-class AddCardViewController: UIViewController, AddCardViewModelDelegate, UITextFieldDelegate {
+class AddCardViewController: UIViewController, AddCardViewModelDelegate {
     private var viewModel: AddCardViewModel!
 
     private lazy var cancelBarButton = UIBarButtonItem(
@@ -48,7 +48,7 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate, UITextF
     override func loadView() {
         view = UIView()
         view.backgroundColor = .systemBackground
-
+        
         // MARK: Navigation Bar
 
         title = String(localized: "Add Card")
@@ -76,11 +76,11 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate, UITextF
         view.trailingAnchor.constraint(equalToSystemSpacingAfter: mainStackView.trailingAnchor, multiplier: 1)
             .isActive = true
     }
-
+    
     // MARK: AddCardViewModelDelegate
 
     func update(state _: AddCardState) {}
-
+    
     // MARK: Helpers
 
     @objc private func didTapCancel() {

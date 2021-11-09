@@ -19,6 +19,15 @@ struct AddCardState {
         self.frontText = frontText
         self.backText = backText
     }
+    
+    var hasContent: Bool {
+        switch (frontText?.isEmpty, backText?.isEmpty) {
+        case (.some(false), _), (_, .some(false)):
+            return true
+        case (_, _):
+            return false
+        }
+    }
 }
 
 enum AddCardUIEvent {
@@ -29,7 +38,7 @@ enum AddCardUIEvent {
 }
 
 class AddCardViewModel {
-    private var state: AddCardState {
+    private(set) var state: AddCardState {
         didSet {
             delegate?.update(state: state)
         }
@@ -59,8 +68,10 @@ class AddCardViewModel {
         case let .backTextChanged(backText):
             state.backText = backText
         case .cancelTapped:
-            // TODO: https://github.com/rwblickhan/Spreppy/issues/43
-            coordinator.dismiss()
+            guard state.hasContent else { coordinator.dismiss(); return }
+            coordinator.navigate(to: .confirmCancelAlert(onConfirm: { [weak self] in
+                self?.coordinator.dismiss()
+            }))
         case let .frontTextChanged(frontText):
             state.frontText = frontText
         case let .saveTapped(frontText, backText):
