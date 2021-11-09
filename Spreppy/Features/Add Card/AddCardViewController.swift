@@ -26,7 +26,7 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate {
     private lazy var frontTextField = makeFrontTextField()
     private lazy var enterBackLabel = makeEnterBackLabel()
     private lazy var backTextField = makeBackTextField()
-    
+
     private var subscriptions = Set<AnyCancellable>()
 
     init(deckID: UUID, coordinator: Coordinator, repos: Repositories) {
@@ -48,7 +48,7 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate {
     override func loadView() {
         view = UIView()
         view.backgroundColor = .systemBackground
-        
+
         // MARK: Navigation Bar
 
         title = String(localized: "Add Card")
@@ -76,11 +76,11 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate {
         view.trailingAnchor.constraint(equalToSystemSpacingAfter: mainStackView.trailingAnchor, multiplier: 1)
             .isActive = true
     }
-    
+
     // MARK: AddCardViewModelDelegate
 
     func update(state _: AddCardState) {}
-    
+
     // MARK: Helpers
 
     @objc private func didTapCancel() {
@@ -112,7 +112,7 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate {
         label.text = "Back Text"
         return label
     }
-    
+
     private func makeFrontTextField() -> UITextField {
         let textField = UITextField()
         textField.layer.borderColor = UIColor.systemFill.cgColor
@@ -124,7 +124,7 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate {
             .store(in: &subscriptions)
         return textField
     }
-    
+
     private func makeBackTextField() -> UITextField {
         let textField = UITextField()
         textField.layer.borderColor = UIColor.systemFill.cgColor

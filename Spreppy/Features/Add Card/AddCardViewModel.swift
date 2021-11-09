@@ -14,12 +14,12 @@ protocol AddCardViewModelDelegate: AnyObject {
 struct AddCardState {
     var frontText: String?
     var backText: String?
-    
+
     init(frontText: String? = nil, backText: String? = nil) {
         self.frontText = frontText
         self.backText = backText
     }
-    
+
     var hasContent: Bool {
         switch (frontText?.isEmpty, backText?.isEmpty) {
         case (.some(false), _), (_, .some(false)):

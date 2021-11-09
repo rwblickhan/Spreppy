@@ -31,7 +31,7 @@ enum NavigationTarget: Equatable {
             return .navigationStack
         }
     }
-    
+
     static func == (lhs: NavigationTarget, rhs: NavigationTarget) -> Bool {
         switch (lhs, rhs) {
         case let (.addCard(deckA), .addCard(deckB)): return deckA == deckB
@@ -71,7 +71,10 @@ class MainCoordinator: Coordinator {
         case let .addCard(deckID):
             viewController = AddCardViewController(deckID: deckID, coordinator: coordinator, repos: repos)
         case let .confirmCancelAlert(onConfirm):
-            let alert = UIAlertController(title: "Are you sure?", message: "You entered some information; are you sure you want to cancel?", preferredStyle: .alert)
+            let alert = UIAlertController(
+                title: "Are you sure?",
+                message: "You entered some information; are you sure you want to cancel?",
+                preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Back", style: .default, handler: nil))
             alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in onConfirm() }))
             viewController = alert
@@ -99,7 +102,7 @@ class MainCoordinator: Coordinator {
             navigationController.pushViewController(viewController, animated: true)
         }
     }
-    
+
     func dismiss() {
         if navigationController.viewControllers.count > 1 {
             navigationController.popViewController(animated: true)

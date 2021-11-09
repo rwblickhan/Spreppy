@@ -38,30 +38,30 @@ class AddCardViewModelTests: XCTestCase {
         repos = nil
         subject = nil
     }
-    
+
     func testHandleBackTextChanged() {
         subject = AddCardViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.backTextChanged("Back Text"))
         XCTAssertEqual(delegate.state.backText, "Back Text")
     }
-    
+
     func testHandleCancelTappedNoContent() {
         subject = AddCardViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.cancelTapped)
         XCTAssertTrue(coordinator.didDismiss)
     }
-    
+
     func testHandleCancelTappedWithContent() {
         subject = AddCardViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.frontTextChanged("Front Text"))
         subject.handle(.cancelTapped)
-        
+
         XCTAssertFalse(coordinator.didDismiss)
         guard case let .confirmCancelAlert(onConfirm) = coordinator.targets.last else { XCTFail(); return }
         onConfirm()
         XCTAssertTrue(coordinator.didDismiss)
     }
-    
+
     func testHandleFrontTextChanged() {
         subject = AddCardViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.frontTextChanged("Front Text"))
