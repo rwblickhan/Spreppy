@@ -15,6 +15,8 @@ struct CardModel: Model, Hashable {
     let uuid: UUID
     let nextDueTime: Date
     let numCorrectRepetitions: Int32
+    let numIncorrectRepetitions: Int32
+    let currentStageUUID: UUID?
     let deckUUID: UUID?
     let frontText: String?
     let backText: String?
@@ -27,7 +29,9 @@ struct CardModel: Model, Hashable {
         self.uuid = uuid
         nextDueTime = nextDuetime
         numCorrectRepetitions = managedObject.numCorrectRepetitions
-        deckUUID = managedObject.uuid
+        numIncorrectRepetitions = managedObject.numIncorrectRepetitions
+        currentStageUUID = managedObject.currentStage?.uuid
+        deckUUID = managedObject.deck?.uuid
         frontText = managedObject.frontText
         backText = managedObject.backText
     }
@@ -36,16 +40,20 @@ struct CardModel: Model, Hashable {
         uuid: UUID = UUID(),
         nextDueTime: Date = Date(),
         numCorrectRepetitions: Int32 = 0,
+        numIncorrectRepetitions: Int32 = 0,
+        currentStageUUID: UUID? = nil,
         deckUUID: UUID? = nil,
         frontText: String? = nil,
         backText: String? = nil) {
-        self.uuid = uuid
-        self.nextDueTime = nextDueTime
-        self.numCorrectRepetitions = numCorrectRepetitions
-        self.deckUUID = deckUUID
-        self.frontText = frontText
-        self.backText = backText
-    }
+            self.uuid = uuid
+            self.nextDueTime = nextDueTime
+            self.numCorrectRepetitions = numCorrectRepetitions
+            self.numIncorrectRepetitions = numIncorrectRepetitions
+            self.currentStageUUID = currentStageUUID
+            self.deckUUID = deckUUID
+            self.frontText = frontText
+            self.backText = backText
+        }
 }
 
 extension CardModel {

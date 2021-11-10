@@ -17,8 +17,19 @@ public class Card: NSManagedObject, ModelObject {
         uuid = model.uuid
         nextDueTime = model.nextDueTime
         numCorrectRepetitions = model.numCorrectRepetitions
+        numIncorrectRepetitions = model.numIncorrectRepetitions
         frontText = model.frontText
         backText = model.backText
+        if let currentStageUUID = model.currentStageUUID {
+            let currentStageRequest = NSFetchRequest<LeitnerBox>(entityName: LeitnerBoxModel.entityName)
+            currentStageRequest.predicate = NSPredicate(format: "uuid == %@", currentStageUUID.uuidString)
+            currentStageRequest.fetchLimit = 1
+            if let fetchedStage = try? managedObjectContext.fetch(currentStageRequest).first {
+                currentStage = fetchedStage
+            }
+        } else {
+            currentStage = nil
+        }
         if let deckUUID = model.deckUUID {
             let deckFetchRequest = NSFetchRequest<Deck>(entityName: DeckModel.entityName)
             deckFetchRequest.predicate = NSPredicate(format: "uuid == %@", deckUUID.uuidString)
@@ -26,6 +37,8 @@ public class Card: NSManagedObject, ModelObject {
             if let fetchedDeck = try? managedObjectContext.fetch(deckFetchRequest).first {
                 deck = fetchedDeck
             }
+        } else {
+            deck = nil
         }
     }
 }

@@ -94,11 +94,31 @@ class DeckStudyViewModel {
             guard let card = state.card(at: index) else { assert(false); return }
             switch direction {
             case .left:
-                // TODO:
-                break
+                repos.cardRepo.createOrUpdate(
+                    CardModel(
+                        uuid: card.uuid,
+                        // TODO update
+                        nextDueTime: card.nextDueTime,
+                        numCorrectRepetitions: 0,
+                        numIncorrectRepetitions: card.numIncorrectRepetitions + 1,
+                        // TODO update
+                        currentStageUUID: card.currentStageUUID,
+                        deckUUID: card.deckUUID,
+                        frontText: card.frontText,
+                        backText: card.backText))
             case .right:
-                // TODO:
-                break
+                repos.cardRepo.createOrUpdate(
+                    CardModel(
+                        uuid: card.uuid,
+                        // TODO update
+                        nextDueTime: card.nextDueTime,
+                        numCorrectRepetitions: card.numCorrectRepetitions + 1,
+                        numIncorrectRepetitions: 0,
+                        // TODO update
+                        currentStageUUID: card.currentStageUUID,
+                        deckUUID: card.deckUUID,
+                        frontText: card.frontText,
+                        backText: card.backText))
             case .up, .down: assert(false); return
             }
         }
