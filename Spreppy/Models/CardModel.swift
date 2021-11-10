@@ -45,15 +45,15 @@ struct CardModel: Model, Hashable {
         deckUUID: UUID? = nil,
         frontText: String? = nil,
         backText: String? = nil) {
-            self.uuid = uuid
-            self.nextDueTime = nextDueTime
-            self.numCorrectRepetitions = numCorrectRepetitions
-            self.numIncorrectRepetitions = numIncorrectRepetitions
-            self.currentStageUUID = currentStageUUID
-            self.deckUUID = deckUUID
-            self.frontText = frontText
-            self.backText = backText
-        }
+        self.uuid = uuid
+        self.nextDueTime = nextDueTime
+        self.numCorrectRepetitions = numCorrectRepetitions
+        self.numIncorrectRepetitions = numIncorrectRepetitions
+        self.currentStageUUID = currentStageUUID
+        self.deckUUID = deckUUID
+        self.frontText = frontText
+        self.backText = backText
+    }
 }
 
 extension CardModel {

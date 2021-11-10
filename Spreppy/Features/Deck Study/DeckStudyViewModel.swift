@@ -97,11 +97,11 @@ class DeckStudyViewModel {
                 repos.cardRepo.createOrUpdate(
                     CardModel(
                         uuid: card.uuid,
-                        // TODO update
+                        // TODO: update
                         nextDueTime: card.nextDueTime,
                         numCorrectRepetitions: 0,
                         numIncorrectRepetitions: card.numIncorrectRepetitions + 1,
-                        // TODO update
+                        // TODO: update
                         currentStageUUID: card.currentStageUUID,
                         deckUUID: card.deckUUID,
                         frontText: card.frontText,
@@ -110,11 +110,11 @@ class DeckStudyViewModel {
                 repos.cardRepo.createOrUpdate(
                     CardModel(
                         uuid: card.uuid,
-                        // TODO update
+                        // TODO: update
                         nextDueTime: card.nextDueTime,
                         numCorrectRepetitions: card.numCorrectRepetitions + 1,
                         numIncorrectRepetitions: 0,
-                        // TODO update
+                        // TODO: update
                         currentStageUUID: card.currentStageUUID,
                         deckUUID: card.deckUUID,
                         frontText: card.frontText,
