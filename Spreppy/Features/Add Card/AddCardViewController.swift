@@ -5,10 +5,11 @@
 //  Created by Russell Blickhan on 11/4/21.
 //
 
+import Combine
 import Foundation
 import UIKit
 
-class AddCardViewController: UIViewController, AddCardViewModelDelegate, UITextFieldDelegate {
+class AddCardViewController: UIViewController, AddCardViewModelDelegate {
     private var viewModel: AddCardViewModel!
 
     private lazy var cancelBarButton = UIBarButtonItem(
@@ -22,9 +23,11 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate, UITextF
 
     private lazy var mainStackView = makeMainStackView()
     private lazy var enterFrontLabel = makeEnterFrontLabel()
-    private let frontTextField = UITextField()
+    private lazy var frontTextField = makeFrontTextField()
     private lazy var enterBackLabel = makeEnterBackLabel()
-    private let backTextField = UITextField()
+    private lazy var backTextField = makeBackTextField()
+
+    private var subscriptions = Set<AnyCancellable>()
 
     init(deckID: UUID, coordinator: Coordinator, repos: Repositories) {
         super.init(nibName: nil, bundle: nil)
@@ -45,11 +48,6 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate, UITextF
     override func loadView() {
         view = UIView()
         view.backgroundColor = .systemBackground
-
-        frontTextField.layer.borderColor = UIColor.systemFill.cgColor
-        frontTextField.layer.borderWidth = 1
-        backTextField.layer.borderColor = UIColor.systemFill.cgColor
-        backTextField.layer.borderWidth = 1
 
         // MARK: Navigation Bar
 
@@ -113,5 +111,29 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate, UITextF
         let label = UILabel()
         label.text = "Back Text"
         return label
+    }
+
+    private func makeFrontTextField() -> UITextField {
+        let textField = UITextField()
+        textField.layer.borderColor = UIColor.systemFill.cgColor
+        textField.layer.borderWidth = 1
+        textField.textPublisher
+            .sink(receiveValue: { [weak self] text in
+                self?.viewModel.handle(.frontTextChanged(text))
+            })
+            .store(in: &subscriptions)
+        return textField
+    }
+
+    private func makeBackTextField() -> UITextField {
+        let textField = UITextField()
+        textField.layer.borderColor = UIColor.systemFill.cgColor
+        textField.layer.borderWidth = 1
+        textField.textPublisher
+            .sink(receiveValue: { [weak self] text in
+                self?.viewModel.handle(.backTextChanged(text))
+            })
+            .store(in: &subscriptions)
+        return textField
     }
 }

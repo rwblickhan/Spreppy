@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 
 enum NavigationTargetType {
+    case alert
     case navigationStack
     case modal
 }
 
 enum NavigationTarget: Equatable {
     case addCard(deckID: UUID)
+    case confirmCancelAlert(onConfirm: () -> Void)
     case deckInfo(deckID: UUID)
     case deckList
     case deckStudy(deckID: UUID)
@@ -23,8 +25,21 @@ enum NavigationTarget: Equatable {
         switch self {
         case .addCard:
             return .modal
+        case .confirmCancelAlert:
+            return .alert
         case .deckInfo, .deckList, .deckStudy:
             return .navigationStack
+        }
+    }
+
+    static func == (lhs: NavigationTarget, rhs: NavigationTarget) -> Bool {
+        switch (lhs, rhs) {
+        case let (.addCard(deckA), .addCard(deckB)): return deckA == deckB
+        case (.confirmCancelAlert, .confirmCancelAlert): return true
+        case let (.deckInfo(deckA), .deckInfo(deckB)): return deckA == deckB
+        case (.deckList, .deckList): return true
+        case let (.deckStudy(deckA), .deckStudy(deckB)): return deckA == deckB
+        case (_, _): return false
         }
     }
 }
@@ -48,13 +63,21 @@ class MainCoordinator: Coordinator {
         let coordinator: Coordinator
         switch target.type {
         case .modal: coordinator = MainCoordinator(navigationController: UINavigationController())
-        case .navigationStack: coordinator = self
+        case .alert, .navigationStack: coordinator = self
         }
 
         let viewController: UIViewController
         switch target {
         case let .addCard(deckID):
             viewController = AddCardViewController(deckID: deckID, coordinator: coordinator, repos: repos)
+        case let .confirmCancelAlert(onConfirm):
+            let alert = UIAlertController(
+                title: "Are you sure?",
+                message: "You entered some information; are you sure you want to cancel?",
+                preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Back", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in onConfirm() }))
+            viewController = alert
         case .deckList:
             viewController = DeckListViewController(coordinator: coordinator, repos: repos)
         case let .deckStudy(deckID):
@@ -70,6 +93,8 @@ class MainCoordinator: Coordinator {
         }
 
         switch target.type {
+        case .alert:
+            navigationController.present(viewController, animated: true, completion: nil)
         case .modal:
             coordinator.navigationController.viewControllers = [viewController]
             navigationController.present(coordinator.navigationController, animated: true, completion: nil)
