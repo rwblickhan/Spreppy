@@ -16,7 +16,7 @@ struct CreateDeckState {
     var summary: String?
 
     init(deckTitle: String? = nil, summary: String? = nil) {
-        self.title = deckTitle
+        title = deckTitle
         self.summary = summary
     }
 

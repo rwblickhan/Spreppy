@@ -26,7 +26,7 @@ struct DeckModel: Model, Hashable {
         else { return nil }
         self.uuid = uuid
         self.title = title
-        self.summary = managedObject.summary
+        summary = managedObject.summary
         rank = managedObject.rank
         self.cardUUIDs = cardUUIDs
     }
