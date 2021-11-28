@@ -31,10 +31,10 @@ struct CreateDeckState {
 }
 
 enum CreateDeckUIEvent {
-    case titleChanged(String?)
-    case summaryChanged(String?)
     case cancelTapped
     case saveTapped(title: String?, summary: String?)
+    case summaryChanged(String?)
+    case titleChanged(String?)
 }
 
 class CreateDeckViewModel {
@@ -61,10 +61,6 @@ class CreateDeckViewModel {
 
     func handle(_ event: CreateDeckUIEvent) {
         switch event {
-        case let .titleChanged(title):
-            state.title = title
-        case let .summaryChanged(summary):
-            state.summary = summary
         case .cancelTapped:
             guard state.hasContent else { coordinator.dismiss(); return }
             coordinator.navigate(to: .confirmCancelAlert(onConfirm: { [weak self] in
@@ -80,6 +76,10 @@ class CreateDeckViewModel {
                         title: title,
                         summary: summary))
             coordinator.dismiss()
+        case let .summaryChanged(summary):
+            state.summary = summary
+        case let .titleChanged(title):
+            state.title = title
         }
     }
 }

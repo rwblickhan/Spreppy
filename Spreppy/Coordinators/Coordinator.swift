@@ -17,10 +17,10 @@ enum NavigationTargetType {
 enum NavigationTarget: Equatable {
     case addCard(deckID: UUID)
     case confirmCancelAlert(onConfirm: () -> Void)
+    case createDeck
     case deckInfo(deckID: UUID)
     case deckList
     case deckStudy(deckID: UUID)
-    case createDeck
 
     var type: NavigationTargetType {
         switch self {
@@ -37,10 +37,10 @@ enum NavigationTarget: Equatable {
         switch (lhs, rhs) {
         case let (.addCard(deckA), .addCard(deckB)): return deckA == deckB
         case (.confirmCancelAlert, .confirmCancelAlert): return true
+        case (.createDeck, .createDeck): return true
         case let (.deckInfo(deckA), .deckInfo(deckB)): return deckA == deckB
         case (.deckList, .deckList): return true
         case let (.deckStudy(deckA), .deckStudy(deckB)): return deckA == deckB
-        case (.createDeck, .createDeck): return true
         case (_, _): return false
         }
     }
@@ -80,6 +80,10 @@ class MainCoordinator: Coordinator {
             alert.addAction(UIAlertAction(title: "Back", style: .default, handler: nil))
             alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in onConfirm() }))
             viewController = alert
+        case .createDeck:
+            viewController = CreateDeckViewController(
+                coordinator: coordinator,
+                repos: repos)
         case .deckList:
             viewController = DeckListViewController(coordinator: coordinator, repos: repos)
         case let .deckStudy(deckID):
@@ -90,10 +94,6 @@ class MainCoordinator: Coordinator {
         case let .deckInfo(deckID):
             viewController = DeckInfoViewController(
                 deckID: deckID,
-                coordinator: coordinator,
-                repos: repos)
-        case .createDeck:
-            viewController = CreateDeckViewController(
                 coordinator: coordinator,
                 repos: repos)
         }
