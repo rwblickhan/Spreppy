@@ -9,7 +9,7 @@ mint:
 	mint bootstrap
 
 git:
-	cp Scripts/pre-push .git/hooks/pre-push
+	cp Scripts/post-commit .git/hooks/post-commit
 
 open: default
 	open Spreppy.xcodeproj

@@ -3,8 +3,8 @@ set -euo pipefail
 
 # Check if there's anything on the branch
 if [[ -n $(git status -s) ]]; then
-  echo "Cannot push on an unclean branch"
-  exit 1
+  echo "Warning: cannot lint if there are uncommitted changes"
+  exit 0
 else
   # Run Swiftformat
   mint run swiftformat .
