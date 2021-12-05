@@ -45,6 +45,9 @@
 		CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF927014A7C00BC5118 /* CardRepository.swift */; };
 		CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */; };
 		CDFF1F25273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */; };
+		CDFF1F2B273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */; };
+		CDFF1F2E273B96130035B4EC /* LeitnerBoxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */; };
+		CDFF1F31273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F30273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,9 @@
 		CDA44BF927014A7C00BC5118 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+SpreppyExtensions.swift"; sourceTree = "<group>"; };
+		CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeitnerBox+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxModel.swift; sourceTree = "<group>"; };
+		CDFF1F30273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxSpacedRepAlgorithm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +220,7 @@
 		CDA44BB026FFE8B500BC5118 /* Spreppy */ = {
 			isa = PBXGroup;
 			children = (
+				CDFF1F2F273B99160035B4EC /* Spaced Rep Algorithms */,
 				CD9C2830270EA976001D43D3 /* Coordinators */,
 				CDA44BEF2700267900BC5118 /* Models */,
 				CDA44BF2270027D100BC5118 /* Repositories */,
@@ -268,8 +275,10 @@
 				CDA44BED2700263100BC5118 /* Model.swift */,
 				CDA44BF72701444400BC5118 /* CardModel.swift */,
 				CDA44BF02700268500BC5118 /* DeckModel.swift */,
-				CD938C212725DCDB00F3AF9C /* Deck+CoreDataClass.swift */,
+				CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */,
 				CD938C232725DCDB00F3AF9C /* Card+CoreDataClass.swift */,
+				CD938C212725DCDB00F3AF9C /* Deck+CoreDataClass.swift */,
+				CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,6 +300,14 @@
 				CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		CDFF1F2F273B99160035B4EC /* Spaced Rep Algorithms */ = {
+			isa = PBXGroup;
+			children = (
+				CDFF1F30273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift */,
+			);
+			path = "Spaced Rep Algorithms";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,9 +456,12 @@
 				CDA44BF82701444400BC5118 /* CardModel.swift in Sources */,
 				CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */,
 				CD705EBF2734E3DA00931333 /* AddCardViewController.swift in Sources */,
+				CDFF1F31273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift in Sources */,
+				CDFF1F2E273B96130035B4EC /* LeitnerBoxModel.swift in Sources */,
 				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
 				CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */,
 				CD43E192272BB56000079EB4 /* SingleCardView.swift in Sources */,
+				CDFF1F2B273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift in Sources */,
 				CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */,
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
 				CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */,
