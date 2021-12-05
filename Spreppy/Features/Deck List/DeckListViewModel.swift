@@ -71,10 +71,7 @@ class DeckListViewModel {
             }
         case .addTapped:
             guard !state.isEditing else { assert(false); return }
-            repos.deckRepo.createOrUpdate(
-                DeckModel(
-                    title: "Blah blah blah",
-                    rank: Int32(state.decks.count)))
+            coordinator.navigate(to: .createDeck)
         case .doneTapped:
             guard state.isEditing else { assert(false); return }
             state.isEditing = false
