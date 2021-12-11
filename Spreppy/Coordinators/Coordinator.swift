@@ -22,6 +22,7 @@ enum NavigationTarget: Equatable {
     case deckInfo(deckID: UUID)
     case deckList
     case deckStudy(deckID: UUID)
+    case settings
 
     var type: NavigationTargetType {
         switch self {
@@ -29,7 +30,7 @@ enum NavigationTarget: Equatable {
             return .modal
         case .confirmCancelAlert, .confirmDeleteAlert:
             return .alert
-        case .deckInfo, .deckList, .deckStudy:
+        case .deckInfo, .deckList, .deckStudy, .settings:
             return .navigationStack
         }
     }
@@ -43,6 +44,7 @@ enum NavigationTarget: Equatable {
         case let (.deckInfo(deckA), .deckInfo(deckB)): return deckA == deckB
         case (.deckList, .deckList): return true
         case let (.deckStudy(deckA), .deckStudy(deckB)): return deckA == deckB
+        case (.settings, .settings): return true
         case (_, _): return false
         }
     }
@@ -104,6 +106,10 @@ class MainCoordinator: Coordinator {
         case let .deckInfo(deckID):
             viewController = DeckInfoViewController(
                 deckID: deckID,
+                coordinator: coordinator,
+                repos: repos)
+        case let .settings:
+            viewController = SettingsViewController(
                 coordinator: coordinator,
                 repos: repos)
         }

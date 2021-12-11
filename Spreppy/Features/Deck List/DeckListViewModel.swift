@@ -94,7 +94,7 @@ class DeckListViewModel {
             let deckID = state.decks[row].uuid
             coordinator.navigate(to: .deckInfo(deckID: deckID))
         case .settingsTapped:
-            break
+            coordinator.navigate(to: .settings)
         }
     }
 }
