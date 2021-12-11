@@ -33,6 +33,7 @@ enum DeckListUIEvent {
     case deleteTapped(_ row: Int)
     case deckSelected(_ row: Int)
     case deckInfoSelected(_ row: Int)
+    case settingsTapped
 }
 
 class DeckListViewModel {
@@ -92,6 +93,8 @@ class DeckListViewModel {
             guard !state.isEditing else { assert(false); return }
             let deckID = state.decks[row].uuid
             coordinator.navigate(to: .deckInfo(deckID: deckID))
+        case .settingsTapped:
+            break
         }
     }
 }

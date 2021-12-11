@@ -16,6 +16,11 @@ class DeckListViewController: UIViewController,
     private var state = DeckListState()
 
     private lazy var tableView = makeTableView()
+    private lazy var settingsBarButton = UIBarButtonItem(
+        image: UIImage(systemName: "gear"),
+        style: .plain,
+        target: self,
+        action: #selector(didTapSettings))
     private lazy var addBarButton = UIBarButtonItem(
         barButtonSystemItem: .add,
         target: self,
@@ -53,7 +58,7 @@ class DeckListViewController: UIViewController,
 
         title = String(localized: "Decks")
         navigationItem.setLeftBarButton(editBarButton, animated: false)
-        navigationItem.setRightBarButtonItems([addBarButton], animated: false)
+        navigationItem.setRightBarButtonItems([addBarButton, settingsBarButton], animated: false)
 
         // MARK: View Hierarchy
 
@@ -89,7 +94,7 @@ class DeckListViewController: UIViewController,
         if oldState.isEditing != state.isEditing {
             tableView.setEditing(state.isEditing, animated: true)
             navigationItem.setLeftBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
-            navigationItem.setRightBarButton(state.isEditing ? nil : addBarButton, animated: true)
+            navigationItem.setRightBarButtonItems(state.isEditing ? [] : [addBarButton, settingsBarButton], animated: true)
         }
     }
 
@@ -105,6 +110,10 @@ class DeckListViewController: UIViewController,
     }
 
     // MARK: Helpers
+    
+    @objc private func didTapSettings() {
+        viewModel.handle(.settingsTapped)
+    }
 
     @objc private func didTapAdd() {
         viewModel.handle(.addTapped)
