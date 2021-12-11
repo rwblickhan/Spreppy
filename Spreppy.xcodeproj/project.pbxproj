@@ -45,6 +45,7 @@
 		CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF927014A7C00BC5118 /* CardRepository.swift */; };
 		CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */; };
 		CDDB7089276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDB7088276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift */; };
+		CDDB708B2764669500CCEC77 /* LeitnerBoxRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDB708A2764669500CCEC77 /* LeitnerBoxRepository.swift */; };
 		CDFF1F25273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */; };
 		CDFF1F2B273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */; };
 		CDFF1F2E273B96130035B4EC /* LeitnerBoxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */; };
@@ -110,6 +111,7 @@
 		CDA44BF927014A7C00BC5118 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 		CDDB7088276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxSpacedRepAlgorithmTests.swift; sourceTree = "<group>"; };
+		CDDB708A2764669500CCEC77 /* LeitnerBoxRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxRepository.swift; sourceTree = "<group>"; };
 		CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+SpreppyExtensions.swift"; sourceTree = "<group>"; };
 		CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeitnerBox+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxModel.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */,
 				CDA44BF927014A7C00BC5118 /* CardRepository.swift */,
 				CDA44BF32700285300BC5118 /* DeckRepository.swift */,
+				CDDB708A2764669500CCEC77 /* LeitnerBoxRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */,
 				CD705EBF2734E3DA00931333 /* AddCardViewController.swift in Sources */,
 				CDFF1F31273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift in Sources */,
+				CDDB708B2764669500CCEC77 /* LeitnerBoxRepository.swift in Sources */,
 				CDFF1F2E273B96130035B4EC /* LeitnerBoxModel.swift in Sources */,
 				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
 				CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */,

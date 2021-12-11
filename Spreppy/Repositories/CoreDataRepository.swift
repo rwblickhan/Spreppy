@@ -13,6 +13,7 @@ import UIKit
 struct CoreDataRepositories: Repositories {
     let cardRepo: CardRepository
     let deckRepo: DeckRepository
+    let leitnerBoxRepo: LeitnerBoxRepository
 
     private let viewContext: NSManagedObjectContext
     private let backgroundContext: NSManagedObjectContext
@@ -23,6 +24,7 @@ struct CoreDataRepositories: Repositories {
 
         cardRepo = CardCoreDataRepository(viewContext: viewContext, backgroundContext: backgroundContext)
         deckRepo = DeckCoreDataRepository(viewContext: viewContext, backgroundContext: backgroundContext)
+        leitnerBoxRepo = LeitnerBoxCoreDataRepository(viewContext: viewContext, backgroundContext: backgroundContext)
     }
 }
 
