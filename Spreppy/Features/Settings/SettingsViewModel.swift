@@ -12,7 +12,7 @@ protocol SettingsViewModelDelegate: AnyObject {
     func update(state: SettingsState)
 }
 
-struct SettingsState { }
+struct SettingsState {}
 
 class SettingsViewModel {
     private var state: SettingsState {
@@ -20,7 +20,7 @@ class SettingsViewModel {
             delegate?.update(state: state)
         }
     }
-    
+
     private let coordinator: Coordinator
     private let repos: Repositories
     private weak var delegate: SettingsViewModelDelegate?

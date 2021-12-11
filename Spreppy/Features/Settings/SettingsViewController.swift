@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController, SettingsViewModelDelegate {
     private var viewModel: SettingsViewModel!
-    
+
     init(coordinator: Coordinator, repos: Repositories) {
         super.init(nibName: nil, bundle: nil)
 
@@ -19,17 +19,17 @@ class SettingsViewController: UIViewController, SettingsViewModelDelegate {
             repos: repos,
             delegate: self)
     }
-    
+
     // MARK: UIViewController
 
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init?(coder:) is unimplemented")
     }
-    
+
     // MARK: SettingsViewModelDelegate
-    
-    func update(state: SettingsState) {
-        // TODO
+
+    func update(state _: SettingsState) {
+        // TODO:
     }
 }

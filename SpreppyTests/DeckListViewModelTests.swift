@@ -118,7 +118,7 @@ class DeskListViewModelTests: XCTestCase {
         subject.handle(.deckInfoSelected(0))
         XCTAssertEqual(coordinator.targets.last, .deckInfo(deckID: testUUID))
     }
-    
+
     func testHandleSettingsTapped() {
         subject = DeckListViewModel(coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.settingsTapped)
