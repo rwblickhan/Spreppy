@@ -26,13 +26,13 @@ class SettingsViewController: UIViewController, SettingsViewModelDelegate {
     required init?(coder _: NSCoder) {
         fatalError("init?(coder:) is unimplemented")
     }
-    
+
     override func loadView() {
         view = UIView()
         view.backgroundColor = .systemBackground
-        
+
         // MARK: Navigation Bar
-        
+
         title = String(localized: "Settings")
     }
 
