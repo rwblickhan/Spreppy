@@ -108,6 +108,7 @@ class CoreDataRepository<ModelType: Model>: NSObject {
 
         guard let object = (try? viewContext.fetch(fetchRequest))?.first else { assert(false); return }
         viewContext.delete(object)
+        try! viewContext.save()
     }
 
     @objc private func viewContextDidSave(_ notification: Notification) {
