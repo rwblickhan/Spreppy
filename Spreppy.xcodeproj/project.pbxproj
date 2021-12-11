@@ -44,6 +44,8 @@
 		CDA44BF82701444400BC5118 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF72701444400BC5118 /* CardModel.swift */; };
 		CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF927014A7C00BC5118 /* CardRepository.swift */; };
 		CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */; };
+		CDDB7089276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDB7088276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift */; };
+		CDDB708B2764669500CCEC77 /* LeitnerBoxRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDB708A2764669500CCEC77 /* LeitnerBoxRepository.swift */; };
 		CDFF1F25273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */; };
 		CDFF1F2B273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */; };
 		CDFF1F2E273B96130035B4EC /* LeitnerBoxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */; };
@@ -108,6 +110,8 @@
 		CDA44BF72701444400BC5118 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		CDA44BF927014A7C00BC5118 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		CDDB7088276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxSpacedRepAlgorithmTests.swift; sourceTree = "<group>"; };
+		CDDB708A2764669500CCEC77 /* LeitnerBoxRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxRepository.swift; sourceTree = "<group>"; };
 		CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+SpreppyExtensions.swift"; sourceTree = "<group>"; };
 		CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeitnerBox+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxModel.swift; sourceTree = "<group>"; };
@@ -240,12 +244,13 @@
 		CDA44BCA26FFE8B700BC5118 /* SpreppyTests */ = {
 			isa = PBXGroup;
 			children = (
+				CD15A9A52705689300333111 /* RepositorySpies.swift */,
+				CD9C2834270EAFF1001D43D3 /* CoordinatorSpy.swift */,
+				CDDB7088276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift */,
 				CD705EC22734F31800931333 /* AddCardViewModelTests.swift */,
 				CD53C2CC2717F4510052F9C6 /* DeckInfoViewModelTests.swift */,
 				CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */,
 				CD9C2836270EB188001D43D3 /* DeckStudyViewModelTests.swift */,
-				CD15A9A52705689300333111 /* RepositorySpies.swift */,
-				CD9C2834270EAFF1001D43D3 /* CoordinatorSpy.swift */,
 				6C8426A52752C5A5004EDFA8 /* CreateDeckViewModelTests.swift */,
 			);
 			path = SpreppyTests;
@@ -290,6 +295,7 @@
 				CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */,
 				CDA44BF927014A7C00BC5118 /* CardRepository.swift */,
 				CDA44BF32700285300BC5118 /* DeckRepository.swift */,
+				CDDB708A2764669500CCEC77 /* LeitnerBoxRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 				CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */,
 				CD705EBF2734E3DA00931333 /* AddCardViewController.swift in Sources */,
 				CDFF1F31273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift in Sources */,
+				CDDB708B2764669500CCEC77 /* LeitnerBoxRepository.swift in Sources */,
 				CDFF1F2E273B96130035B4EC /* LeitnerBoxModel.swift in Sources */,
 				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
 				CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */,
@@ -489,6 +496,7 @@
 				CD9C2837270EB188001D43D3 /* DeckStudyViewModelTests.swift in Sources */,
 				6C8426A62752C5A5004EDFA8 /* CreateDeckViewModelTests.swift in Sources */,
 				CD53C2CE2717F4540052F9C6 /* DeckInfoViewModelTests.swift in Sources */,
+				CDDB7089276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

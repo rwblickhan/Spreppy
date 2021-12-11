@@ -10,4 +10,5 @@ import Foundation
 protocol Repositories {
     var cardRepo: CardRepository { get }
     var deckRepo: DeckRepository { get }
+    var leitnerBoxRepo: LeitnerBoxRepository { get }
 }

@@ -16,10 +16,12 @@ protocol DeckStudyViewModelDelegate: AnyObject {
 struct DeckStudyState: Equatable {
     var deck: DeckModel?
     var cards: [UUID: CardModel]
+    var leitnerBoxes: [LeitnerBoxModel]
 
-    init(deck: DeckModel? = nil, cards: [UUID: CardModel] = [:]) {
+    init(deck: DeckModel? = nil, cards: [UUID: CardModel] = [:], leitnerBoxes: [LeitnerBoxModel] = []) {
         self.deck = deck
         self.cards = cards
+        self.leitnerBoxes = leitnerBoxes
     }
 
     var numberOfCards: Int {
@@ -53,6 +55,7 @@ class DeckStudyViewModel {
 
     private var deckSubscription: AnyCancellable?
     private var cardSubscriptions = [UUID: AnyCancellable?]()
+    private var leitnerBoxSubscription: AnyCancellable?
 
     init(
         deckID: UUID,
@@ -88,39 +91,38 @@ class DeckStudyViewModel {
                 self?.state.deck = deck
                 fetchCards(deck.cardUUIDs)
             })
+            leitnerBoxSubscription = repos.leitnerBoxRepo.fetchLeitnerBoxList()
+                .sink(receiveValue: { [weak self] leitnerBoxes in
+                    self?.state.leitnerBoxes = leitnerBoxes
+                })
         case .addTapped:
             coordinator.navigate(to: .addCard(deckID: deckID))
         case let .didSwipeCard(index, direction):
-            guard let card = state.card(at: index) else { assert(false); return }
+            guard
+                let card = state.card(at: index),
+                let currentStage = state.leitnerBoxes.first(where: { card.currentStageUUID == $0.uuid })
+            else { assert(false); return }
+            let isCorrect: Bool
             switch direction {
-            case .left:
-                repos.cardRepo.createOrUpdate(
-                    CardModel(
-                        uuid: card.uuid,
-                        // TODO: update
-                        nextDueTime: card.nextDueTime,
-                        numCorrectRepetitions: 0,
-                        numIncorrectRepetitions: card.numIncorrectRepetitions + 1,
-                        // TODO: update
-                        currentStageUUID: card.currentStageUUID,
-                        deckUUID: card.deckUUID,
-                        frontText: card.frontText,
-                        backText: card.backText))
-            case .right:
-                repos.cardRepo.createOrUpdate(
-                    CardModel(
-                        uuid: card.uuid,
-                        // TODO: update
-                        nextDueTime: card.nextDueTime,
-                        numCorrectRepetitions: card.numCorrectRepetitions + 1,
-                        numIncorrectRepetitions: 0,
-                        // TODO: update
-                        currentStageUUID: card.currentStageUUID,
-                        deckUUID: card.deckUUID,
-                        frontText: card.frontText,
-                        backText: card.backText))
-            case .up, .down: assert(false); return
+            case .left: isCorrect = false
+            case .right: isCorrect = true
+            case .up, .down: assert(false); isCorrect = false
             }
+
+            let newStage = LeitnerBoxSpacedRepAlgorithm.newStage(
+                numIncorrectRepetitions: card.numIncorrectRepetitions,
+                isCorrect: isCorrect,
+                stages: state.leitnerBoxes,
+                currentStage: currentStage)
+            repos.cardRepo.createOrUpdate(CardModel(
+                uuid: card.uuid,
+                nextDueTime: Date().addingTimeInterval(newStage.delayBeforeDisplay),
+                numCorrectRepetitions: isCorrect ? card.numCorrectRepetitions + 1 : 0,
+                numIncorrectRepetitions: isCorrect ? 0 : card.numIncorrectRepetitions + 1,
+                currentStageUUID: newStage.uuid,
+                deckUUID: card.deckUUID,
+                frontText: card.frontText,
+                backText: card.backText))
         }
     }
 }

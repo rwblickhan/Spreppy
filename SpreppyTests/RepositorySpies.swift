@@ -12,6 +12,7 @@ import Foundation
 struct RepositorySpies: Repositories {
     let deckRepoSpy = DeckRepositorySpy()
     let cardRepoSpy = CardRepositorySpy()
+    let leitnerBoxRepoSpy = LeitnerBoxRepositorySpy()
 
     var deckRepo: DeckRepository {
         deckRepoSpy
@@ -19,6 +20,10 @@ struct RepositorySpies: Repositories {
 
     var cardRepo: CardRepository {
         cardRepoSpy
+    }
+
+    var leitnerBoxRepo: LeitnerBoxRepository {
+        leitnerBoxRepoSpy
     }
 }
 
@@ -67,4 +72,17 @@ struct DeckRepositorySpy: RepositorySpy, DeckRepository {
 struct CardRepositorySpy: RepositorySpy, CardRepository {
     typealias ModelType = CardModel
     private(set) var modelList = CurrentValueSubject<[CardModel], Never>([])
+}
+
+struct LeitnerBoxRepositorySpy: RepositorySpy, LeitnerBoxRepository {
+    typealias ModelType = LeitnerBoxModel
+    private(set) var modelList = CurrentValueSubject<[LeitnerBoxModel], Never>([])
+
+    func fetchLeitnerBoxList() -> AnyPublisher<[LeitnerBoxModel], Never> {
+        modelList.eraseToAnyPublisher()
+    }
+
+    func setLeitnerBoxList(_ leitnerBoxes: [LeitnerBoxModel]) {
+        modelList.send(leitnerBoxes)
+    }
 }
