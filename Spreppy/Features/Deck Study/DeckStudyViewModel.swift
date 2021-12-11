@@ -91,9 +91,10 @@ class DeckStudyViewModel {
                 self?.state.deck = deck
                 fetchCards(deck.cardUUIDs)
             })
-            leitnerBoxSubscription = repos.leitnerBoxRepo.fetchLeitnerBoxList().sink(receiveValue: { [weak self] leitnerBoxes in
-                self?.state.leitnerBoxes = leitnerBoxes
-            })
+            leitnerBoxSubscription = repos.leitnerBoxRepo.fetchLeitnerBoxList()
+                .sink(receiveValue: { [weak self] leitnerBoxes in
+                    self?.state.leitnerBoxes = leitnerBoxes
+                })
         case .addTapped:
             coordinator.navigate(to: .addCard(deckID: deckID))
         case let .didSwipeCard(index, direction):
@@ -107,9 +108,21 @@ class DeckStudyViewModel {
             case .right: isCorrect = true
             case .up, .down: assert(false); isCorrect = false
             }
-            
-            let newStage = LeitnerBoxSpacedRepAlgorithm.newStage(numIncorrectRepetitions: card.numIncorrectRepetitions, isCorrect: isCorrect, stages: state.leitnerBoxes, currentStage: currentStage)
-            repos.cardRepo.createOrUpdate(CardModel(uuid: card.uuid, nextDueTime: Date().addingTimeInterval(newStage.delayBeforeDisplay), numCorrectRepetitions: isCorrect ? card.numCorrectRepetitions + 1 : 0, numIncorrectRepetitions: isCorrect ? 0 : card.numIncorrectRepetitions + 1, currentStageUUID: newStage.uuid, deckUUID: card.deckUUID, frontText: card.frontText, backText: card.backText))
+
+            let newStage = LeitnerBoxSpacedRepAlgorithm.newStage(
+                numIncorrectRepetitions: card.numIncorrectRepetitions,
+                isCorrect: isCorrect,
+                stages: state.leitnerBoxes,
+                currentStage: currentStage)
+            repos.cardRepo.createOrUpdate(CardModel(
+                uuid: card.uuid,
+                nextDueTime: Date().addingTimeInterval(newStage.delayBeforeDisplay),
+                numCorrectRepetitions: isCorrect ? card.numCorrectRepetitions + 1 : 0,
+                numIncorrectRepetitions: isCorrect ? 0 : card.numIncorrectRepetitions + 1,
+                currentStageUUID: newStage.uuid,
+                deckUUID: card.deckUUID,
+                frontText: card.frontText,
+                backText: card.backText))
         }
     }
 }

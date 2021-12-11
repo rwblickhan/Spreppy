@@ -6,17 +6,18 @@
 //
 
 import Combine
-import Foundation
 import CoreData
+import Foundation
 
 protocol LeitnerBoxRepository {
     func fetchLeitnerBoxList() -> AnyPublisher<[LeitnerBoxModel], Never>
 }
 
-class LeitnerBoxCoreDataRepository: CoreDataRepository<LeitnerBoxModel>, LeitnerBoxRepository, NSFetchedResultsControllerDelegate {
+class LeitnerBoxCoreDataRepository: CoreDataRepository<LeitnerBoxModel>, LeitnerBoxRepository,
+    NSFetchedResultsControllerDelegate {
     private let fetchedResultsController: NSFetchedResultsController<LeitnerBox>
     private let leitnerBoxListState = CurrentValueSubject<[LeitnerBoxModel], Never>([])
-    
+
     override init(viewContext: NSManagedObjectContext, backgroundContext: NSManagedObjectContext) {
         let fetchRequest = LeitnerBox.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
@@ -33,21 +34,21 @@ class LeitnerBoxCoreDataRepository: CoreDataRepository<LeitnerBoxModel>, Leitner
         do {
             try fetchedResultsController.performFetch()
             if let leitnerBoxes = fetchedResultsController.fetchedObjects {
-                leitnerBoxListState.send(leitnerBoxes.compactMap{ LeitnerBoxModel(managedObject: $0) })
+                leitnerBoxListState.send(leitnerBoxes.compactMap { LeitnerBoxModel(managedObject: $0) })
             }
         } catch {
             fatalError("###\(#function): Failed to performFetch: \(error)")
         }
     }
-    
+
     func fetchLeitnerBoxList() -> AnyPublisher<[LeitnerBoxModel], Never> {
         leitnerBoxListState.eraseToAnyPublisher()
     }
-    
+
     // MARK: NSFetchedResultsControllerDelegate
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard let leitnerBoxes = controller.fetchedObjects as? [LeitnerBox] else { return }
-                leitnerBoxListState.send(leitnerBoxes.compactMap{ LeitnerBoxModel(managedObject: $0) })
+        leitnerBoxListState.send(leitnerBoxes.compactMap { LeitnerBoxModel(managedObject: $0) })
     }
 }
