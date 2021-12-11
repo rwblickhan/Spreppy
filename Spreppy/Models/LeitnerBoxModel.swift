@@ -34,12 +34,12 @@ struct LeitnerBoxModel: Model, Hashable {
         uuid: UUID = UUID(),
         title: String = "",
         delayBeforeDisplay: Double = 0.0,
-        previousStageUUID _: UUID? = nil,
-        nextStageUUID _: UUID? = nil) {
+        previousStageUUID: UUID? = nil,
+        nextStageUUID: UUID? = nil) {
         self.uuid = uuid
         self.title = title
         self.delayBeforeDisplay = delayBeforeDisplay
-        previousStageUUID = nil
-        nextStageUUID = nil
+            self.previousStageUUID = previousStageUUID
+            self.nextStageUUID = nextStageUUID
     }
 }
