@@ -79,8 +79,11 @@ class DeckListViewModel {
             guard !state.isEditing else { assert(false); return }
             state.isEditing = true
         case let .deleteTapped(index):
-            let deckModel = state.decks[index]
-            repos.deckRepo.delete(deckModel)
+            coordinator.navigate(to: .confirmDeleteAlert(onConfirm: { [weak self] in
+                guard let self = self else { return }
+                let deckModel = self.state.decks[index]
+                self.repos.deckRepo.delete(deckModel)
+            }))
         case let .deckSelected(row):
             guard !state.isEditing else { return }
             let deckID = state.decks[row].uuid

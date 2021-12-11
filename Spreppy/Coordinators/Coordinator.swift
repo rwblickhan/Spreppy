@@ -17,6 +17,7 @@ enum NavigationTargetType {
 enum NavigationTarget: Equatable {
     case addCard(deckID: UUID)
     case confirmCancelAlert(onConfirm: () -> Void)
+    case confirmDeleteAlert(onConfirm: () -> Void)
     case createDeck
     case deckInfo(deckID: UUID)
     case deckList
@@ -26,7 +27,7 @@ enum NavigationTarget: Equatable {
         switch self {
         case .addCard, .createDeck:
             return .modal
-        case .confirmCancelAlert:
+        case .confirmCancelAlert, .confirmDeleteAlert:
             return .alert
         case .deckInfo, .deckList, .deckStudy:
             return .navigationStack
@@ -37,6 +38,7 @@ enum NavigationTarget: Equatable {
         switch (lhs, rhs) {
         case let (.addCard(deckA), .addCard(deckB)): return deckA == deckB
         case (.confirmCancelAlert, .confirmCancelAlert): return true
+        case (.confirmDeleteAlert, .confirmDeleteAlert): return true
         case (.createDeck, .createDeck): return true
         case let (.deckInfo(deckA), .deckInfo(deckB)): return deckA == deckB
         case (.deckList, .deckList): return true
@@ -79,6 +81,14 @@ class MainCoordinator: Coordinator {
                 preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Back", style: .default, handler: nil))
             alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in onConfirm() }))
+            viewController = alert
+        case let .confirmDeleteAlert(onConfirm):
+            let alert = UIAlertController(
+                title: "Are you sure?",
+                message: "Deleting a deck can't be undone.",
+                preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in onConfirm() }))
             viewController = alert
         case .createDeck:
             viewController = CreateDeckViewController(
