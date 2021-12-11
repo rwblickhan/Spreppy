@@ -94,7 +94,9 @@ class DeckListViewController: UIViewController,
         if oldState.isEditing != state.isEditing {
             tableView.setEditing(state.isEditing, animated: true)
             navigationItem.setLeftBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
-            navigationItem.setRightBarButtonItems(state.isEditing ? [] : [addBarButton, settingsBarButton], animated: true)
+            navigationItem.setRightBarButtonItems(
+                state.isEditing ? [] : [addBarButton, settingsBarButton],
+                animated: true)
         }
     }
 
@@ -110,7 +112,7 @@ class DeckListViewController: UIViewController,
     }
 
     // MARK: Helpers
-    
+
     @objc private func didTapSettings() {
         viewModel.handle(.settingsTapped)
     }
