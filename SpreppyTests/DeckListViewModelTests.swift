@@ -87,7 +87,11 @@ class DeskListViewModelTests: XCTestCase {
             coordinator: coordinator,
             repos: repos,
             delegate: delegate)
+
         subject.handle(.deleteTapped(0))
+
+        guard case let .confirmDeleteAlert(onConfirm) = coordinator.targets.last else { XCTFail(); return }
+        onConfirm()
         XCTAssertTrue(repos.deckRepoSpy.modelList.value.isEmpty)
     }
 

@@ -53,7 +53,7 @@ class DeckListViewController: UIViewController,
 
         title = String(localized: "Decks")
         navigationItem.setLeftBarButton(editBarButton, animated: false)
-        navigationItem.setRightBarButton(addBarButton, animated: false)
+        navigationItem.setRightBarButtonItems([addBarButton], animated: false)
 
         // MARK: View Hierarchy
 
