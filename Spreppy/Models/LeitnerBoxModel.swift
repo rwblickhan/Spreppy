@@ -39,7 +39,7 @@ struct LeitnerBoxModel: Model, Hashable {
         self.uuid = uuid
         self.title = title
         self.delayBeforeDisplay = delayBeforeDisplay
-            self.previousStageUUID = previousStageUUID
-            self.nextStageUUID = nextStageUUID
+        self.previousStageUUID = previousStageUUID
+        self.nextStageUUID = nextStageUUID
     }
 }
