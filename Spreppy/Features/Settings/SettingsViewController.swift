@@ -34,7 +34,9 @@ class SettingsViewController: UIViewController, SettingsViewModelDelegate {
         view = UIView()
         view.backgroundColor = .systemBackground
 
-        installBoxesLabel.text = String(localized: "Install default Leitner box stages:")
+        installBoxesLabel.text = String(localized: "Install default Leitner box stages (emulates WaniKani):")
+        installBoxesLabel.textAlignment = .center
+        installBoxesLabel.numberOfLines = 0
 
         // MARK: Navigation Bar
 

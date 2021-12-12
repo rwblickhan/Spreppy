@@ -108,7 +108,7 @@ class MainCoordinator: Coordinator {
                 deckID: deckID,
                 coordinator: coordinator,
                 repos: repos)
-        case let .settings:
+        case .settings:
             viewController = SettingsViewController(
                 coordinator: coordinator,
                 repos: repos)

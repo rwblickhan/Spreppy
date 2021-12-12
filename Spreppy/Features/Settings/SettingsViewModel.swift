@@ -60,45 +60,53 @@ class SettingsViewModel {
             let apprentice2Box = LeitnerBoxModel(
                 uuid: apprentice2BoxUUID,
                 title: String(localized: "Apprentice 2"),
-                delayBeforeDisplay: 4 * 60 * 60,
+                delayBeforeDisplay: 4 * 60 * 60, // 4 hours
                 previousStageUUID: apprentice1BoxUUID,
                 nextStageUUID: apprentice3BoxUUID)
             let apprentice3Box = LeitnerBoxModel(
                 uuid: apprentice3BoxUUID,
                 title: String(localized: "Apprentice 3"),
-                delayBeforeDisplay: 8 * 60 * 60,
+                delayBeforeDisplay: 8 * 60 * 60, // 8 hours
                 previousStageUUID: apprentice2BoxUUID,
                 nextStageUUID: apprentice4BoxUUID)
             let apprentice4Box = LeitnerBoxModel(
                 uuid: apprentice4BoxUUID,
                 title: String(localized: "Apprentice 4"),
-                delayBeforeDisplay: 24 * 60 * 60,
+                delayBeforeDisplay: 24 * 60 * 60, // 1 day
                 previousStageUUID: apprentice3BoxUUID,
                 nextStageUUID: guru1BoxUUID)
             let guru1Box = LeitnerBoxModel(
                 uuid: guru1BoxUUID,
                 title: String(localized: "Guru 1"),
-                delayBeforeDisplay: 2 * 24 * 60 * 60,
+                delayBeforeDisplay: 2 * 24 * 60 * 60, // 2 days
                 previousStageUUID: apprentice4BoxUUID,
                 nextStageUUID: guru2BoxUUID)
             let guru2Box = LeitnerBoxModel(
                 uuid: guru2BoxUUID,
                 title: String(localized: "Guru 2"),
-                delayBeforeDisplay: 7 * 24 * 60 * 60,
+                delayBeforeDisplay: 7 * 24 * 60 * 60, // 1 week
                 previousStageUUID: guru1BoxUUID,
                 nextStageUUID: masterBoxUUID)
             let masterBox = LeitnerBoxModel(
                 uuid: masterBoxUUID,
                 title: String(localized: "Master"),
-                delayBeforeDisplay: 2 * 7 * 24 * 60 * 60,
+                delayBeforeDisplay: 2 * 7 * 24 * 60 * 60, // 2 weeks
                 previousStageUUID: guru2BoxUUID,
                 nextStageUUID: enlightenedBoxUUID)
             let enlightenedBox = LeitnerBoxModel(
                 uuid: enlightenedBoxUUID,
                 title: String(localized: "Enlightened"),
-                delayBeforeDisplay: 4 * 7 * 24 * 60 * 60,
+                delayBeforeDisplay: 4 * 7 * 24 * 60 * 60, // 4 weeks
                 previousStageUUID: masterBoxUUID,
                 nextStageUUID: nil)
+            repos.leitnerBoxRepo.createOrUpdate(apprentice1Box)
+            repos.leitnerBoxRepo.createOrUpdate(apprentice2Box)
+            repos.leitnerBoxRepo.createOrUpdate(apprentice3Box)
+            repos.leitnerBoxRepo.createOrUpdate(apprentice4Box)
+            repos.leitnerBoxRepo.createOrUpdate(guru1Box)
+            repos.leitnerBoxRepo.createOrUpdate(guru2Box)
+            repos.leitnerBoxRepo.createOrUpdate(masterBox)
+            repos.leitnerBoxRepo.createOrUpdate(enlightenedBox)
         }
     }
 }
