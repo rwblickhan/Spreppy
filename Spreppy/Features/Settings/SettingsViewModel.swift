@@ -14,6 +14,10 @@ protocol SettingsViewModelDelegate: AnyObject {
 
 struct SettingsState {}
 
+enum SettingsUIEvent {
+    case installBoxesTapped
+}
+
 class SettingsViewModel {
     private var state: SettingsState {
         didSet {
@@ -34,5 +38,12 @@ class SettingsViewModel {
         self.coordinator = coordinator
         self.repos = repos
         self.delegate = delegate
+    }
+    
+    func handle(_ event: SettingsUIEvent) {
+        switch event {
+        case .installBoxesTapped:
+            break
+        }
     }
 }
