@@ -50,8 +50,12 @@ class SettingsViewController: UIViewController, SettingsViewModelDelegate {
         installBoxesLabel.translatesAutoresizingMaskIntoConstraints = false
         installBoxesButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            installBoxesLabel.leadingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: installBoxesLabel.trailingAnchor, multiplier: 1),
+            installBoxesLabel.leadingAnchor.constraint(
+                greaterThanOrEqualToSystemSpacingAfter: view.leadingAnchor,
+                multiplier: 1),
+            view.trailingAnchor.constraint(
+                greaterThanOrEqualToSystemSpacingAfter: installBoxesLabel.trailingAnchor,
+                multiplier: 1),
             installBoxesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             installBoxesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             installBoxesButton.topAnchor.constraint(
