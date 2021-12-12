@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController, SettingsViewModelDelegate {
     private var viewModel: SettingsViewModel!
-    
+
     private let installBoxesLabel = UILabel()
     private let installBoxesButton = UIButton(type: .contactAdd)
 
@@ -33,42 +33,44 @@ class SettingsViewController: UIViewController, SettingsViewModelDelegate {
     override func loadView() {
         view = UIView()
         view.backgroundColor = .systemBackground
-        
+
         installBoxesLabel.text = String(localized: "Install default Leitner boxes:")
 
         // MARK: Navigation Bar
 
         title = String(localized: "Settings")
-        
+
         // MARK: View Hierarchy
-        
+
         view.addSubview(installBoxesLabel)
         view.addSubview(installBoxesButton)
-        
+
         // MARK: Layout
-        
+
         installBoxesLabel.translatesAutoresizingMaskIntoConstraints = false
         installBoxesButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             installBoxesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             installBoxesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            installBoxesButton.topAnchor.constraint(equalToSystemSpacingBelow: installBoxesLabel.bottomAnchor, multiplier: 1),
+            installBoxesButton.topAnchor.constraint(
+                equalToSystemSpacingBelow: installBoxesLabel.bottomAnchor,
+                multiplier: 1),
             installBoxesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
-        
+
         // MARK: Gesture Recognizers
-        
+
         installBoxesButton.addTarget(self, action: #selector(didTapInstallBoxes), for: .touchDown)
     }
 
     // MARK: SettingsViewModelDelegate
 
     func update(state _: SettingsState) {
-        // TODO
+        // TODO:
     }
-    
+
     // MARK: Actions
-    
+
     @objc func didTapInstallBoxes() {
         viewModel.handle(.installBoxesTapped)
     }

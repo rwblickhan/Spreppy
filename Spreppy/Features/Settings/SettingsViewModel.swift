@@ -39,7 +39,7 @@ class SettingsViewModel {
         self.repos = repos
         self.delegate = delegate
     }
-    
+
     func handle(_ event: SettingsUIEvent) {
         switch event {
         case .installBoxesTapped:
