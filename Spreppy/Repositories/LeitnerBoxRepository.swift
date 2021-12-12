@@ -11,6 +11,7 @@ import Foundation
 
 protocol LeitnerBoxRepository {
     func fetchLeitnerBoxList() -> AnyPublisher<[LeitnerBoxModel], Never>
+    func createOrUpdate(_ leitnerBoxModel: LeitnerBoxModel)
 }
 
 class LeitnerBoxCoreDataRepository: CoreDataRepository<LeitnerBoxModel>, LeitnerBoxRepository,

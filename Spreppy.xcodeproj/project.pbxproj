@@ -12,6 +12,8 @@
 		6C8426A62752C5A5004EDFA8 /* CreateDeckViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8426A52752C5A5004EDFA8 /* CreateDeckViewModelTests.swift */; };
 		CD15A9A427043DD400333111 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A327043DD400333111 /* Repositories.swift */; };
 		CD15A9A62705689300333111 /* RepositorySpies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A52705689300333111 /* RepositorySpies.swift */; };
+		CD41E48B27656C4700BD2E4B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41E48A27656C4700BD2E4B /* SettingsViewController.swift */; };
+		CD41E48D27656C6400BD2E4B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41E48C27656C6400BD2E4B /* SettingsViewModel.swift */; };
 		CD43E192272BB56000079EB4 /* SingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43E191272BB56000079EB4 /* SingleCardView.swift */; };
 		CD43E197272BBE2300079EB4 /* Shuffle in Frameworks */ = {isa = PBXBuildFile; productRef = CD43E196272BBE2300079EB4 /* Shuffle */; };
 		CD53C2C92717F3A90052F9C6 /* DeckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD53C2C82717F3A90052F9C6 /* DeckInfoViewController.swift */; };
@@ -34,7 +36,6 @@
 		CDA44BC126FFE8B600BC5118 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDA44BBF26FFE8B600BC5118 /* LaunchScreen.storyboard */; };
 		CDA44BD626FFE8B700BC5118 /* SpreppyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BD526FFE8B700BC5118 /* SpreppyUITests.swift */; };
 		CDA44BD826FFE8B700BC5118 /* SpreppyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BD726FFE8B700BC5118 /* SpreppyUITestsLaunchTests.swift */; };
-		CDA44BE526FFEC6500BC5118 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */; };
 		CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */; };
 		CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */; };
 		CDA44BEC270020C000BC5118 /* DeckListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */; };
@@ -75,6 +76,8 @@
 		6C8426A52752C5A5004EDFA8 /* CreateDeckViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeckViewModelTests.swift; sourceTree = "<group>"; };
 		CD15A9A327043DD400333111 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		CD15A9A52705689300333111 /* RepositorySpies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySpies.swift; sourceTree = "<group>"; };
+		CD41E48A27656C4700BD2E4B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CD41E48C27656C6400BD2E4B /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CD43E191272BB56000079EB4 /* SingleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCardView.swift; sourceTree = "<group>"; };
 		CD53C2C82717F3A90052F9C6 /* DeckInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewController.swift; sourceTree = "<group>"; };
 		CD53C2CA2717F3B20052F9C6 /* DeckInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewModel.swift; sourceTree = "<group>"; };
@@ -100,7 +103,6 @@
 		CDA44BD126FFE8B700BC5118 /* SpreppyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpreppyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA44BD526FFE8B700BC5118 /* SpreppyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreppyUITests.swift; sourceTree = "<group>"; };
 		CDA44BD726FFE8B700BC5118 /* SpreppyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreppyUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewController.swift; sourceTree = "<group>"; };
 		CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewModel.swift; sourceTree = "<group>"; };
 		CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewModelTests.swift; sourceTree = "<group>"; };
@@ -153,6 +155,15 @@
 			path = "Create Deck";
 			sourceTree = "<group>";
 		};
+		CD41E48927656C3300BD2E4B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CD41E48A27656C4700BD2E4B /* SettingsViewController.swift */,
+				CD41E48C27656C6400BD2E4B /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		CD53C2C52717F3730052F9C6 /* Deck Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +208,7 @@
 				CD53C2C52717F3730052F9C6 /* Deck Info */,
 				CDA44BE826FFF2DD00BC5118 /* Deck List */,
 				CD9C282B270EA83C001D43D3 /* Deck Study */,
+				CD41E48927656C3300BD2E4B /* Settings */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -231,7 +243,6 @@
 				CD9C2831270EA980001D43D3 /* Features */,
 				CDFF1F23273A33BD0035B4EC /* Utilities */,
 				CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */,
-				CDA44BE426FFEC6500BC5118 /* SettingsViewController.swift */,
 				CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */,
 				CDA44BBD26FFE8B600BC5118 /* Assets.xcassets */,
 				CDA44BBF26FFE8B600BC5118 /* LaunchScreen.storyboard */,
@@ -467,11 +478,13 @@
 				CDFF1F2E273B96130035B4EC /* LeitnerBoxModel.swift in Sources */,
 				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
 				CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */,
+				CD41E48D27656C6400BD2E4B /* SettingsViewModel.swift in Sources */,
 				CD43E192272BB56000079EB4 /* SingleCardView.swift in Sources */,
 				CDFF1F2B273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift in Sources */,
 				CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */,
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
 				CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */,
+				CD41E48B27656C4700BD2E4B /* SettingsViewController.swift in Sources */,
 				CD53C2C92717F3A90052F9C6 /* DeckInfoViewController.swift in Sources */,
 				6C8426A42752B703004EDFA8 /* CreateDeckViewModel.swift in Sources */,
 				CD938C252725DCDB00F3AF9C /* Deck+CoreDataClass.swift in Sources */,
@@ -481,7 +494,6 @@
 				CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */,
 				CD9C282D270EA880001D43D3 /* DeckStudyViewController.swift in Sources */,
 				CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */,
-				CDA44BE526FFEC6500BC5118 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
