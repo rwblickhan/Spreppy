@@ -34,7 +34,7 @@ class SettingsViewController: UIViewController, SettingsViewModelDelegate {
         view = UIView()
         view.backgroundColor = .systemBackground
 
-        installBoxesLabel.text = String(localized: "Install default Leitner boxes:")
+        installBoxesLabel.text = String(localized: "Install default Leitner box stages:")
 
         // MARK: Navigation Bar
 
@@ -50,6 +50,8 @@ class SettingsViewController: UIViewController, SettingsViewModelDelegate {
         installBoxesLabel.translatesAutoresizingMaskIntoConstraints = false
         installBoxesButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            installBoxesLabel.leadingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: installBoxesLabel.trailingAnchor, multiplier: 1),
             installBoxesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             installBoxesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             installBoxesButton.topAnchor.constraint(
