@@ -5,6 +5,7 @@
 //  Created by Russell Blickhan on 10/13/21.
 //
 
+import Combine
 import Foundation
 
 protocol DeckInfoViewModelDelegate: AnyObject {
@@ -35,6 +36,8 @@ class DeckInfoViewModel {
     private weak var delegate: DeckInfoViewModelDelegate?
 
     private var deckID: UUID
+    
+    private var subscription: AnyCancellable?
 
     init(
         deckID: UUID,
@@ -52,9 +55,11 @@ class DeckInfoViewModel {
     func handle(_ event: DeckInfoUIEvent) {
         switch event {
         case .viewDidLoad:
-            // TODO: https://github.com/rwblickhan/Spreppy/issues/17
-            // Update this to the name of the deck
-            state.title = deckID.uuidString
+            let (deck, deckUpdates) = repos.deckRepo.fetch(deckID)
+            state.title = "\(deck?.title ?? "Deck") Settings"
+            subscription = deckUpdates.sink(receiveValue: { [weak self] deck in
+                self?.state.title = "\(deck.title) Settings"
+            })
         }
     }
 }
