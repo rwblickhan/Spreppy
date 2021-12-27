@@ -104,7 +104,7 @@ class DeckStudyViewController: UIViewController,
     }
 
     // MARK: Helpers
-    
+
     @objc private func didTapInfo() {
         viewModel.handle(.infoTapped)
     }
