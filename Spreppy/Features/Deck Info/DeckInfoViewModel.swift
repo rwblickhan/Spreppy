@@ -36,7 +36,7 @@ class DeckInfoViewModel {
     private weak var delegate: DeckInfoViewModelDelegate?
 
     private var deckID: UUID
-    
+
     private var subscription: AnyCancellable?
 
     init(
