@@ -38,6 +38,7 @@ enum DeckStudyUIEvent {
     case viewDidLoad
     case addTapped
     case didSwipeCard(index: Int, direction: SwipeDirection)
+    case infoTapped
 }
 
 class DeckStudyViewModel {
@@ -123,6 +124,8 @@ class DeckStudyViewModel {
                 deckUUID: card.deckUUID,
                 frontText: card.frontText,
                 backText: card.backText))
+        case .infoTapped:
+            coordinator.navigate(to: .deckInfo(deckID: deckID))
         }
     }
 }

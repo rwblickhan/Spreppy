@@ -17,6 +17,11 @@ class DeckStudyViewController: UIViewController,
     private var state = DeckStudyState()
 
     private let cardStack = SwipeCardStack()
+    private lazy var infoBarButton = UIBarButtonItem(
+        image: UIImage(systemName: "gear"),
+        style: .plain,
+        target: self,
+        action: #selector(didTapInfo))
     private lazy var addBarButton = UIBarButtonItem(
         barButtonSystemItem: .add,
         target: self,
@@ -49,7 +54,7 @@ class DeckStudyViewController: UIViewController,
 
         // MARK: Navigation Bar
 
-        navigationItem.setRightBarButton(addBarButton, animated: false)
+        navigationItem.setRightBarButtonItems([addBarButton, infoBarButton], animated: false)
         navigationItem.largeTitleDisplayMode = .never
 
         // MARK: View Hierarchy
@@ -99,6 +104,10 @@ class DeckStudyViewController: UIViewController,
     }
 
     // MARK: Helpers
+    
+    @objc private func didTapInfo() {
+        viewModel.handle(.infoTapped)
+    }
 
     @objc private func didTapAdd() {
         viewModel.handle(.addTapped)
