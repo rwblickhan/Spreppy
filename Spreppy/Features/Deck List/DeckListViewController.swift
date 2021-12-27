@@ -107,10 +107,6 @@ class DeckListViewController: UIViewController,
         tableView.deselectRow(at: indexPath, animated: false)
     }
 
-    func tableView(_: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        viewModel.handle(.deckInfoSelected(indexPath.row))
-    }
-
     // MARK: Helpers
 
     @objc private func didTapSettings() {
@@ -152,7 +148,6 @@ private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, Dec
                 content.secondaryText = String(localized: "\(deckModel.cardUUIDs.count) cards ready for review")
             }
             cell.contentConfiguration = content
-            cell.accessoryType = .detailDisclosureButton
             return cell
         }
     }
