@@ -52,7 +52,7 @@ class DeskStudyViewModelTests: XCTestCase {
         subject.handle(.addTapped)
         XCTAssertEqual(coordinator.targets.last, .addCard(deckID: testUUID))
     }
-    
+
     func testHandleInfoTapped() {
         subject = DeckStudyViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.infoTapped)
