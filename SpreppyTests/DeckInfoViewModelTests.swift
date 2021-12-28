@@ -44,6 +44,6 @@ class DeckInfoViewModelTests: XCTestCase {
         repos.deckRepoSpy.setDeckList(decks)
         subject = DeckInfoViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.viewDidLoad)
-        XCTAssertEqual(delegate.state.title, "Test Title")
+        XCTAssertEqual(delegate.state.title, "Test Title Settings")
     }
 }
