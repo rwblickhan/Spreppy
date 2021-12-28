@@ -107,18 +107,6 @@ class DeskListViewModelTests: XCTestCase {
         XCTAssertEqual(coordinator.targets.last, .deckStudy(deckID: testUUID))
     }
 
-    func testHandleDeckInfoSelected() {
-        let testUUID = UUID()
-        let decks = [DeckModel(uuid: testUUID)]
-        subject = DeckListViewModel(
-            state: DeckListState(decks: decks, isEditing: false),
-            coordinator: coordinator,
-            repos: repos,
-            delegate: delegate)
-        subject.handle(.deckInfoSelected(0))
-        XCTAssertEqual(coordinator.targets.last, .deckInfo(deckID: testUUID))
-    }
-
     func testHandleSettingsTapped() {
         subject = DeckListViewModel(coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.settingsTapped)
