@@ -40,8 +40,10 @@ class DeckInfoViewModelTests: XCTestCase {
     }
 
     func testHandleViewDidLoad() {
+        let decks = [DeckModel(uuid: testUUID, title: "Test Title")]
+        repos.deckRepoSpy.setDeckList(decks)
         subject = DeckInfoViewModel(deckID: testUUID, coordinator: coordinator, repos: repos, delegate: delegate)
         subject.handle(.viewDidLoad)
-        XCTAssertEqual(delegate.state.title, testUUID.uuidString)
+        XCTAssertEqual(delegate.state.title, "Test Title")
     }
 }
