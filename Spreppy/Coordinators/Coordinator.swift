@@ -15,14 +15,13 @@ enum NavigationTargetType {
 }
 
 enum NavigationTarget: Equatable {
-    case addCard(deckID: UUID)
+    case addCard(deck: RealmDeck)
     case confirmCancelAlert(onConfirm: () -> Void)
     case confirmDeleteAlert(onConfirm: () -> Void)
     case createDeck
-    case deckInfo(deckID: UUID)
+    case deckInfo(deck: RealmDeck)
     case deckList
-    case deckStudy(deckID: UUID)
-    case settings
+    case deckStudy(deck: RealmDeck)
 
     var type: NavigationTargetType {
         switch self {
@@ -30,7 +29,7 @@ enum NavigationTarget: Equatable {
             return .modal
         case .confirmCancelAlert, .confirmDeleteAlert:
             return .alert
-        case .deckInfo, .deckList, .deckStudy, .settings:
+        case .deckInfo, .deckList, .deckStudy:
             return .navigationStack
         }
     }
@@ -44,7 +43,6 @@ enum NavigationTarget: Equatable {
         case let (.deckInfo(deckA), .deckInfo(deckB)): return deckA == deckB
         case (.deckList, .deckList): return true
         case let (.deckStudy(deckA), .deckStudy(deckB)): return deckA == deckB
-        case (.settings, .settings): return true
         case (_, _): return false
         }
     }
@@ -58,7 +56,6 @@ protocol Coordinator {
 
 class MainCoordinator: Coordinator {
     let navigationController: UINavigationController
-    private let repos = CoreDataRepositories(persistentContainer: AppDelegate.sharedAppDelegate.persistentContainer)
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -74,8 +71,8 @@ class MainCoordinator: Coordinator {
 
         let viewController: UIViewController
         switch target {
-        case let .addCard(deckID):
-            viewController = AddCardViewController(deckID: deckID, coordinator: coordinator, repos: repos)
+        case let .addCard(deck):
+            viewController = AddCardViewController(deck: deck, coordinator: coordinator)
         case let .confirmCancelAlert(onConfirm):
             let alert = UIAlertController(
                 title: "Are you sure?",
@@ -93,25 +90,13 @@ class MainCoordinator: Coordinator {
             alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in onConfirm() }))
             viewController = alert
         case .createDeck:
-            viewController = CreateDeckViewController(
-                coordinator: coordinator,
-                repos: repos)
+            viewController = CreateDeckViewController(coordinator: coordinator)
         case .deckList:
-            viewController = DeckListViewController(coordinator: coordinator, repos: repos)
-        case let .deckStudy(deckID):
-            viewController = DeckStudyViewController(
-                deckID: deckID,
-                coordinator: coordinator,
-                repos: repos)
-        case let .deckInfo(deckID):
-            viewController = DeckInfoViewController(
-                deckID: deckID,
-                coordinator: coordinator,
-                repos: repos)
-        case .settings:
-            viewController = SettingsViewController(
-                coordinator: coordinator,
-                repos: repos)
+            viewController = DeckListViewController(coordinator: coordinator)
+        case let .deckStudy(deck):
+            viewController = DeckStudyViewController(deck: deck, coordinator: coordinator)
+        case let .deckInfo(deck):
+            viewController = DeckInfoViewController(deck: deck, coordinator: coordinator)
         }
 
         switch target.type {

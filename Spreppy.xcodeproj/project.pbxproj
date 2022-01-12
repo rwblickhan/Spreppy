@@ -12,8 +12,6 @@
 		6C8426A62752C5A5004EDFA8 /* CreateDeckViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8426A52752C5A5004EDFA8 /* CreateDeckViewModelTests.swift */; };
 		CD15A9A427043DD400333111 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A327043DD400333111 /* Repositories.swift */; };
 		CD15A9A62705689300333111 /* RepositorySpies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15A9A52705689300333111 /* RepositorySpies.swift */; };
-		CD41E48B27656C4700BD2E4B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41E48A27656C4700BD2E4B /* SettingsViewController.swift */; };
-		CD41E48D27656C6400BD2E4B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41E48C27656C6400BD2E4B /* SettingsViewModel.swift */; };
 		CD43E192272BB56000079EB4 /* SingleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD43E191272BB56000079EB4 /* SingleCardView.swift */; };
 		CD43E197272BBE2300079EB4 /* Shuffle in Frameworks */ = {isa = PBXBuildFile; productRef = CD43E196272BBE2300079EB4 /* Shuffle */; };
 		CD53C2C92717F3A90052F9C6 /* DeckInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD53C2C82717F3A90052F9C6 /* DeckInfoViewController.swift */; };
@@ -22,8 +20,7 @@
 		CD705EBF2734E3DA00931333 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD705EBE2734E3DA00931333 /* AddCardViewController.swift */; };
 		CD705EC12734E3E300931333 /* AddCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD705EC02734E3E300931333 /* AddCardViewModel.swift */; };
 		CD705EC32734F31800931333 /* AddCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD705EC22734F31800931333 /* AddCardViewModelTests.swift */; };
-		CD938C252725DCDB00F3AF9C /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938C212725DCDB00F3AF9C /* Deck+CoreDataClass.swift */; };
-		CD938C272725DCDB00F3AF9C /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938C232725DCDB00F3AF9C /* Card+CoreDataClass.swift */; };
+		CD92A568278E8C5E00DD3238 /* RealmDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD92A567278E8C5E00DD3238 /* RealmDeck.swift */; };
 		CD9C282D270EA880001D43D3 /* DeckStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C282C270EA880001D43D3 /* DeckStudyViewController.swift */; };
 		CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C282E270EA889001D43D3 /* DeckStudyViewModel.swift */; };
 		CD9C2833270EA996001D43D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C2832270EA996001D43D3 /* Coordinator.swift */; };
@@ -31,7 +28,6 @@
 		CD9C2837270EB188001D43D3 /* DeckStudyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9C2836270EB188001D43D3 /* DeckStudyViewModelTests.swift */; };
 		CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */; };
 		CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */; };
-		CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BBA26FFE8B500BC5118 /* Spreppy.xcdatamodeld */; };
 		CDA44BBE26FFE8B600BC5118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDA44BBD26FFE8B600BC5118 /* Assets.xcassets */; };
 		CDA44BC126FFE8B600BC5118 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDA44BBF26FFE8B600BC5118 /* LaunchScreen.storyboard */; };
 		CDA44BD626FFE8B700BC5118 /* SpreppyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BD526FFE8B700BC5118 /* SpreppyUITests.swift */; };
@@ -39,18 +35,11 @@
 		CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */; };
 		CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */; };
 		CDA44BEC270020C000BC5118 /* DeckListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */; };
-		CDA44BEE2700263100BC5118 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BED2700263100BC5118 /* Model.swift */; };
-		CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF02700268500BC5118 /* DeckModel.swift */; };
-		CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF32700285300BC5118 /* DeckRepository.swift */; };
-		CDA44BF82701444400BC5118 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF72701444400BC5118 /* CardModel.swift */; };
-		CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA44BF927014A7C00BC5118 /* CardRepository.swift */; };
-		CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */; };
+		CDB2BCA5278E80FF00E285C4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = CDB2BCA4278E80FF00E285C4 /* Realm */; };
+		CDB2BCA7278E80FF00E285C4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CDB2BCA6278E80FF00E285C4 /* RealmSwift */; };
+		CDB2BCA9278E81DB00E285C4 /* RealmCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB2BCA8278E81DB00E285C4 /* RealmCard.swift */; };
 		CDDB7089276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDB7088276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift */; };
-		CDDB708B2764669500CCEC77 /* LeitnerBoxRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDB708A2764669500CCEC77 /* LeitnerBoxRepository.swift */; };
 		CDFF1F25273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */; };
-		CDFF1F2B273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */; };
-		CDFF1F2E273B96130035B4EC /* LeitnerBoxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */; };
-		CDFF1F31273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFF1F30273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +65,6 @@
 		6C8426A52752C5A5004EDFA8 /* CreateDeckViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeckViewModelTests.swift; sourceTree = "<group>"; };
 		CD15A9A327043DD400333111 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		CD15A9A52705689300333111 /* RepositorySpies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySpies.swift; sourceTree = "<group>"; };
-		CD41E48A27656C4700BD2E4B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		CD41E48C27656C6400BD2E4B /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CD43E191272BB56000079EB4 /* SingleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCardView.swift; sourceTree = "<group>"; };
 		CD53C2C82717F3A90052F9C6 /* DeckInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewController.swift; sourceTree = "<group>"; };
 		CD53C2CA2717F3B20052F9C6 /* DeckInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckInfoViewModel.swift; sourceTree = "<group>"; };
@@ -85,8 +72,7 @@
 		CD705EBE2734E3DA00931333 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		CD705EC02734E3E300931333 /* AddCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModel.swift; sourceTree = "<group>"; };
 		CD705EC22734F31800931333 /* AddCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModelTests.swift; sourceTree = "<group>"; };
-		CD938C212725DCDB00F3AF9C /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CD938C232725DCDB00F3AF9C /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CD92A567278E8C5E00DD3238 /* RealmDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDeck.swift; sourceTree = "<group>"; };
 		CD9C282C270EA880001D43D3 /* DeckStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStudyViewController.swift; sourceTree = "<group>"; };
 		CD9C282E270EA889001D43D3 /* DeckStudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStudyViewModel.swift; sourceTree = "<group>"; };
 		CD9C2832270EA996001D43D3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -95,7 +81,6 @@
 		CDA44BAE26FFE8B500BC5118 /* Spreppy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spreppy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA44BB126FFE8B500BC5118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDA44BB326FFE8B500BC5118 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CDA44BBB26FFE8B500BC5118 /* Spreppy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spreppy.xcdatamodel; sourceTree = "<group>"; };
 		CDA44BBD26FFE8B600BC5118 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDA44BC026FFE8B600BC5118 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDA44BC226FFE8B600BC5118 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,18 +91,9 @@
 		CDA44BE626FFEE9800BC5118 /* DeckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewController.swift; sourceTree = "<group>"; };
 		CDA44BE926FFF2EA00BC5118 /* DeckListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewModel.swift; sourceTree = "<group>"; };
 		CDA44BEB270020C000BC5118 /* DeckListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewModelTests.swift; sourceTree = "<group>"; };
-		CDA44BED2700263100BC5118 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		CDA44BF02700268500BC5118 /* DeckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckModel.swift; sourceTree = "<group>"; };
-		CDA44BF32700285300BC5118 /* DeckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRepository.swift; sourceTree = "<group>"; };
-		CDA44BF72701444400BC5118 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
-		CDA44BF927014A7C00BC5118 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
-		CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		CDB2BCA8278E81DB00E285C4 /* RealmCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCard.swift; sourceTree = "<group>"; };
 		CDDB7088276463A600CCEC77 /* LeitnerBoxSpacedRepAlgorithmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxSpacedRepAlgorithmTests.swift; sourceTree = "<group>"; };
-		CDDB708A2764669500CCEC77 /* LeitnerBoxRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxRepository.swift; sourceTree = "<group>"; };
 		CDFF1F24273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+SpreppyExtensions.swift"; sourceTree = "<group>"; };
-		CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeitnerBox+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxModel.swift; sourceTree = "<group>"; };
-		CDFF1F30273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeitnerBoxSpacedRepAlgorithm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB2BCA7278E80FF00E285C4 /* RealmSwift in Frameworks */,
+				CDB2BCA5278E80FF00E285C4 /* Realm in Frameworks */,
 				CD43E197272BBE2300079EB4 /* Shuffle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,15 +131,6 @@
 				6C8426A32752B703004EDFA8 /* CreateDeckViewModel.swift */,
 			);
 			path = "Create Deck";
-			sourceTree = "<group>";
-		};
-		CD41E48927656C3300BD2E4B /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				CD41E48A27656C4700BD2E4B /* SettingsViewController.swift */,
-				CD41E48C27656C6400BD2E4B /* SettingsViewModel.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		CD53C2C52717F3730052F9C6 /* Deck Info */ = {
@@ -208,7 +177,6 @@
 				CD53C2C52717F3730052F9C6 /* Deck Info */,
 				CDA44BE826FFF2DD00BC5118 /* Deck List */,
 				CD9C282B270EA83C001D43D3 /* Deck Study */,
-				CD41E48927656C3300BD2E4B /* Settings */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -247,7 +215,6 @@
 				CDA44BBD26FFE8B600BC5118 /* Assets.xcassets */,
 				CDA44BBF26FFE8B600BC5118 /* LaunchScreen.storyboard */,
 				CDA44BC226FFE8B600BC5118 /* Info.plist */,
-				CDA44BBA26FFE8B500BC5118 /* Spreppy.xcdatamodeld */,
 			);
 			path = Spreppy;
 			sourceTree = "<group>";
@@ -288,13 +255,8 @@
 		CDA44BEF2700267900BC5118 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CDA44BED2700263100BC5118 /* Model.swift */,
-				CDA44BF72701444400BC5118 /* CardModel.swift */,
-				CDA44BF02700268500BC5118 /* DeckModel.swift */,
-				CDFF1F2D273B96130035B4EC /* LeitnerBoxModel.swift */,
-				CD938C232725DCDB00F3AF9C /* Card+CoreDataClass.swift */,
-				CD938C212725DCDB00F3AF9C /* Deck+CoreDataClass.swift */,
-				CDFF1F29273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift */,
+				CDB2BCA8278E81DB00E285C4 /* RealmCard.swift */,
+				CD92A567278E8C5E00DD3238 /* RealmDeck.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -303,10 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				CD15A9A327043DD400333111 /* Repositories.swift */,
-				CDBD5CA32725F6FD006E7A89 /* CoreDataRepository.swift */,
-				CDA44BF927014A7C00BC5118 /* CardRepository.swift */,
-				CDA44BF32700285300BC5118 /* DeckRepository.swift */,
-				CDDB708A2764669500CCEC77 /* LeitnerBoxRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -322,7 +280,6 @@
 		CDFF1F2F273B99160035B4EC /* Spaced Rep Algorithms */ = {
 			isa = PBXGroup;
 			children = (
-				CDFF1F30273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift */,
 			);
 			path = "Spaced Rep Algorithms";
 			sourceTree = "<group>";
@@ -345,6 +302,8 @@
 			name = Spreppy;
 			packageProductDependencies = (
 				CD43E196272BBE2300079EB4 /* Shuffle */,
+				CDB2BCA4278E80FF00E285C4 /* Realm */,
+				CDB2BCA6278E80FF00E285C4 /* RealmSwift */,
 			);
 			productName = Spreppy;
 			productReference = CDA44BAE26FFE8B500BC5118 /* Spreppy.app */;
@@ -420,6 +379,7 @@
 			mainGroup = CDA44BA526FFE8B500BC5118;
 			packageReferences = (
 				CD43E195272BBE2300079EB4 /* XCRemoteSwiftPackageReference "Shuffle" */,
+				CDB2BCA3278E80FF00E285C4 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = CDA44BAF26FFE8B500BC5118 /* Products */;
 			projectDirPath = "";
@@ -464,36 +424,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD9C2833270EA996001D43D3 /* Coordinator.swift in Sources */,
-				CD938C272725DCDB00F3AF9C /* Card+CoreDataClass.swift in Sources */,
-				CDA44BEE2700263100BC5118 /* Model.swift in Sources */,
 				CDFF1F25273A33CE0035B4EC /* UITextField+SpreppyExtensions.swift in Sources */,
-				CDA44BFA27014A7C00BC5118 /* CardRepository.swift in Sources */,
 				6C8426A22752B6CD004EDFA8 /* CreateDeckViewController.swift in Sources */,
 				CD705EC12734E3E300931333 /* AddCardViewModel.swift in Sources */,
-				CDA44BF82701444400BC5118 /* CardModel.swift in Sources */,
 				CDA44BB226FFE8B500BC5118 /* AppDelegate.swift in Sources */,
 				CD705EBF2734E3DA00931333 /* AddCardViewController.swift in Sources */,
-				CDFF1F31273B99310035B4EC /* LeitnerBoxSpacedRepAlgorithm.swift in Sources */,
-				CDDB708B2764669500CCEC77 /* LeitnerBoxRepository.swift in Sources */,
-				CDFF1F2E273B96130035B4EC /* LeitnerBoxModel.swift in Sources */,
-				CDA44BF42700285300BC5118 /* DeckRepository.swift in Sources */,
 				CD9C282F270EA889001D43D3 /* DeckStudyViewModel.swift in Sources */,
-				CD41E48D27656C6400BD2E4B /* SettingsViewModel.swift in Sources */,
 				CD43E192272BB56000079EB4 /* SingleCardView.swift in Sources */,
-				CDFF1F2B273B95B10035B4EC /* LeitnerBox+CoreDataClass.swift in Sources */,
-				CDA44BF12700268500BC5118 /* DeckModel.swift in Sources */,
 				CDA44BB426FFE8B500BC5118 /* SceneDelegate.swift in Sources */,
-				CDBD5CA42725F6FD006E7A89 /* CoreDataRepository.swift in Sources */,
-				CD41E48B27656C4700BD2E4B /* SettingsViewController.swift in Sources */,
+				CD92A568278E8C5E00DD3238 /* RealmDeck.swift in Sources */,
+				CDB2BCA9278E81DB00E285C4 /* RealmCard.swift in Sources */,
 				CD53C2C92717F3A90052F9C6 /* DeckInfoViewController.swift in Sources */,
 				6C8426A42752B703004EDFA8 /* CreateDeckViewModel.swift in Sources */,
-				CD938C252725DCDB00F3AF9C /* Deck+CoreDataClass.swift in Sources */,
 				CDA44BE726FFEE9800BC5118 /* DeckListViewController.swift in Sources */,
 				CD15A9A427043DD400333111 /* Repositories.swift in Sources */,
 				CD53C2CB2717F3B20052F9C6 /* DeckInfoViewModel.swift in Sources */,
 				CDA44BEA26FFF2EA00BC5118 /* DeckListViewModel.swift in Sources */,
 				CD9C282D270EA880001D43D3 /* DeckStudyViewController.swift in Sources */,
-				CDA44BBC26FFE8B500BC5118 /* Spreppy.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,6 +811,14 @@
 				minimumVersion = 0.5.0;
 			};
 		};
+		CDB2BCA3278E80FF00E285C4 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -872,20 +827,17 @@
 			package = CD43E195272BBE2300079EB4 /* XCRemoteSwiftPackageReference "Shuffle" */;
 			productName = Shuffle;
 		};
-/* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		CDA44BBA26FFE8B500BC5118 /* Spreppy.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CDA44BBB26FFE8B500BC5118 /* Spreppy.xcdatamodel */,
-			);
-			currentVersion = CDA44BBB26FFE8B500BC5118 /* Spreppy.xcdatamodel */;
-			path = Spreppy.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+		CDB2BCA4278E80FF00E285C4 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDB2BCA3278E80FF00E285C4 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
 		};
-/* End XCVersionGroup section */
+		CDB2BCA6278E80FF00E285C4 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDB2BCA3278E80FF00E285C4 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CDA44BA626FFE8B500BC5118 /* Project object */;
 }

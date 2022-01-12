@@ -27,12 +27,11 @@ class DeckStudyViewController: UIViewController,
         target: self,
         action: #selector(didTapAdd))
 
-    init(deckID: UUID, coordinator: Coordinator, repos: Repositories) {
+    init(deck: RealmDeck, coordinator: Coordinator) {
         super.init(nibName: nil, bundle: nil)
         viewModel = DeckStudyViewModel(
-            deckID: deckID,
+            deck: deck,
             coordinator: coordinator,
-            repos: repos,
             delegate: self)
     }
 
@@ -70,10 +69,6 @@ class DeckStudyViewController: UIViewController,
         cardStack.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
-    override func viewDidLoad() {
-        viewModel.handle(.viewDidLoad)
-    }
-
     // MARK: DeckStudyViewModelDelegate
 
     func update(state: DeckStudyState) {
@@ -95,12 +90,12 @@ class DeckStudyViewController: UIViewController,
     // MARK: SwipeCardStackDataSource
 
     func cardStack(_: SwipeCardStack, cardForIndexAt index: Int) -> SwipeCard {
-        guard let cardModel = viewModel.state.card(at: index) else { return SwipeCard() }
+        guard let cardModel = viewModel.state.deck?.cards[index] else { return SwipeCard() }
         return makeSwipeCard(for: cardModel)
     }
 
     func numberOfCards(in _: SwipeCardStack) -> Int {
-        viewModel.state.numberOfCards
+        viewModel.state.deck?.cards.count ?? 00
     }
 
     // MARK: Helpers
@@ -115,7 +110,7 @@ class DeckStudyViewController: UIViewController,
 
     // MARK: View Factories
 
-    private func makeSwipeCard(for cardModel: CardModel) -> SwipeCard {
+    private func makeSwipeCard(for cardModel: RealmCard) -> SwipeCard {
         let singleCardView = SingleCardView()
         singleCardView.configure(with: cardModel)
 

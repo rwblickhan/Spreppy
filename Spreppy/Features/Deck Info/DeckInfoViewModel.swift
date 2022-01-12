@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import RealmSwift
 
 protocol DeckInfoViewModelDelegate: AnyObject {
     func update(state: DeckInfoState)
@@ -32,34 +33,30 @@ class DeckInfoViewModel {
     }
 
     private let coordinator: Coordinator
-    private let repos: Repositories
+    private let deckRepo: Repository<RealmDeck>
     private weak var delegate: DeckInfoViewModelDelegate?
 
-    private var deckID: UUID
+    private let deck: RealmDeck
+    private var notificationToken: NotificationToken?
 
     private var subscription: AnyCancellable?
 
     init(
-        deckID: UUID,
+        deck: RealmDeck,
         state: DeckInfoState = DeckInfoState(),
         coordinator: Coordinator,
-        repos: Repositories,
         delegate: DeckInfoViewModelDelegate) {
-        self.deckID = deckID
         self.state = state
         self.coordinator = coordinator
-        self.repos = repos
         self.delegate = delegate
+            self.deckRepo = Repository()
+            self.deck = deck
     }
 
     func handle(_ event: DeckInfoUIEvent) {
         switch event {
         case .viewDidLoad:
-            let (deck, deckUpdates) = repos.deckRepo.fetch(deckID)
-            state.title = "\(deck?.title ?? "Deck") Settings"
-            subscription = deckUpdates.sink(receiveValue: { [weak self] deck in
-                self?.state.title = "\(deck.title) Settings"
-            })
+            state.title = "\(deck.title) Settings"
         }
     }
 }

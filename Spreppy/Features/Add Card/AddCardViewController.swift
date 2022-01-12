@@ -29,12 +29,11 @@ class AddCardViewController: UIViewController, AddCardViewModelDelegate {
 
     private var subscriptions = Set<AnyCancellable>()
 
-    init(deckID: UUID, coordinator: Coordinator, repos: Repositories) {
+    init(deck: RealmDeck, coordinator: Coordinator) {
         super.init(nibName: nil, bundle: nil)
         viewModel = AddCardViewModel(
-            deckID: deckID,
+            deck: deck,
             coordinator: coordinator,
-            repos: repos,
             delegate: self)
     }
 

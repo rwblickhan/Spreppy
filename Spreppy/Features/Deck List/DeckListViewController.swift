@@ -16,11 +16,6 @@ class DeckListViewController: UIViewController,
     private var state = DeckListState()
 
     private lazy var tableView = makeTableView()
-    private lazy var settingsBarButton = UIBarButtonItem(
-        image: UIImage(systemName: "gear"),
-        style: .plain,
-        target: self,
-        action: #selector(didTapSettings))
     private lazy var addBarButton = UIBarButtonItem(
         barButtonSystemItem: .add,
         target: self,
@@ -34,12 +29,11 @@ class DeckListViewController: UIViewController,
         target: self,
         action: #selector(didTapDone))
 
-    init(coordinator: Coordinator, repos: Repositories) {
+    init(coordinator: Coordinator) {
         super.init(nibName: nil, bundle: nil)
 
         viewModel = DeckListViewModel(
             coordinator: coordinator,
-            repos: repos,
             delegate: self)
     }
 
@@ -58,7 +52,7 @@ class DeckListViewController: UIViewController,
 
         title = String(localized: "Decks")
         navigationItem.setLeftBarButton(editBarButton, animated: false)
-        navigationItem.setRightBarButtonItems([addBarButton, settingsBarButton], animated: false)
+        navigationItem.setRightBarButtonItems([addBarButton], animated: false)
 
         // MARK: View Hierarchy
 
@@ -85,7 +79,7 @@ class DeckListViewController: UIViewController,
         self.state = state
 
         if oldState.decks != state.decks {
-            var snapshot = NSDiffableDataSourceSnapshot<Int, DeckModel>()
+            var snapshot = NSDiffableDataSourceSnapshot<Int, RealmDeck>()
             snapshot.appendSections([0])
             snapshot.appendItems(state.decks)
             dataSource.apply(snapshot, animatingDifferences: false)
@@ -95,7 +89,7 @@ class DeckListViewController: UIViewController,
             tableView.setEditing(state.isEditing, animated: true)
             navigationItem.setLeftBarButton(state.isEditing ? doneBarButton : editBarButton, animated: true)
             navigationItem.setRightBarButtonItems(
-                state.isEditing ? [] : [addBarButton, settingsBarButton],
+                state.isEditing ? [] : [addBarButton],
                 animated: true)
         }
     }
@@ -108,10 +102,6 @@ class DeckListViewController: UIViewController,
     }
 
     // MARK: Helpers
-
-    @objc private func didTapSettings() {
-        viewModel.handle(.settingsTapped)
-    }
 
     @objc private func didTapAdd() {
         viewModel.handle(.addTapped)
@@ -135,17 +125,17 @@ class DeckListViewController: UIViewController,
     }
 }
 
-private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, DeckModel> {
+private class DeckListDiffableDataSource: UITableViewDiffableDataSource<Int, RealmDeck> {
     private let viewModel: DeckListViewModel
 
     init(viewModel: DeckListViewModel, tableView: UITableView) {
         self.viewModel = viewModel
-        super.init(tableView: tableView) { _, _, deckModel in
+        super.init(tableView: tableView) { _, _, deck in
             let cell = UITableViewCell()
             var content = cell.defaultContentConfiguration()
-            content.text = deckModel.title
-            if deckModel.cardUUIDs.count > 0 {
-                content.secondaryText = String(localized: "\(deckModel.cardUUIDs.count) cards ready for review")
+            content.text = deck.title
+            if deck.cards.count > 0 {
+                content.secondaryText = String(localized: "\(deck.cards.count) cards ready for review")
             }
             cell.contentConfiguration = content
             return cell

@@ -8,17 +8,18 @@
 import Combine
 import Foundation
 import UIKit
+import RealmSwift
 
 protocol DeckListViewModelDelegate: AnyObject {
     func update(state: DeckListState)
 }
 
 struct DeckListState {
-    var decks: [DeckModel]
+    var decks: [RealmDeck]
     var isEditing: Bool
 
     init(
-        decks: [DeckModel] = [],
+        decks: [RealmDeck] = [],
         isEditing: Bool = false) {
         self.decks = decks
         self.isEditing = isEditing
@@ -32,7 +33,6 @@ enum DeckListUIEvent {
     case editTapped
     case deleteTapped(_ row: Int)
     case deckSelected(_ row: Int)
-    case settingsTapped
 }
 
 class DeckListViewModel {
@@ -43,31 +43,38 @@ class DeckListViewModel {
     }
 
     private let coordinator: Coordinator
-    private let repos: Repositories
+    private let deckRepo: Repository<RealmDeck>
     private weak var delegate: DeckListViewModelDelegate?
 
-    private var subscription: AnyCancellable?
+    private var notificationToken: NotificationToken?
 
     init(
         state: DeckListState = DeckListState(),
         coordinator: Coordinator,
-        repos: Repositories,
         delegate: DeckListViewModelDelegate) {
         self.state = state
         self.coordinator = coordinator
-        self.repos = repos
         self.delegate = delegate
+            self.deckRepo = Repository()
     }
 
     deinit {
-        subscription?.cancel()
+        notificationToken?.invalidate()
     }
 
     func handle(_ event: DeckListUIEvent) {
         switch event {
         case .viewDidLoad:
-            subscription = repos.deckRepo.fetchDeckList().sink { [weak self] deckList in
-                self?.state.decks = deckList
+            notificationToken = deckRepo.fetch().observe { [weak self] changes in
+                switch changes {
+                case let .initial(results):
+                    self?.state.decks = results.filter { _ in true }
+                case let .update(results, _, _, _):
+                    self?.state.decks = results.filter { _ in true }
+                case let .error(error):
+                    // TODO
+                    fatalError()
+                }
             }
         case .addTapped:
             guard !state.isEditing else { assert(false); return }
@@ -81,15 +88,13 @@ class DeckListViewModel {
         case let .deleteTapped(index):
             coordinator.navigate(to: .confirmDeleteAlert(onConfirm: { [weak self] in
                 guard let self = self else { return }
-                let deckModel = self.state.decks[index]
-                self.repos.deckRepo.delete(deckModel)
+                let deck = self.state.decks[index]
+                try! self.deckRepo.delete(deck)
             }))
         case let .deckSelected(row):
             guard !state.isEditing else { return }
-            let deckID = state.decks[row].uuid
-            coordinator.navigate(to: .deckStudy(deckID: deckID))
-        case .settingsTapped:
-            coordinator.navigate(to: .settings)
+            let deck = state.decks[row]
+            coordinator.navigate(to: .deckStudy(deck: deck))
         }
     }
 }
