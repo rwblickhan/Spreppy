@@ -14,7 +14,7 @@ class RealmDeck: Object {
     @Persisted var summary: String?
     @Persisted var rank: Int
     @Persisted var cards: List<RealmCard>
-    
+
     convenience init(id: UUID = UUID(), title: String, summary: String?, rank: Int, cards: List<RealmCard>) {
         self.init()
         self.id = id

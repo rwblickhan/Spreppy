@@ -49,8 +49,8 @@ class DeckInfoViewModel {
         self.state = state
         self.coordinator = coordinator
         self.delegate = delegate
-            self.deckRepo = Repository()
-            self.deck = deck
+        deckRepo = Repository()
+        self.deck = deck
     }
 
     func handle(_ event: DeckInfoUIEvent) {

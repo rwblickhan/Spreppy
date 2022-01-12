@@ -56,7 +56,7 @@ class CreateDeckViewModel {
         self.state = state
         self.coordinator = coordinator
         self.delegate = delegate
-        self.deckRepo = Repository()
+        deckRepo = Repository()
     }
 
     func handle(_ event: CreateDeckUIEvent) {

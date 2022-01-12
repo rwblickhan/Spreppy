@@ -7,8 +7,8 @@
 
 import Combine
 import Foundation
-import UIKit
 import RealmSwift
+import UIKit
 
 protocol DeckListViewModelDelegate: AnyObject {
     func update(state: DeckListState)
@@ -55,7 +55,7 @@ class DeckListViewModel {
         self.state = state
         self.coordinator = coordinator
         self.delegate = delegate
-            self.deckRepo = Repository()
+        deckRepo = Repository()
     }
 
     deinit {
@@ -72,7 +72,7 @@ class DeckListViewModel {
                 case let .update(results, _, _, _):
                     self?.state.decks = results.filter { _ in true }
                 case let .error(error):
-                    // TODO
+                    // TODO:
                     fatalError()
                 }
             }

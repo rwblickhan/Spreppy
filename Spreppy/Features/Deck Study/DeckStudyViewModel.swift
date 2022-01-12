@@ -44,7 +44,7 @@ class DeckStudyViewModel {
         state: DeckStudyState = DeckStudyState(),
         coordinator: Coordinator,
         delegate: DeckStudyViewModelDelegate) {
-            self.deck = deck
+        self.deck = deck
         self.state = state
         self.coordinator = coordinator
         self.delegate = delegate
