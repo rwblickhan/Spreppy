@@ -6,9 +6,32 @@
 //
 
 import Foundation
+import RealmSwift
 
-protocol Repositories {
-    var cardRepo: CardRepository { get }
-    var deckRepo: DeckRepository { get }
-    var leitnerBoxRepo: LeitnerBoxRepository { get }
+class Repository<ModelObject: Object> {
+    private let realm: Realm
+
+    init() {
+        realm = try! Realm()
+    }
+
+    func fetch() -> Results<ModelObject> {
+        realm.objects(ModelObject.self)
+    }
+
+    func create(_ modelObject: ModelObject) throws {
+        try realm.write {
+            realm.add(modelObject)
+        }
+    }
+
+    func update(block: () -> Void) throws {
+        try realm.write(block)
+    }
+
+    func delete(_ modelObject: ModelObject) throws {
+        try realm.write {
+            realm.delete(modelObject)
+        }
+    }
 }

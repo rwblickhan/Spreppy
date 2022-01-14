@@ -11,12 +11,11 @@ import UIKit
 class DeckInfoViewController: UIViewController, DeckInfoViewModelDelegate {
     private var viewModel: DeckInfoViewModel!
 
-    init(deckID: UUID, coordinator: Coordinator, repos: Repositories) {
+    init(deck: RealmDeck, coordinator: Coordinator) {
         super.init(nibName: nil, bundle: nil)
         viewModel = DeckInfoViewModel(
-            deckID: deckID,
+            deck: deck,
             coordinator: coordinator,
-            repos: repos,
             delegate: self)
     }
 

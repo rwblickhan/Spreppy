@@ -58,7 +58,7 @@ class SingleCardView: UIView, UIGestureRecognizerDelegate {
         fatalError("Unimplemented")
     }
 
-    func configure(with cardModel: CardModel) {
+    func configure(with cardModel: RealmCard) {
         frontLabel.text = cardModel.frontText
         backLabel.text = cardModel.backText
     }

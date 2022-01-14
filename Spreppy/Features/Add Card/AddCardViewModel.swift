@@ -45,22 +45,23 @@ class AddCardViewModel {
     }
 
     private let coordinator: Coordinator
-    private let repos: Repositories
+    private let cardRepo: Repository<RealmCard>
+    private let deckRepo: Repository<RealmDeck>
     private weak var delegate: AddCardViewModelDelegate?
 
-    private var deckID: UUID
+    private var deck: RealmDeck
 
     init(
-        deckID: UUID,
+        deck: RealmDeck,
         state: AddCardState = AddCardState(),
         coordinator: Coordinator,
-        repos: Repositories,
         delegate: AddCardViewModelDelegate) {
-        self.deckID = deckID
+        self.deck = deck
         self.state = state
         self.coordinator = coordinator
-        self.repos = repos
         self.delegate = delegate
+        cardRepo = Repository()
+        deckRepo = Repository()
     }
 
     func handle(_ event: AddCardUIEvent) {
@@ -77,14 +78,16 @@ class AddCardViewModel {
         case let .saveTapped(frontText, backText):
             // TODO: https://github.com/rwblickhan/Spreppy/issues/42
             guard let frontText = frontText, let backText = backText else { return }
-            repos.cardRepo
-                .createOrUpdate(
-                    CardModel(
-                        uuid: UUID(),
-                        numCorrectRepetitions: 0,
-                        deckUUID: deckID,
-                        frontText: frontText,
-                        backText: backText))
+            let card = RealmCard(
+                nextDueTime: Date(),
+                numCorrectRepetitions: 0,
+                numIncorrectRepetitions: 0,
+                frontText: frontText,
+                backText: backText)
+            try! cardRepo.create(card)
+            try! deckRepo.update {
+                deck.cards.append(card)
+            }
             coordinator.dismiss()
         }
     }

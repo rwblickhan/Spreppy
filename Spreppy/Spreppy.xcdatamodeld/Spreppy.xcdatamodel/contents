@@ -1,33 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Card" representedClassName="Card" syncable="YES" codeGenerationType="category">
-        <attribute name="backText" optional="YES" attributeType="String"/>
-        <attribute name="frontText" optional="YES" attributeType="String"/>
-        <attribute name="nextDueTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="numCorrectRepetitions" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="numIncorrectRepetitions" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="currentStage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LeitnerBox" inverseName="cardsAtStage" inverseEntity="LeitnerBox"/>
-        <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="cards" inverseEntity="Deck"/>
-    </entity>
-    <entity name="Deck" representedClassName="Deck" syncable="YES" codeGenerationType="category">
-        <attribute name="rank" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="summary" optional="YES" attributeType="String"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Card" inverseName="deck" inverseEntity="Card"/>
-    </entity>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="LeitnerBox" representedClassName="LeitnerBox" syncable="YES" codeGenerationType="category">
         <attribute name="delayBeforeDisplay" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="cardsAtStage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="currentStage" inverseEntity="Card"/>
         <relationship name="nextStage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LeitnerBox" inverseName="previousStage" inverseEntity="LeitnerBox"/>
         <relationship name="previousStage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LeitnerBox" inverseName="nextStage" inverseEntity="LeitnerBox"/>
     </entity>
     <elements>
-        <element name="Card" positionX="-45" positionY="18" width="128" height="149"/>
-        <element name="Deck" positionX="-63" positionY="-18" width="128" height="104"/>
-        <element name="LeitnerBox" positionX="-54" positionY="54" width="128" height="119"/>
+        <element name="LeitnerBox" positionX="-54" positionY="54" width="128" height="104"/>
     </elements>
 </model>

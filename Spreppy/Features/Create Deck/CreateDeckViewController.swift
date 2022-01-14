@@ -29,11 +29,10 @@ class CreateDeckViewController: UIViewController, CreateDeckViewModelDelegate {
 
     private var subscriptions = Set<AnyCancellable>()
 
-    init(coordinator: Coordinator, repos: Repositories) {
+    init(coordinator: Coordinator) {
         super.init(nibName: nil, bundle: nil)
         viewModel = CreateDeckViewModel(
             coordinator: coordinator,
-            repos: repos,
             delegate: self)
     }
 

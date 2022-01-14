@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol CreateDeckViewModelDelegate: AnyObject {
     func update(state: CreateDeckState)
@@ -45,18 +46,17 @@ class CreateDeckViewModel {
     }
 
     private let coordinator: Coordinator
-    private let repos: Repositories
+    private let deckRepo: Repository<RealmDeck>
     private weak var delegate: CreateDeckViewModelDelegate?
 
     init(
         state: CreateDeckState = CreateDeckState(),
         coordinator: Coordinator,
-        repos: Repositories,
         delegate: CreateDeckViewModelDelegate) {
         self.state = state
         self.coordinator = coordinator
-        self.repos = repos
         self.delegate = delegate
+        deckRepo = Repository()
     }
 
     func handle(_ event: CreateDeckUIEvent) {
@@ -69,12 +69,7 @@ class CreateDeckViewModel {
         case let .saveTapped(title, summary):
             // TODO: https://github.com/rwblickhan/Spreppy/issues/42
             guard let title = title else { return }
-            repos.deckRepo
-                .createOrUpdate(
-                    DeckModel(
-                        uuid: UUID(),
-                        title: title,
-                        summary: summary))
+            try! deckRepo.create(RealmDeck(title: title, summary: summary, rank: 0, cards: List()))
             coordinator.dismiss()
         case let .summaryChanged(summary):
             state.summary = summary
